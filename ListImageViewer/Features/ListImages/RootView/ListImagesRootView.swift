@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ListImagesRootView: View {
-    let router : ListImagesRouter
+    let dependency: ListImagesDependency
     var viewModel: ListImagesViewModel
 
     var body: some View {
@@ -23,7 +23,7 @@ struct ListImagesRootView: View {
             ListImagesView(
                 items: listImages,
                 onItemAppear: viewModel.itemDidAppear,
-                didSelect: router.openImageDetailRoute
+                didSelect: dependency.openImageDetailRoute
             )
         case .failed:
             Text("Ups something went wrong")

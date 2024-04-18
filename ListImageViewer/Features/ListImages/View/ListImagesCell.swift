@@ -10,24 +10,7 @@ struct ListImagesCell: View {
             didSelect(imageInfo)
         }, label: {
             HStack(alignment: .center) {
-                AsyncImage(url: imageInfo.url) { phase in
-                    switch phase {
-                    case .empty:
-                        ProgressView()
-                    case .success(let image):
-                        image.resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: 150, maxHeight: 80)
-                    case .failure:
-                        Image(systemName: "photo")
-                    @unknown default:
-                        EmptyView()
-                    }
-                }                
-                .frame(width: 150, height: 80)
-                .background(Color(.systemGray6))
-                .padding(8)
-
+                asyncImage
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Cell: \(index)")
@@ -36,6 +19,26 @@ struct ListImagesCell: View {
                 Spacer(minLength: 8)
             }.padding(8)
         })
+    }
+
+    var asyncImage: some View {
+        AsyncImage(url: imageInfo.url) { phase in
+            switch phase {
+            case .empty:
+                ProgressView()
+            case .success(let image):
+                image.resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(maxWidth: 150, maxHeight: 80)
+            case .failure:
+                Image(systemName: "photo")
+            @unknown default:
+                EmptyView()
+            }
+        }
+        .frame(width: 150, height: 80)
+        .background(Color(.systemGray6))
+        .padding(8)
     }
 }
 

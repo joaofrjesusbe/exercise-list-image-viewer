@@ -1,5 +1,5 @@
 import SwiftUI
 
-struct ListImagesRouter {
+struct ListImagesDependency {
     let openImageDetailRoute: (ImageInfoUI) -> Void
 }

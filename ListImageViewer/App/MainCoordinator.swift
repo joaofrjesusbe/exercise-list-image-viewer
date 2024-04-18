@@ -5,7 +5,7 @@ final class MainCoordinator: Coordinator {
 
     func initialViewController() -> UIViewController {
         let viewController = ListImagesFeature(
-            router: .init(openImageDetailRoute: self.pushViewDetail(_:))
+            .init(openImageDetailRoute: self.pushViewDetail(_:))
         )
         let navigationController = UINavigationController(rootViewController: viewController)
         self.navigationController = navigationController
