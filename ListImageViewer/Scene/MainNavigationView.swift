@@ -5,7 +5,7 @@ struct MainNavigationView: View {
 
     var body: some View {
         NavigationStack(path: Bindable(coordinator).viewPath) {
-            coordinator.listImageFeature.mainView
+            coordinator.listImageFeature.rootView
             .navigationDestination(for: ImageInfoUI.self) { image in
                 ImageDetailRootView(imageInfo: image)
             }

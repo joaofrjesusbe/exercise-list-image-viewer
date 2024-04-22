@@ -1,6 +1,6 @@
 import SwiftUI
 
-class ListImagesFeature {
+class ListImagesFeature: Feature {
     let viewModel: ListImagesViewModel
     let router: ListImagesRouter
 
@@ -13,7 +13,7 @@ class ListImagesFeature {
         }
     }
 
-    var mainView: some View {
+    var rootView: some View {
         ListImagesRootView(viewModel: viewModel, router: router)
     }
 
