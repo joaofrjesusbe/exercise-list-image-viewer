@@ -26,7 +26,7 @@ final class ListImagesViewModelTests: XCTestCase {
         await sut.loadImages()
 
         // Then
-        let expectedImages = resultImages.map { $0.toImageInfoUIModel() }
+        let expectedImages = resultImages.map(ImageInfoUI.init)
         XCTAssertEqual(sut.state, .images(expectedImages))
     }
 

@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ListImagesCell: View {
     let imageInfo: ImageInfoUI
-    let index: Int
     let didSelect: (ImageInfoUI) -> Void
 
     var body: some View {
@@ -13,8 +12,8 @@ struct ListImagesCell: View {
                 asyncImage
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Cell: \(index)")
-                    Text("Likes: \(imageInfo.likes)")
+                    Text(imageInfo.user)
+                    Text(imageInfo.likes)
                 }
                 Spacer(minLength: 8)
             }.padding(8)
@@ -22,7 +21,7 @@ struct ListImagesCell: View {
     }
 
     var asyncImage: some View {
-        AsyncImage(url: imageInfo.url) { phase in
+        AsyncImage(url: imageInfo.preview) { phase in
             switch phase {
             case .empty:
                 ProgressView()
@@ -45,7 +44,6 @@ struct ListImagesCell: View {
 #Preview {
     ListImagesCell(
         imageInfo: .mock,
-        index: 0,
         didSelect: {_ in }
     )
 }

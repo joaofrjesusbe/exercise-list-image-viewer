@@ -1,15 +1,12 @@
 import SwiftUI
 
-struct ListImagesRootView: View {
-    let viewModel: ListImagesViewModel
-    let router: ListImagesRouter
-    
+struct MainView: View {
+    var mainCoordinator:
+
     var body: some View {
-        ZStack(alignment: .center) {
-            stateView
+        NavigationStack {
+            
         }
-        .background(.white)        
-        .navigationTitle("List")
     }
 
     @ViewBuilder
@@ -21,7 +18,7 @@ struct ListImagesRootView: View {
             ListImagesView(
                 items: listImages,
                 onItemAppear: viewModel.itemDidAppear,
-                didSelect: router.openDetailImage
+                didSelect: dependency.openImageDetailRoute
             )
         case .failed:
             Text("Ups something went wrong")
