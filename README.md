@@ -1,12 +1,16 @@
 # exercise-list-image-viewer
-A small exercise about a paginated image viewer in Swift
+
+A small exercise about a paginated image viewer with different navigations
+
+In this branch will use UIKit navigation with SwiftUI views.
+For pure SwiftUI navigation, checkout the branch `swiftUI-navigation`
 
 ## Requirements
 
-1. Reusable pagination
-2. Using pixabay API (https://pixabay.com/api/docs/)
-3. Using mix of UIKit for navigation and SwiftUI for the rest of the app
-4. Clean architecture approach with MVVM as UI pattern
+1. Using pixabay API (https://pixabay.com/api/docs/)
+2. Clean architecture approach with MVVM as UI pattern
+3. Independent navigation code
+4. Reusable pagination
 
 ## Usage
 

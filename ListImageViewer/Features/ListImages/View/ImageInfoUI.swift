@@ -2,23 +2,20 @@ import Foundation
 
 struct ImageInfoUI: Identifiable, Hashable, Equatable {
     let id: Int
-    let url: URL?
+    let preview: URL?
+    let detail: URL?
     let user: String
-    let likes: Int
+    let likes: String
+
+    init(_ imageInfo: ImageInfo) {
+        self.id = imageInfo.id
+        self.preview = URL(string: imageInfo.previewURL)
+        self.detail = URL(string: imageInfo.largeImageURL)
+        self.user = "User: \(imageInfo.user)"
+        self.likes = "Likes: \(imageInfo.likes)"
+    }
 
     static var mock: ImageInfoUI {
-        ImageInfo.mock.toImageInfoUIModel()
-    }
-}
-
-extension ImageInfo {
-
-    func toImageInfoUIModel() -> ImageInfoUI {
-        ImageInfoUI(
-            id: id,
-            url: URL(string: previewURL),
-            user: user,
-            likes: likes
-        )
+        ImageInfoUI(ImageInfo.mock)
     }
 }

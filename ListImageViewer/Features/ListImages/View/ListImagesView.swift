@@ -12,10 +12,8 @@ struct ListImagesView: View {
                     Array(items.enumerated()),
                     id: \.element)
                 { index, element in
-
                     ListImagesCell(
                         imageInfo: element,
-                        index: index,
                         didSelect: didSelect
                     )
                     .onAppear {

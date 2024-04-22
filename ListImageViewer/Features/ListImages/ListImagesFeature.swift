@@ -1,21 +1,24 @@
 import SwiftUI
 
 final class ListImagesFeature: UIHostingController<ListImagesRootView> {
-    private let dependency: ListImagesDependency
     private let viewModel: ListImagesViewModel
+    private let router: ListImagesRouter
 
     @MainActor required dynamic init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    @MainActor init(_ dependency: ListImagesDependency) {
-        self.dependency = dependency
-
+    @MainActor init(_ router: ListImagesRouter) {
         let service = ListImagesNetworkService()
         self.viewModel = Self.createViewModel(service: service)
+        self.router = router
 
-        let rootView = ListImagesRootView(dependency: dependency, viewModel: viewModel)
+        let rootView = ListImagesRootView(viewModel: viewModel, router: router)
         super.init(rootView: rootView)
+
+        Task {
+            await viewModel.loadImages()
+        }
     }
 
     static func createViewModel<Service: ListImagesService>(

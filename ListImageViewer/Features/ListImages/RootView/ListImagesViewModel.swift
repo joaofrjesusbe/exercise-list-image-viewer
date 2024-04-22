@@ -19,7 +19,7 @@ final class ListImagesViewModel {
     func loadImages() async {
         state = .loading
         do {
-            let items = try await action().map { $0.toImageInfoUIModel() }
+            let items = try await action().map(ImageInfoUI.init)
             state = .images(items)
         } catch {
             state = .failed
@@ -34,7 +34,7 @@ final class ListImagesViewModel {
         Task {
             paginationState = .loading
             do {
-                let items = try await action().map { $0.toImageInfoUIModel() }
+                let items = try await action().map(ImageInfoUI.init)
                 state = .images(items)
                 paginationState = .idle
             } catch {
