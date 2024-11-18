@@ -3,7 +3,6 @@ import ImageCore
 
 struct ImagesListFeature: Feature {
     @EnvironmentObject var model: ImageModel
-    
     @State var state: ViewState<Void, String> = .idle
         
     var body: some View {
