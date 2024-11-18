@@ -7,8 +7,8 @@ struct ImageDetailFeature: Feature {
     var body: some View {
         VStack {
             DSAsyncImage(stringUrl: imageInfo.largeImageURL)
-            Text("User: \(imageInfo.user)")
-            Text("Likes: \(imageInfo.likes)")
+            Text(MapImageInfo.toUser(imageInfo))
+            Text(MapImageInfo.toLikes(imageInfo))
         }
         .navigationTitle("Image Detail")
     }

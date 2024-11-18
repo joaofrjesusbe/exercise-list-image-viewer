@@ -8,10 +8,12 @@ struct ImageBrowserApp: App {
                 ImagesListFeature()
             }
             .environmentObject(
-                ImageModel(
-                    query: "funny+dog",
-                    provider: ListImagesNetworkService(),
-                    minimumOffsetToLoadNextPage: 5
+                ImageListViewModel(model:
+                    ImageModel(
+                        query: "funny+dog",
+                        provider: ListImagesNetworkService(),
+                        minimumOffsetToLoadNextPage: 5
+                    )
                 )
             )
         }

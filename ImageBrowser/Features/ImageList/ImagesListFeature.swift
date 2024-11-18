@@ -1,25 +1,22 @@
 import SwiftUI
-import ImageCore
 
 struct ImagesListFeature: Feature {
-    @EnvironmentObject var model: ImageModel
+    @EnvironmentObject var viewModel: ImageListViewModel
     
-    @State var state: ViewState<Void, String> = .idle
-        
     var body: some View {
         ZStack(alignment: .center) {
             stateView
         }
-        .task {
-            await initialLoad()
+        .onAppear {
+            viewModel.initialLoad()
         }
         .background(.white)
-        .navigationTitle(model.query)
+        .navigationTitle(viewModel.query)
     }
 
     @ViewBuilder
     var stateView: some View {
-        switch state {
+        switch viewModel.state {
         case .idle:
             EmptyView()
         case .loading:
@@ -27,19 +24,7 @@ struct ImagesListFeature: Feature {
         case .failed:
             Text("Ups something went wrong")
         case .didLoad:
-            ImagesListView()
-        }
-    }
-    
-    func initialLoad() async {
-        state = .loading
-        do {
-            try await model.initialLoad()
-            state = .didLoad(())
-        } catch let error as NetworkError {
-            state = .failed(error.debugDescription)
-        } catch {
-            state = .failed("Unknown error")
+            ImagesListView()                
         }
     }
 }
@@ -48,7 +33,7 @@ struct ImagesListFeature: Feature {
     NavigationStack {
         ImagesListFeature()
             .environmentObject(
-                ImageModel.mock
+                ImageListViewModel(model: ImageModel.mock)
             )
     }
 }
