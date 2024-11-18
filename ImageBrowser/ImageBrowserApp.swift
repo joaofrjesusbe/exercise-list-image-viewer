@@ -10,12 +10,8 @@ struct ImageBrowserApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainNavigationStack {
-                ImagesListFeature()
-            }
-            .environmentObject(
-                imageModel
-            )
+            MainNavigationStack()
+                .environmentObject(imageModel)
         }
     }
 }

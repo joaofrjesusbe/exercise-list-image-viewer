@@ -1,6 +1,6 @@
 import Foundation
 
-public struct NavigateAction<Route: Hashable> {
+public struct NavigateAction<Route: Routable> {
     public typealias Action = (NavigationType<Route>) -> ()
     
     public let action: Action

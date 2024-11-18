@@ -4,7 +4,7 @@ import ImageDS
 
 struct ImagesListView: View {
     @EnvironmentObject var model: ImageModel
-    @Environment(\.navigate) private var navigate
+    @Environment(\.mainNavigate) private var navigate
     
     @State var pageState: ListingPaginationState<String> = .idle
     

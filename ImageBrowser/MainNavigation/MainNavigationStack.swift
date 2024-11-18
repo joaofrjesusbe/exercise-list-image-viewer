@@ -1,27 +1,25 @@
 import SwiftUI
 import ImageCore
 
-struct MainNavigationStack<RootFeature: Feature>: View {
-    @State private var routes: [Route] = []
-    @ViewBuilder public var rootFeature: () -> RootFeature
+struct MainNavigationStack: RouterNavigationStack {
+    @State internal var routes: [MainRoute] = []
     
     var body: some View {
         NavigationStack(path: $routes) {
-            rootFeature()
-                .navigationDestination(for: Route.self) { route in
+            ImagesListFeature()
+                .navigationDestination(for: MainRoute.self) { route in
                     switch route {
                     case .home:
-                        rootFeature()
+                        EmptyView()
                     case .detail(let imageInfo):
                         ImageDetailFeature(imageInfo: imageInfo)
                     }
                 }
-        }.onNavigate { navType in
+        }.onMainNavigate { navType in
             switch navType {
             case .push(let route):
                 routes.append(route)
             case .unwind(let route):
-                
                 if route == .home {
                     routes = []
                 } else {

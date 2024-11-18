@@ -1,6 +1,6 @@
 import Foundation
 
-public enum NavigationType<Route: Hashable>: Hashable {
+public enum NavigationType<Route: Routable>: Hashable {
     case push(Route)
     case unwind(Route)
 }
