@@ -3,37 +3,38 @@ import ImageCore
 import ImageDS
 
 struct ImagesListView: View {
-    @EnvironmentObject var viewModel: ImageListViewModel
+    @EnvironmentObject var model: ImageModel
     @Environment(\.navigate) private var navigate
+    
+    @State var pageState: ListingPaginationState<String> = .idle
     
     var body: some View {
         ScrollView {
             VStack {            
                 LazyVStack {
                     ForEach(
-                        Array(viewModel.items.enumerated()),
+                        Array(model.currentListing.items.enumerated()),
                         id: \.element)
-                    { index, item in
+                    { index, imageInfo in
                         DSListCell(
-                            item: item,
+                            item: MapImageInfo.toCellItem(imageInfo),
                             didSelect: {
-                                let imageInfo = viewModel.modelForIndex(index)
                                 navigate(.push(.detail(imageInfo)))
                             }
                         )
                         .onAppear {
-                            viewModel.tryToLoadNextPage(index: index)
+                            tryToLoadNextPage(index: index)
                         }
                     }
                 }
                 
-                switch viewModel.pageState {
+                switch pageState {
                 case .idle:
                     EmptyView()
                 case .loading:
                     ProgressView()
                 case .failed(let error):
-                    Button(action: viewModel.loadNextPage) {
+                    Button(action: loadNextPage) {
                         VStack(alignment: .center) {
                             Text(error)
                             Text("Tap to retry")
@@ -43,12 +44,32 @@ struct ImagesListView: View {
             }
             .background(.white)
         }
-    }    
+    }
+    
+    func tryToLoadNextPage(index: Int) {
+        if model.shouldLoadNextPage(index: index) {
+            loadNextPage()
+        }
+    }
+    
+    func loadNextPage() {
+        Task { @MainActor in
+            pageState = .loading
+            do {
+                try await model.loadNextPage()
+                pageState = .idle
+            } catch let error as NetworkError {
+                pageState = .failed(error.debugDescription)
+            } catch {
+                pageState = .failed("Unknown error")
+            }
+        }
+    }
 }
 
 #Preview {
-    ImagesListView()
+    ImagesListView(pageState: .idle)
         .environmentObject(
-            ImageListViewModel(model: ImageModel.mock)
+            ImageModel.mockPageLoaded
         )
 }

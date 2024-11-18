@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct DSListCell: View, Identifiable {
-    public struct Item: Identifiable, Hashable {
+    public struct Item: Identifiable {
         public let id: String
         public let title: String
         public let description: String
