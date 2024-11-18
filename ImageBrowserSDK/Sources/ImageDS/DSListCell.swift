@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct DSListCell: View, Identifiable {
-    public struct Input: Identifiable {
+    public struct Item: Identifiable, Hashable {
         public let id: String
         public let title: String
         public let description: String
@@ -21,15 +21,15 @@ public struct DSListCell: View, Identifiable {
     }
     
     public let id: String
-    public let input: Input
+    public let item: Item
     public let didSelect: () -> Void
     
     public init(
-        input: Input,
+        item: Item,
         didSelect: @escaping () -> Void
     ) {
-        self.id = input.id
-        self.input = input
+        self.id = item.id
+        self.item = item
         self.didSelect = didSelect
     }
 
@@ -38,14 +38,14 @@ public struct DSListCell: View, Identifiable {
             didSelect()
         }, label: {
             HStack(alignment: .center) {
-                DSAsyncImageSmall(url: input.icon)
+                DSAsyncImageSmall(url: item.icon)
                     .frame(width: 150, height: 80)
                     .background(Color(.systemGray6))
                     .padding(8)
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(input.title)
-                    Text(input.description)
+                    Text(item.title)
+                    Text(item.description)
                 }
                 Spacer(minLength: 8)
             }.padding(8)
@@ -57,7 +57,7 @@ public struct DSListCell: View, Identifiable {
 
 #Preview {
     DSListCell(
-        input: .init(id: "", title: "Title", description: "Description", icon: URL(string: "")),
+        item: .init(id: "", title: "Title", description: "Description", icon: URL(string: "")),
         didSelect: {}
     )
 }

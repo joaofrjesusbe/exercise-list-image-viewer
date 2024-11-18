@@ -12,7 +12,7 @@ public struct Listing<Item: Sendable, Metadata: Sendable>: Sendable {
 
 public extension Listing {
     
-    var hasResults: Bool {
+    var isEmpty: Bool {
         !pages.isEmpty
     }
 

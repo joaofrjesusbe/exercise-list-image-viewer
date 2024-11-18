@@ -4,8 +4,8 @@ import ImageDS
 
 struct MapImageInfo {
     
-    static func toCell(_ imageInfo: ImageInfo) -> DSListCell.Input {
-        DSListCell.Input(
+    static func toCell(_ imageInfo: ImageInfo) -> DSListCell.Item {
+        DSListCell.Item(
             id: String(imageInfo.id),
             title: toUser(imageInfo),
             description: toLikes(imageInfo),
