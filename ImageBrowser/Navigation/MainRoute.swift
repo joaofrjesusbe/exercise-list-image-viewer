@@ -1,4 +1,4 @@
-import Foundation
+import ImageCore
 import ImageIO
 
 enum MainRoute: Routable {

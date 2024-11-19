@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB1774EC2CEC9CAD00A05352 /* ImageDS in Frameworks */ = {isa = PBXBuildFile; productRef = EB1774EB2CEC9CAD00A05352 /* ImageDS */; };
+		EB1774EE2CEC9CAD00A05352 /* ImageIO in Frameworks */ = {isa = PBXBuildFile; productRef = EB1774ED2CEC9CAD00A05352 /* ImageIO */; };
 		EB97141F2CE277F2008942A6 /* ImageCore in Frameworks */ = {isa = PBXBuildFile; productRef = EB97141E2CE277F2008942A6 /* ImageCore */; };
-		EB9714212CE277F2008942A6 /* ImageIO in Frameworks */ = {isa = PBXBuildFile; productRef = EB9714202CE277F2008942A6 /* ImageIO */; };
 		EB97143D2CE5233D008942A6 /* ImageCore in Frameworks */ = {isa = PBXBuildFile; productRef = EB97143C2CE5233D008942A6 /* ImageCore */; };
-		EB97143F2CE5233D008942A6 /* ImageDS in Frameworks */ = {isa = PBXBuildFile; productRef = EB97143E2CE5233D008942A6 /* ImageDS */; };
-		EB9714412CE5233D008942A6 /* ImageIO in Frameworks */ = {isa = PBXBuildFile; productRef = EB9714402CE5233D008942A6 /* ImageIO */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,10 +72,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB9714412CE5233D008942A6 /* ImageIO in Frameworks */,
+				EB1774EC2CEC9CAD00A05352 /* ImageDS in Frameworks */,
 				EB97143D2CE5233D008942A6 /* ImageCore in Frameworks */,
-				EB97143F2CE5233D008942A6 /* ImageDS in Frameworks */,
-				EB9714212CE277F2008942A6 /* ImageIO in Frameworks */,
+				EB1774EE2CEC9CAD00A05352 /* ImageIO in Frameworks */,
 				EB97141F2CE277F2008942A6 /* ImageCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,12 +96,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB1774EA2CEC9CAD00A05352 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EB1B42342CE2666100AD94B9 = {
 			isa = PBXGroup;
 			children = (
 				EB1B423F2CE2666100AD94B9 /* ImageBrowser */,
 				EB1B42512CE2666200AD94B9 /* ImageBrowserTests */,
 				EB1B425B2CE2666200AD94B9 /* ImageBrowserUITests */,
+				EB1774EA2CEC9CAD00A05352 /* Frameworks */,
 				EB1B423E2CE2666100AD94B9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -139,10 +145,9 @@
 			name = ImageBrowser;
 			packageProductDependencies = (
 				EB97141E2CE277F2008942A6 /* ImageCore */,
-				EB9714202CE277F2008942A6 /* ImageIO */,
 				EB97143C2CE5233D008942A6 /* ImageCore */,
-				EB97143E2CE5233D008942A6 /* ImageDS */,
-				EB9714402CE5233D008942A6 /* ImageIO */,
+				EB1774EB2CEC9CAD00A05352 /* ImageDS */,
+				EB1774ED2CEC9CAD00A05352 /* ImageIO */,
 			);
 			productName = ImageBrowser;
 			productReference = EB1B423D2CE2666100AD94B9 /* ImageBrowser.app */;
@@ -628,25 +633,23 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EB1774EB2CEC9CAD00A05352 /* ImageDS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB97143B2CE5233D008942A6 /* XCLocalSwiftPackageReference "ImageBrowserSDK" */;
+			productName = ImageDS;
+		};
+		EB1774ED2CEC9CAD00A05352 /* ImageIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB97143B2CE5233D008942A6 /* XCLocalSwiftPackageReference "ImageBrowserSDK" */;
+			productName = ImageIO;
+		};
 		EB97141E2CE277F2008942A6 /* ImageCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ImageCore;
 		};
-		EB9714202CE277F2008942A6 /* ImageIO */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ImageIO;
-		};
 		EB97143C2CE5233D008942A6 /* ImageCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ImageCore;
-		};
-		EB97143E2CE5233D008942A6 /* ImageDS */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ImageDS;
-		};
-		EB9714402CE5233D008942A6 /* ImageIO */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ImageIO;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

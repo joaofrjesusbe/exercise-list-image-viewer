@@ -1,4 +1,5 @@
 import Foundation
+import ImageIO
 
 extension ImageModel {
     static var mock: ImageModel {

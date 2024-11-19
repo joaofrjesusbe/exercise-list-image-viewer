@@ -1,4 +1,6 @@
 import SwiftUI
+import ImageCore
+import ImageIO
 
 @main
 struct ImageBrowserApp: App {

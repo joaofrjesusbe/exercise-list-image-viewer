@@ -1,8 +1,8 @@
 import Foundation
 
-public enum ViewState<Object, Error> {
+public enum ViewState<Model, Error> {
     case idle
     case loading
-    case didLoad(Object)
+    case didLoad(Model)
     case failed(Error)
 }

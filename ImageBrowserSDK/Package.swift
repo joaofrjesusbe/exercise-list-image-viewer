@@ -11,27 +11,29 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "ImageIO",
-            targets: ["ImageIO"]),
-        .library(
             name: "ImageCore",
             targets: ["ImageCore"]),
         .library(
             name: "ImageDS",
             targets: ["ImageDS"]),
+        .library(
+            name: "ImageIO",
+            targets: ["ImageIO"]),
+    ],
+    dependencies: [
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
+            name: "ImageCore"
+        ),
+        .target(
+            name: "ImageDS"
+        ),
+        .target(
             name: "ImageIO",
             dependencies: ["ImageCore"]
-        ),
-        .target(
-            name: "ImageDS"            
-        ),
-        .target(
-            name: "ImageCore"
         ),
         .testTarget(
             name: "ImageIOTests",
