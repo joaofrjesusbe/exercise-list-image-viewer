@@ -1,11 +1,11 @@
 import ImageCore
 import ImageIO
 
-enum MainRoute: Routable {
+enum ImageRoute: Routable {
     case home
     case detail(ImageInfo)
     
-    static func homeRoute() -> MainRoute {
+    static func homeRoute() -> ImageRoute {
         .home
     }
 }

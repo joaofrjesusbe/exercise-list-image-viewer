@@ -12,7 +12,7 @@ struct ImageBrowserApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainNavigationStack()
+            ImageNavigationStack()
                 .environmentObject(imageModel)
         }
     }

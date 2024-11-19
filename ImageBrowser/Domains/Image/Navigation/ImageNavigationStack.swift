@@ -1,13 +1,13 @@
 import SwiftUI
 import ImageCore
 
-struct MainNavigationStack: RouterNavigationStack {
-    @State internal var routes: [MainRoute] = []
+struct ImageNavigationStack: RouterNavigationStack {
+    @State internal var routes: [ImageRoute] = []
     
     var body: some View {
         NavigationStack(path: $routes) {
             ImagesListFeature()
-                .navigationDestination(for: MainRoute.self) { route in
+                .navigationDestination(for: ImageRoute.self) { route in
                     switch route {
                     case .home:
                         EmptyView()
@@ -15,7 +15,7 @@ struct MainNavigationStack: RouterNavigationStack {
                         ImageDetailFeature(imageInfo: imageInfo)
                     }
                 }
-        }.onMainNavigate { navType in
+        }.onImageNavigate { navType in
             switch navType {
             case .push(let route):
                 routes.append(route)
