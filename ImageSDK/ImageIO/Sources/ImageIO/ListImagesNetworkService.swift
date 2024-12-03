@@ -19,7 +19,7 @@ public final class ListImagesNetworkService {
 
         do {
             let (data, _) = try await session.data(from: url)
-            let listImages = try JSONDecoder().decode(ImageListRTO.self, from: data)
+            let listImages = try JSONDecoder().decode(ImageListDTO.self, from: data)
             var page = ImageInfoListing.Page(pageNumber: pageNumber, items: listImages.hits)
             page.hasNextPage = listImages.hits.count == defaultPageSize
             return page

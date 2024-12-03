@@ -1,6 +1,6 @@
 import Foundation
 
-struct ImageListRTO: Codable {
+struct ImageListDTO: Codable {
     let total: Int
     let totalHits: Int
     let hits: [ImageInfo]
