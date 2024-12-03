@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "ImageDS",
+    name: "ImageDesignSystem",
     platforms: [
         .iOS("16.0"),
     ],

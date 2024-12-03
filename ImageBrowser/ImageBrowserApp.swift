@@ -1,6 +1,6 @@
 import SwiftUI
 import ImageIO
-import DomainListDetail
+import DomainList
 
 @main
 struct ImageBrowserApp: App {

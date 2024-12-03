@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB67BCB32CFE379E00DA6BB4 /* DomainListDetail in Frameworks */ = {isa = PBXBuildFile; productRef = EB67BCB22CFE379E00DA6BB4 /* DomainListDetail */; };
+		EB67BE952CFF1CBD00DA6BB4 /* DomainList in Frameworks */ = {isa = PBXBuildFile; productRef = EB67BE942CFF1CBD00DA6BB4 /* DomainList */; };
 		EB7764DB2CFE0967003125D0 /* ImageCore in Frameworks */ = {isa = PBXBuildFile; productRef = EB7764DA2CFE0967003125D0 /* ImageCore */; };
 		EB7764DF2CFE0A06003125D0 /* ImageDS in Frameworks */ = {isa = PBXBuildFile; productRef = EB7764DE2CFE0A06003125D0 /* ImageDS */; };
 		EB7765002CFE1182003125D0 /* ImageIO in Frameworks */ = {isa = PBXBuildFile; productRef = EB7764FF2CFE1182003125D0 /* ImageIO */; };
@@ -74,8 +74,8 @@
 			files = (
 				EB7765002CFE1182003125D0 /* ImageIO in Frameworks */,
 				EB7764DB2CFE0967003125D0 /* ImageCore in Frameworks */,
+				EB67BE952CFF1CBD00DA6BB4 /* DomainList in Frameworks */,
 				EB7764DF2CFE0A06003125D0 /* ImageDS in Frameworks */,
-				EB67BCB32CFE379E00DA6BB4 /* DomainListDetail in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +147,7 @@
 				EB7764DA2CFE0967003125D0 /* ImageCore */,
 				EB7764DE2CFE0A06003125D0 /* ImageDS */,
 				EB7764FF2CFE1182003125D0 /* ImageIO */,
-				EB67BCB22CFE379E00DA6BB4 /* DomainListDetail */,
+				EB67BE942CFF1CBD00DA6BB4 /* DomainList */,
 			);
 			productName = ImageBrowser;
 			productReference = EB1B423D2CE2666100AD94B9 /* ImageBrowser.app */;
@@ -443,7 +443,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
@@ -482,7 +482,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
@@ -627,9 +627,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EB67BCB22CFE379E00DA6BB4 /* DomainListDetail */ = {
+		EB67BE942CFF1CBD00DA6BB4 /* DomainList */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DomainListDetail;
+			productName = DomainList;
 		};
 		EB7764DA2CFE0967003125D0 /* ImageCore */ = {
 			isa = XCSwiftPackageProductDependency;

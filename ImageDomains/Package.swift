@@ -6,31 +6,30 @@ import PackageDescription
 let package = Package(
     name: "ImageDomains",
     platforms: [
-        .iOS("17.0"),
+        .iOS("16.0"),
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "DomainListDetail",
-            targets: ["DomainListDetail"]
+            name: "DomainList",
+            targets: ["DomainList"]
         ),
     ],
     dependencies: [
         .package(path: "../ImageSDK/ImageCore"),
         .package(path: "../ImageSDK/ImageDS"),
         .package(path: "../ImageSDK/ImageIO"),
-        //.package(url: "https://github.com/hmlongco/Factory.git", from: "2.4.3")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "DomainListDetail",
+            name: "DomainList",
             dependencies: ["ImageCore", "ImageDS", "ImageIO"]
         ),
         .testTarget(
-            name: "DomainListDetailTests",
-            dependencies: ["DomainListDetail"]
+            name: "DomainListTests",
+            dependencies: ["DomainList"]
         ),
     ]
 )
