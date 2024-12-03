@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB1774EC2CEC9CAD00A05352 /* ImageDS in Frameworks */ = {isa = PBXBuildFile; productRef = EB1774EB2CEC9CAD00A05352 /* ImageDS */; };
-		EB1774EE2CEC9CAD00A05352 /* ImageIO in Frameworks */ = {isa = PBXBuildFile; productRef = EB1774ED2CEC9CAD00A05352 /* ImageIO */; };
-		EB97141F2CE277F2008942A6 /* ImageCore in Frameworks */ = {isa = PBXBuildFile; productRef = EB97141E2CE277F2008942A6 /* ImageCore */; };
-		EB97143D2CE5233D008942A6 /* ImageCore in Frameworks */ = {isa = PBXBuildFile; productRef = EB97143C2CE5233D008942A6 /* ImageCore */; };
+		EB67BCB32CFE379E00DA6BB4 /* DomainListDetail in Frameworks */ = {isa = PBXBuildFile; productRef = EB67BCB22CFE379E00DA6BB4 /* DomainListDetail */; };
+		EB7764DB2CFE0967003125D0 /* ImageCore in Frameworks */ = {isa = PBXBuildFile; productRef = EB7764DA2CFE0967003125D0 /* ImageCore */; };
+		EB7764DF2CFE0A06003125D0 /* ImageDS in Frameworks */ = {isa = PBXBuildFile; productRef = EB7764DE2CFE0A06003125D0 /* ImageDS */; };
+		EB7765002CFE1182003125D0 /* ImageIO in Frameworks */ = {isa = PBXBuildFile; productRef = EB7764FF2CFE1182003125D0 /* ImageIO */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,10 +72,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB1774EC2CEC9CAD00A05352 /* ImageDS in Frameworks */,
-				EB97143D2CE5233D008942A6 /* ImageCore in Frameworks */,
-				EB1774EE2CEC9CAD00A05352 /* ImageIO in Frameworks */,
-				EB97141F2CE277F2008942A6 /* ImageCore in Frameworks */,
+				EB7765002CFE1182003125D0 /* ImageIO in Frameworks */,
+				EB7764DB2CFE0967003125D0 /* ImageCore in Frameworks */,
+				EB7764DF2CFE0A06003125D0 /* ImageDS in Frameworks */,
+				EB67BCB32CFE379E00DA6BB4 /* DomainListDetail in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,10 +144,10 @@
 			);
 			name = ImageBrowser;
 			packageProductDependencies = (
-				EB97141E2CE277F2008942A6 /* ImageCore */,
-				EB97143C2CE5233D008942A6 /* ImageCore */,
-				EB1774EB2CEC9CAD00A05352 /* ImageDS */,
-				EB1774ED2CEC9CAD00A05352 /* ImageIO */,
+				EB7764DA2CFE0967003125D0 /* ImageCore */,
+				EB7764DE2CFE0A06003125D0 /* ImageDS */,
+				EB7764FF2CFE1182003125D0 /* ImageIO */,
+				EB67BCB22CFE379E00DA6BB4 /* DomainListDetail */,
 			);
 			productName = ImageBrowser;
 			productReference = EB1B423D2CE2666100AD94B9 /* ImageBrowser.app */;
@@ -232,7 +232,6 @@
 			mainGroup = EB1B42342CE2666100AD94B9;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				EB97143B2CE5233D008942A6 /* XCLocalSwiftPackageReference "ImageBrowserSDK" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EB1B423E2CE2666100AD94B9 /* Products */;
@@ -444,7 +443,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
@@ -452,7 +451,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sds.ImageBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
@@ -482,7 +482,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
@@ -490,7 +490,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sds.ImageBrowser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
@@ -625,31 +626,22 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		EB97143B2CE5233D008942A6 /* XCLocalSwiftPackageReference "ImageBrowserSDK" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ImageBrowserSDK;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		EB1774EB2CEC9CAD00A05352 /* ImageDS */ = {
+		EB67BCB22CFE379E00DA6BB4 /* DomainListDetail */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EB97143B2CE5233D008942A6 /* XCLocalSwiftPackageReference "ImageBrowserSDK" */;
+			productName = DomainListDetail;
+		};
+		EB7764DA2CFE0967003125D0 /* ImageCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ImageCore;
+		};
+		EB7764DE2CFE0A06003125D0 /* ImageDS */ = {
+			isa = XCSwiftPackageProductDependency;
 			productName = ImageDS;
 		};
-		EB1774ED2CEC9CAD00A05352 /* ImageIO */ = {
+		EB7764FF2CFE1182003125D0 /* ImageIO */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EB97143B2CE5233D008942A6 /* XCLocalSwiftPackageReference "ImageBrowserSDK" */;
 			productName = ImageIO;
-		};
-		EB97141E2CE277F2008942A6 /* ImageCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ImageCore;
-		};
-		EB97143C2CE5233D008942A6 /* ImageCore */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = ImageCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
