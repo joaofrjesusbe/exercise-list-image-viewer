@@ -54,8 +54,6 @@ struct ImagesListView: View {
             model
         )
         .onViewDidLoad {
-            Task {
-                await adapter.initialLoad(model: model)
-            }
+            adapter.initialLoad(model: model)
         }
 }

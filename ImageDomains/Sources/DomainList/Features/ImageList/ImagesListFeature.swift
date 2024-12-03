@@ -11,9 +11,7 @@ struct ImagesListFeature: Feature {
             stateView
         }
         .onViewDidLoad {
-            Task {
-                await adapter.initialLoad(model: model)
-            }
+            adapter.initialLoad(model: model)
         }
         .background(.white)
         .navigationTitle(model.query)
