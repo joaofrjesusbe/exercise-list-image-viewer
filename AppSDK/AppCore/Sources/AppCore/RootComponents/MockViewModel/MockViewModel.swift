@@ -1,5 +1,4 @@
 import Foundation
-import AppCore
 
 public enum MockIntent {
     case loadData

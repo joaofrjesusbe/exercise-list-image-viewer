@@ -1,5 +1,4 @@
 import SwiftUI
-import AppCore
 
 public struct MockErrorMapper: ErrorMapper {
     

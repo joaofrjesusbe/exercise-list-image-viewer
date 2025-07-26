@@ -16,7 +16,7 @@ public struct AppEnvironmentKey: @preconcurrency EnvironmentKey {
 }
 
 public extension EnvironmentValues {
-    public var appEnvironment: AppEnvironment {
+    var appEnvironment: AppEnvironment {
         get { self[AppEnvironmentKey.self] }
         set { self[AppEnvironmentKey.self] = newValue }
     }

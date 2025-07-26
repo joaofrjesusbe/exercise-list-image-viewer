@@ -12,7 +12,7 @@ public enum ImagesListIntent {
 public struct ImagesListState {
     let query: String
     let listing: ImageInfoListing
-    let listingState: ListingState
+    let listingState: ListingLoadState
 }
 
 extension ImagesListState {
@@ -22,7 +22,7 @@ extension ImagesListState {
     }
     
     func withUpdatedListing(_ listing: ImageInfoListing) -> Self {
-        .init(query: query, listing: listing, listingState: .didLoadVoid)
+        .init(query: query, listing: listing, listingState: .didLoadEmpty)
     }
     
     func withLoadingPage() -> Self {

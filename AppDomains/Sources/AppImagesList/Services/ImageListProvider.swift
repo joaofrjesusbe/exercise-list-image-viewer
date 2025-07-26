@@ -80,3 +80,11 @@ public final class ImageListProvider {
         }
     }
 }
+
+extension ImageListProvider {
+    static var mock: ImageListProvider {
+        let service = MockImagePageService()
+        let provider = ImageListProvider(query: "Funny", service: service, minimumOffsetToLoadNextPage: 5)
+        return provider
+    }
+}

@@ -39,3 +39,10 @@ public extension AnyLoadState {
         }
     }
 }
+
+public extension AnyLoadState where ViewState == Void {
+    
+    static var didLoadEmpty: Self {
+        return .didLoad(())
+    }
+}

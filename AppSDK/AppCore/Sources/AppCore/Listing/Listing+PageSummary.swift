@@ -2,7 +2,7 @@ import Foundation
 
 public extension Listing {
     struct PageSummary: Sendable {
-        let hasNextPage: Bool
+        fileprivate(set) var hasNextPage: Bool
         let firstItemIndex: Int
         let size: Int
         let pageId: String?
@@ -19,4 +19,13 @@ public extension Listing {
             range.contains(index)
         }
     }
+}
+
+extension Listing.PageSummary {
+    
+    func withNextPage() -> Self {
+        var summary = self
+        summary.hasNextPage = true
+        return summary
+    }    
 }

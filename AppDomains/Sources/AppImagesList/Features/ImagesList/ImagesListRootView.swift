@@ -3,7 +3,7 @@ import AppCore
 import DesignSystem
 import PixbayNetwork
 
-struct ImagesListFeature: View {
+struct ImagesListRootView: View {
     @StateObject var viewModel: AbstractViewModel<
         ImagesListState, ImagesListIntent>
     
@@ -18,12 +18,18 @@ struct ImagesListFeature: View {
 }
 
 #Preview {
+    /*
     let viewModel = MockViewModel<
         ImagesListState, ImagesListIntent>(
         viewState: .mock
     )
+    */
+    
+    let viewModel = ImagesListDI.createImageListViewModel(
+        provider: ImageListProvider.mock
+    )
 
     NavigationStack {
-        ImagesListFeature(viewModel: viewModel)
+        ImagesListRootView(viewModel: viewModel)
     }
 }

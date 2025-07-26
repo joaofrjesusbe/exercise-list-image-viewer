@@ -3,7 +3,7 @@ import AppCore
 
 public typealias ImageInfoListing = Listing<ImageInfo, Void>
 
-public final class ListImagesNetworkService {
+public final class PixbayAPIService {
     private let defaultPageSize: Int
     private let session: URLSession
 

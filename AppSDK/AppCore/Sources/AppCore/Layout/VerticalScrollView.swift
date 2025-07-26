@@ -30,9 +30,7 @@ public struct VerticalScrollView<Content: View>: View {
                             ZStack {
                                 Color.clear
                                     .frame(height: geometry.size.height)
-                                VStack {
-                                    content(proxy)
-                                }
+                                content(proxy)
                             }
                         }
                     }
@@ -44,6 +42,6 @@ public struct VerticalScrollView<Content: View>: View {
 
 #Preview {
     VerticalScrollView(alignment: .center) { _ in
-        Text("Hello World!")            
+        Text("Hello World!")
     }
 }

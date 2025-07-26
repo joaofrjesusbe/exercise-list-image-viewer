@@ -1,13 +1,12 @@
 import SwiftUI
-import DomainList
-import PixbayNetwork
+import AppImagesList
 
 @main
 struct ImageBrowserApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ImageNavigationStack()
+            ImagesListNavigation()
         }
     }
 }

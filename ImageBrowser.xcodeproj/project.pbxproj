@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EBD48F842E3437CA001FC90A /* DomainList in Frameworks */ = {isa = PBXBuildFile; productRef = EBD48F832E3437CA001FC90A /* DomainList */; };
+		EBA9DE8B2E351592004A67F5 /* AppImagesList in Frameworks */ = {isa = PBXBuildFile; productRef = EBA9DE8A2E351592004A67F5 /* AppImagesList */; };
 		EBD48F872E3437E1001FC90A /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = EBD48F862E3437E1001FC90A /* AppCore */; };
 		EBD48F8A2E34380E001FC90A /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = EBD48F892E34380E001FC90A /* DesignSystem */; };
 		EBD48F8D2E343823001FC90A /* PixbayNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = EBD48F8C2E343823001FC90A /* PixbayNetwork */; };
@@ -72,9 +72,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBA9DE8B2E351592004A67F5 /* AppImagesList in Frameworks */,
 				EBD48F8D2E343823001FC90A /* PixbayNetwork in Frameworks */,
 				EBD48F8A2E34380E001FC90A /* DesignSystem in Frameworks */,
-				EBD48F842E3437CA001FC90A /* DomainList in Frameworks */,
 				EBD48F872E3437E1001FC90A /* AppCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,10 +144,10 @@
 			);
 			name = ImageBrowser;
 			packageProductDependencies = (
-				EBD48F832E3437CA001FC90A /* DomainList */,
 				EBD48F862E3437E1001FC90A /* AppCore */,
 				EBD48F892E34380E001FC90A /* DesignSystem */,
 				EBD48F8C2E343823001FC90A /* PixbayNetwork */,
+				EBA9DE8A2E351592004A67F5 /* AppImagesList */,
 			);
 			productName = ImageBrowser;
 			productReference = EB1B423D2CE2666100AD94B9 /* ImageBrowser.app */;
@@ -650,9 +650,9 @@
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EBD48F832E3437CA001FC90A /* DomainList */ = {
+		EBA9DE8A2E351592004A67F5 /* AppImagesList */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = DomainList;
+			productName = AppImagesList;
 		};
 		EBD48F862E3437E1001FC90A /* AppCore */ = {
 			isa = XCSwiftPackageProductDependency;

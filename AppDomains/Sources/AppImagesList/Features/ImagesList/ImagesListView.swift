@@ -28,7 +28,7 @@ struct ImagesListView: View {
                 id: \.element)
             { index, imageInfo in
                 DSListCell(
-                    item: ImageInfoAdapter.toCellItem(imageInfo),
+                    item: ImagesInfoUIAdapter.toCellItem(imageInfo),
                     didSelect: {
                         navigate(.push(.detail(imageInfo)))
                     }

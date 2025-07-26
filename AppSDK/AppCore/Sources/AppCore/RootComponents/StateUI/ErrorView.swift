@@ -1,5 +1,4 @@
 import SwiftUI
-import AppCore
 
 public struct ErrorView: View {
     @Environment(\.appEnvironment) private var env

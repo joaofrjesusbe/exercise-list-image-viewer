@@ -37,29 +37,17 @@ public extension Listing {
         var listing = self
         
         if let lastPage = listing.pages.last {
-            let newLastPage = PageSummary(
-                hasNextPage: true,
-                firstItemIndex: lastPage.firstItemIndex,
-                size: lastPage.size,
-                pageId: lastPage.pageId
-            )
-            listing.pages[listing.pages.count - 1] = newLastPage
+            listing.pages[listing.pages.count - 1] = lastPage.withNextPage()
         }
-        
-        let pageInfo = PageSummary(
-            hasNextPage: page.hasNextPage,
-            firstItemIndex: listing.items.count,
-            size: page.items.count,
-            pageId: page.id
-        )
 
+        // note: only replace metadata if there is any
         if let metadata = page.metadata {
             listing.metadata = metadata
         }
         
         listing.totalNumberOfItems = page.totalNumberOfItems
         listing.totalNumberOfPages = page.totalNumberOfPages
-        listing.pages.append(pageInfo)
+        listing.pages.append(page.summarized())
         listing.items.append(contentsOf: page.items)
         return listing
     }
@@ -69,8 +57,7 @@ public extension Listing {
         let page = Listing.Page(
             items: arrayItems,
             pageNumber: pageNumber,
-            hasNextPage: false,
-            metadata: metadata
+            hasNextPage: false
         )
         return appendPage(page)
     }
