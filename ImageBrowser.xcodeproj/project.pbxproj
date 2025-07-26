@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EB67BE952CFF1CBD00DA6BB4 /* DomainList in Frameworks */ = {isa = PBXBuildFile; productRef = EB67BE942CFF1CBD00DA6BB4 /* DomainList */; };
-		EB7764DB2CFE0967003125D0 /* ImageCore in Frameworks */ = {isa = PBXBuildFile; productRef = EB7764DA2CFE0967003125D0 /* ImageCore */; };
-		EB7764DF2CFE0A06003125D0 /* ImageDS in Frameworks */ = {isa = PBXBuildFile; productRef = EB7764DE2CFE0A06003125D0 /* ImageDS */; };
-		EB7765002CFE1182003125D0 /* ImageIO in Frameworks */ = {isa = PBXBuildFile; productRef = EB7764FF2CFE1182003125D0 /* ImageIO */; };
+		EBD48F842E3437CA001FC90A /* DomainList in Frameworks */ = {isa = PBXBuildFile; productRef = EBD48F832E3437CA001FC90A /* DomainList */; };
+		EBD48F872E3437E1001FC90A /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = EBD48F862E3437E1001FC90A /* AppCore */; };
+		EBD48F8A2E34380E001FC90A /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = EBD48F892E34380E001FC90A /* DesignSystem */; };
+		EBD48F8D2E343823001FC90A /* PixbayNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = EBD48F8C2E343823001FC90A /* PixbayNetwork */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,10 +72,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB7765002CFE1182003125D0 /* ImageIO in Frameworks */,
-				EB7764DB2CFE0967003125D0 /* ImageCore in Frameworks */,
-				EB67BE952CFF1CBD00DA6BB4 /* DomainList in Frameworks */,
-				EB7764DF2CFE0A06003125D0 /* ImageDS in Frameworks */,
+				EBD48F8D2E343823001FC90A /* PixbayNetwork in Frameworks */,
+				EBD48F8A2E34380E001FC90A /* DesignSystem in Frameworks */,
+				EBD48F842E3437CA001FC90A /* DomainList in Frameworks */,
+				EBD48F872E3437E1001FC90A /* AppCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,10 +144,10 @@
 			);
 			name = ImageBrowser;
 			packageProductDependencies = (
-				EB7764DA2CFE0967003125D0 /* ImageCore */,
-				EB7764DE2CFE0A06003125D0 /* ImageDS */,
-				EB7764FF2CFE1182003125D0 /* ImageIO */,
-				EB67BE942CFF1CBD00DA6BB4 /* DomainList */,
+				EBD48F832E3437CA001FC90A /* DomainList */,
+				EBD48F862E3437E1001FC90A /* AppCore */,
+				EBD48F892E34380E001FC90A /* DesignSystem */,
+				EBD48F8C2E343823001FC90A /* PixbayNetwork */,
 			);
 			productName = ImageBrowser;
 			productReference = EB1B423D2CE2666100AD94B9 /* ImageBrowser.app */;
@@ -232,6 +232,10 @@
 			mainGroup = EB1B42342CE2666100AD94B9;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				EBD48F822E3437CA001FC90A /* XCLocalSwiftPackageReference "AppDomains" */,
+				EBD48F852E3437E1001FC90A /* XCLocalSwiftPackageReference "AppSDK/AppCore" */,
+				EBD48F882E34380E001FC90A /* XCLocalSwiftPackageReference "AppSDK/DesignSystem" */,
+				EBD48F8B2E343823001FC90A /* XCLocalSwiftPackageReference "AppSDK/PixbayNetwork" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EB1B423E2CE2666100AD94B9 /* Products */;
@@ -626,22 +630,41 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		EBD48F822E3437CA001FC90A /* XCLocalSwiftPackageReference "AppDomains" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = AppDomains;
+		};
+		EBD48F852E3437E1001FC90A /* XCLocalSwiftPackageReference "AppSDK/AppCore" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = AppSDK/AppCore;
+		};
+		EBD48F882E34380E001FC90A /* XCLocalSwiftPackageReference "AppSDK/DesignSystem" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = AppSDK/DesignSystem;
+		};
+		EBD48F8B2E343823001FC90A /* XCLocalSwiftPackageReference "AppSDK/PixbayNetwork" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = AppSDK/PixbayNetwork;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		EB67BE942CFF1CBD00DA6BB4 /* DomainList */ = {
+		EBD48F832E3437CA001FC90A /* DomainList */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DomainList;
 		};
-		EB7764DA2CFE0967003125D0 /* ImageCore */ = {
+		EBD48F862E3437E1001FC90A /* AppCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = ImageCore;
+			productName = AppCore;
 		};
-		EB7764DE2CFE0A06003125D0 /* ImageDS */ = {
+		EBD48F892E34380E001FC90A /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = ImageDS;
+			productName = DesignSystem;
 		};
-		EB7764FF2CFE1182003125D0 /* ImageIO */ = {
+		EBD48F8C2E343823001FC90A /* PixbayNetwork */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = ImageIO;
+			productName = PixbayNetwork;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
