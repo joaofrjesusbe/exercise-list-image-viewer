@@ -1,0 +1,65 @@
+{
+  "configurations" : [
+    {
+      "id" : "CFD37FDA-777D-43EA-B8CA-C48538B998A2",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:ImageBrowser.xcodeproj",
+      "identifier" : "EB1B423C2CE2666100AD94B9",
+      "name" : "ImageBrowser"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:AppSDK\/DesignSystem",
+        "identifier" : "DesignSystemTests",
+        "name" : "DesignSystemTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:ImageBrowser.xcodeproj",
+        "identifier" : "EB1B42572CE2666200AD94B9",
+        "name" : "ImageBrowserUITests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:ImageBrowser.xcodeproj",
+        "identifier" : "EB1B424D2CE2666200AD94B9",
+        "name" : "ImageBrowserTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:AppSDK\/PixbayNetwork",
+        "identifier" : "PixbayNetworkTests",
+        "name" : "PixbayNetworkTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:AppSDK\/AppCore",
+        "identifier" : "AppCoreTests",
+        "name" : "AppCoreTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:AppDomains",
+        "identifier" : "AppImagesListTests",
+        "name" : "AppImagesListTests"
+      }
+    }
+  ],
+  "version" : 1
+}

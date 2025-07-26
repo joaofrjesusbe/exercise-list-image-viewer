@@ -34,6 +34,7 @@
 		EB1B423D2CE2666100AD94B9 /* ImageBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB1B424E2CE2666200AD94B9 /* ImageBrowserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageBrowserTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB1B42582CE2666200AD94B9 /* ImageBrowserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageBrowserUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB6C85382E3599EC0095298F /* ImageBrowserTestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = ImageBrowserTestPlan.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -111,6 +112,7 @@
 				EB1B425B2CE2666200AD94B9 /* ImageBrowserUITests */,
 				EB1774EA2CEC9CAD00A05352 /* Frameworks */,
 				EB1B423E2CE2666100AD94B9 /* Products */,
+				EB6C85382E3599EC0095298F /* ImageBrowserTestPlan.xctestplan */,
 			);
 			sourceTree = "<group>";
 		};
