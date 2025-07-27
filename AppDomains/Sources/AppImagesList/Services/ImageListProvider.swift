@@ -1,4 +1,5 @@
 import SwiftUI
+import FactoryKit
 import AppCore
 import PixbayNetwork
 
@@ -8,16 +9,16 @@ public final class ImageListProvider {
     private(set) var currentListing = ImageInfoListing()
     private(set) var currentItem: ImageInfo?
 
-    private let service: ImagePageService
+    @Injected(\.imagePageService) private var service
+    @Injected(\.logger) private var logger
+    
     private let minimumOffsetToLoadNextPage: Int
     private var pendingRequest: Task<ImageInfoListing.Page, Error>?
     
     public init(
         query: String,
-        service: ImagePageService,
         minimumOffsetToLoadNextPage: Int
     ) {
-        self.service = service
         self.query = query
         self.minimumOffsetToLoadNextPage = minimumOffsetToLoadNextPage
     }
@@ -34,6 +35,7 @@ public final class ImageListProvider {
         }
         
         currentListing = ImageInfoListing()
+        logger.info("New query: \(query)")
     }
     
     func initialLoad() async throws {
@@ -83,8 +85,8 @@ public final class ImageListProvider {
 
 extension ImageListProvider {
     static var mock: ImageListProvider {
-        let service = MockImagePageService()
-        let provider = ImageListProvider(query: "Funny", service: service, minimumOffsetToLoadNextPage: 5)
+        let _ = Container.shared.imagePageService.register { MockImagePageService() }
+        let provider = ImageListProvider(query: "Funny", minimumOffsetToLoadNextPage: 5)
         return provider
     }
 }

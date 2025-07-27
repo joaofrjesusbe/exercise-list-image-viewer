@@ -25,9 +25,7 @@ struct ImagesListRootView: View {
     )
     */
     
-    let viewModel = ImagesListDI.createImageListViewModel(
-        provider: ImageListProvider.mock
-    )
+    let viewModel = ImagesListDI.createImageListViewModel()
 
     NavigationStack {
         ImagesListRootView(viewModel: viewModel)

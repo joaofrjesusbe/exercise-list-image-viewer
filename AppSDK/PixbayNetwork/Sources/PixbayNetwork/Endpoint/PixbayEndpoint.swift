@@ -22,9 +22,7 @@ extension PixbayEndpoint {
         )
     }
     
-    static var defaultPageSize: Int {
-        20
-    }
+    static let defaultPageSize: Int = 20
 }
 
 extension PixbayEndpoint {
