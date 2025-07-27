@@ -1,8 +1,8 @@
 import SwiftUI
-import AppCore
 
 enum L10n {
-    static let errorTitle = LocalizedKey("error_title")
-    static let retry = LocalizedKey("retry")
-    static let loading = LocalizedKey("loading")
+    static let retry = LocalizedKey("Retry")
+    static let loading = LocalizedKey("Loading")
+    
+    static let errorTitle: LocalizedKey = "Something went wrong"
 }

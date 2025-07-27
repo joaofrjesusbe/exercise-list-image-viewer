@@ -9,11 +9,11 @@ open class IntentSendable<Intent> {
 }
 
 @MainActor
-open class AbstractViewModel<ViewState, Intent>: IntentSendable<Intent>, ObservableObject {
+open class LoadViewModel<ViewState, Intent>: IntentSendable<Intent>, ObservableObject {
     @Published public private(set) var state: LoadState<ViewState> = .idle
     public let errorMapper: ErrorMapper
 
-    public init(errorMapper: ErrorMapper) {
+    public init(errorMapper: ErrorMapper = DefaultErrorMapper()) {
         self.errorMapper = errorMapper
     }
     

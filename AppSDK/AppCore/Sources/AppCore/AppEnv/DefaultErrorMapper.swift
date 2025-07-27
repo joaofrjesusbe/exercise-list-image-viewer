@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct MockErrorMapper: ErrorMapper {
+public struct DefaultErrorMapper: ErrorMapper {
     
     public init() {}
     

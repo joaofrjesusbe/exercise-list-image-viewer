@@ -4,12 +4,12 @@ import AppCore
 public struct RootView<ViewState, Intent, Content: View>: View {
     @Environment(\.appEnvironment) private var env
     
-    let viewModel: AbstractViewModel<ViewState, Intent>
+    let viewModel: LoadViewModel<ViewState, Intent>
     let loadIntent: Intent
     let content: (ViewState) -> Content
     
     public init(
-        viewModel: AbstractViewModel<ViewState, Intent>,
+        viewModel: LoadViewModel<ViewState, Intent>,
         loadIntent: Intent,
         content: @escaping (ViewState) -> Content
     ) {

@@ -3,12 +3,12 @@ import AppCore
 import PixbayNetwork
 
 @MainActor
-public class ImagesListViewModel: AbstractViewModel<ImagesListState, ImagesListIntent> {
+public class ImagesListViewModel: LoadViewModel<ImagesListState, ImagesListIntent> {
     private let provider: ImageListProvider
     
     public init(provider: ImageListProvider) {
         self.provider = provider
-        super.init(errorMapper: MockErrorMapper())
+        super.init()
     }
     
     public override func send(_ intent: ImagesListIntent) {

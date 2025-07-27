@@ -20,7 +20,7 @@ public final class MockIntentSendable<Intent>: IntentSendable<Intent> {
     }
 }
 
-public final class MockViewModel<ViewState, Intent>: AbstractViewModel<ViewState, Intent> {
+public final class MockViewModel<ViewState, Intent>: LoadViewModel<ViewState, Intent> {
     public typealias SelfType = MockViewModel<ViewState, Intent>
     public typealias OnIntent = (Intent, SelfType) -> Void
     
@@ -31,7 +31,7 @@ public final class MockViewModel<ViewState, Intent>: AbstractViewModel<ViewState
         updateViewState(viewState)
     }
     
-    public convenience init(error: Error, errorMapper: any ErrorMapper = MockErrorMapper()) {
+    public convenience init(error: Error, errorMapper: any ErrorMapper = DefaultErrorMapper()) {
         self.init(loadState: .idle, errorMapper: errorMapper)
         updateError(error)
     }
@@ -40,9 +40,9 @@ public final class MockViewModel<ViewState, Intent>: AbstractViewModel<ViewState
         self.init(loadState: .loading)
     }
     
-    public init(loadState: LoadState<ViewState>, onIntent: OnIntent? = nil, errorMapper: any ErrorMapper = MockErrorMapper()) {
+    public init(loadState: LoadState<ViewState>, onIntent: OnIntent? = nil, errorMapper: any ErrorMapper = DefaultErrorMapper()) {
         self.onIntent = onIntent
-        super.init(errorMapper: MockErrorMapper())
+        super.init(errorMapper: errorMapper)
         update(loadState)
     }
     

@@ -21,6 +21,10 @@ extension PixbayEndpoint {
             ]
         )
     }
+    
+    static var defaultPageSize: Int {
+        20
+    }
 }
 
 extension PixbayEndpoint {

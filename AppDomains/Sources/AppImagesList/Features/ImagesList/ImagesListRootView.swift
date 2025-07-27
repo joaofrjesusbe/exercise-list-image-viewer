@@ -4,7 +4,7 @@ import DesignSystem
 import PixbayNetwork
 
 struct ImagesListRootView: View {
-    @StateObject var viewModel: AbstractViewModel<
+    @StateObject var viewModel: LoadViewModel<
         ImagesListState, ImagesListIntent>
     
     var body: some View {
