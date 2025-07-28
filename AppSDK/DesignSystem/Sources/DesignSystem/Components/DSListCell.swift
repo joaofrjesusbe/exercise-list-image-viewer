@@ -4,7 +4,7 @@ import AppCore
 public struct DSListCell: View, Identifiable {
     @Environment(\.appEnvironment) private var env
     
-    public struct Item: Identifiable {
+    public struct Item: Identifiable, Hashable, Equatable {
         public let id: String
         public let title: String
         public let description: String

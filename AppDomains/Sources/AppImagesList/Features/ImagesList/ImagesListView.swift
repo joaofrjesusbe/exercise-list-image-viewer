@@ -25,14 +25,12 @@ struct ImagesListView: View {
     
     var listItems: some View {
         LazyVStack {
-            ForEach(
-                Array(state.listing.items.enumerated()),
-                id: \.element)
-            { index, imageInfo in
+            ForEach(0..<state.listingItems.count, id: \.self) { index in
+                let item = state.listingItems[index]
                 DSListCell(
-                    item: adapter.toCellItem(imageInfo),
+                    item: item,
                     didSelect: {
-                        navigate(.push(.detail(imageInfo)))
+                        navigate(.push(.detail(index)))
                     }
                 )
                 .onAppear {

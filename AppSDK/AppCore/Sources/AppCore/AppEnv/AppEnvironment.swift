@@ -11,11 +11,11 @@ public final class AppEnvironment: ObservableObject {
     
     @Published public var themeMode: ThemeMode = .system
     @Published public var theme: Theme
-    @Published public var language: LanguageManager
+    @Published public var languageManager: LanguageManager
     
     public init(theme: Theme = .light, supportedLanguages: [String] = ["en"]) {
         self.theme = theme
-        self.language = LanguageManager(supportedLanguages: supportedLanguages)
+        self.languageManager = LanguageManager(supportedLanguages: supportedLanguages)
     }
     
     /// Call this on appearance changes or View injection

@@ -1,4 +1,5 @@
 import SwiftUI
+import Combine
 
 @MainActor
 open class IntentSendable<Intent> {
@@ -12,11 +13,14 @@ open class IntentSendable<Intent> {
 open class LoadViewModel<ViewState, Intent>: IntentSendable<Intent>, ObservableObject {
     @Published public private(set) var state: LoadState<ViewState> = .idle
     public let errorMapper: ErrorMapper
+    public let languageManager: LanguageManager
+    private var cancellables = Set<AnyCancellable>()
 
     public init(errorMapper: ErrorMapper = DefaultErrorMapper()) {
         self.errorMapper = errorMapper
+        self.languageManager = LanguageManagerKey.defaultValue
     }
-    
+        
     public func updateLoading() {
         update(.loading)
     }
@@ -31,6 +35,24 @@ open class LoadViewModel<ViewState, Intent>: IntentSendable<Intent>, ObservableO
     
     public func update(_ newState: LoadState<ViewState>) {
         self.state = newState
+    }
+    
+    open func onChangeLanguageManager() {
+        // react to on change language
+    }
+    
+    private func observeLanguageChanges() {
+        languageManager.$currentLanguage
+            .sink { [weak self] _ in
+                self?.onChangeLanguageManager()
+            }
+            .store(in: &cancellables)
+        
+        languageManager.$locale
+            .sink { [weak self] _ in
+                self?.onChangeLanguageManager()
+            }
+            .store(in: &cancellables)
     }
 }
     

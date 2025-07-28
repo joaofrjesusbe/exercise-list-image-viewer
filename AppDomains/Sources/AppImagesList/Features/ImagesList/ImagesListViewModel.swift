@@ -1,9 +1,11 @@
 import SwiftUI
 import AppCore
 import PixbayNetwork
+import FactoryKit
 
 @MainActor
 public class ImagesListViewModel: LoadViewModel<ImagesListState, ImagesListIntent> {
+    @Injected(\.imageInfoUIAdapter) private var adapter
     private let provider: ImageListProvider
     
     public init(provider: ImageListProvider) {
@@ -24,16 +26,23 @@ public class ImagesListViewModel: LoadViewModel<ImagesListState, ImagesListInten
         }
     }
     
+    public override func onChangeLanguageManager() {
+        guard let viewState = state.viewState else { return }
+        let items = adapter.toArrayCellItems(provider.currentListing.items)
+        updateViewState(viewState.withUpdatedListing(items))
+    }
+    
     private func initialLoad() {
         updateLoading()
         
         Task { @MainActor in
             do {
                 try await provider.initialLoad()
+                let items = adapter.toArrayCellItems(provider.currentListing.items)
                 updateViewState(
                     ImagesListState(
                         query: provider.query,
-                        listing: provider.currentListing,
+                        listingItems: items,
                         listingState: .idle
                     )
                 )
@@ -49,7 +58,8 @@ public class ImagesListViewModel: LoadViewModel<ImagesListState, ImagesListInten
             do {
                 updateViewState(viewState.withLoadingPage())
                 try await provider.loadNextPage()
-                updateViewState(viewState.withUpdatedListing(provider.currentListing))
+                let items = adapter.toArrayCellItems(provider.currentListing.items)
+                updateViewState(viewState.withUpdatedListing(items))
             } catch {
                 updateViewState(viewState.withErrorPage(errorMapper.mapError(error)))
             }

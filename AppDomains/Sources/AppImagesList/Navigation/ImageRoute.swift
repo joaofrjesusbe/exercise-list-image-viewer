@@ -3,7 +3,7 @@ import PixbayNetwork
 
 public enum ImageRoute: Routable {
     case home
-    case detail(ImageInfo)
+    case detail(_ index: Int)
     
     public static func homeRoute() -> ImageRoute {
         .home

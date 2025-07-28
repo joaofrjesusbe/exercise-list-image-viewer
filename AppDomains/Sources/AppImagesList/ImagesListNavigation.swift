@@ -13,8 +13,8 @@ public struct ImagesListNavigation: View, NavigationRoutable {
                     switch route {
                     case .home:
                         EmptyView()
-                    case .detail(let imageInfo):
-                        ImagesListDetailRootView(imageInfo: imageInfo)
+                    case .detail(let index):
+                        ImagesListDetailRootView(imageInfo: ImagesListDI.getImageDetail(index: index))
                     }
                 }
         }

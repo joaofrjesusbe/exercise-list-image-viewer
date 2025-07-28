@@ -28,8 +28,8 @@ public struct RootView<ViewState, Intent, Content: View>: View {
                     .background(env.theme.background)
             }
         )
-        .bindThemeSync()
         .background(env.theme.background)
+        .bindThemeSync()
         .onAppear {
             if case .idle = viewModel.state {
                 viewModel.send(loadIntent)

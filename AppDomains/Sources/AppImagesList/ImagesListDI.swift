@@ -5,11 +5,19 @@ import PixbayNetwork
 
 @MainActor
 public struct ImagesListDI {
+    static let sharedProvider: ImageListProvider = {
+        let initialQuery = "Funny"
+        return ImageListProvider(query: initialQuery, minimumOffsetToLoadNextPage: 5)
+    }()
     
-    static func createImageListViewModel(initialQuery: String = "Funny") -> ImagesListViewModel {
-        let provider = ImageListProvider(query: initialQuery, minimumOffsetToLoadNextPage: 5)
-        let viewModel = ImagesListViewModel(provider: provider)
+    static func createImageListViewModel() -> ImagesListViewModel {
+        let viewModel = ImagesListViewModel(provider: sharedProvider)
         return viewModel
+    }
+    
+    static func getImageDetail(index: Int) -> ImageInfo {
+        let provider = sharedProvider
+        return provider.currentListing.items[index]
     }
 }
 
@@ -23,7 +31,8 @@ extension Container {
         Factory(self) { PixbayAPIService(logger: self.logger.resolve()) }
     }
     
+    @MainActor
     var imageInfoUIAdapter: Factory<ImageInfoUIAdaptable> {
-        Factory(self) { ImageInfoUIAdapter() }
+        self { @MainActor in ImageInfoUIAdapter() }
     }
 }

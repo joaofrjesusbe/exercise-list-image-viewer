@@ -3,16 +3,16 @@ import SwiftUI
 
 @MainActor
 public final class LanguageManager: ObservableObject {
-    @Published var currentLanguage: String {
+    @Published var currentLanguage: LanguageKey {
         didSet {
             locale = Locale(identifier: currentLanguage)
         }
     }
 
     @Published public private(set) var locale: Locale
-    public let supportedLanguages: [String]
+    public let supportedLanguages: [LanguageKey]
 
-    public init(supportedLanguages: [String]) {
+    public init(supportedLanguages: [LanguageKey]) {
         let defaultLanguage = supportedLanguages.first ?? "en"
         self.currentLanguage = defaultLanguage
         self.supportedLanguages = supportedLanguages
@@ -21,8 +21,8 @@ public final class LanguageManager: ObservableObject {
 }
 
 @MainActor
-private struct LanguageManagerKey: @preconcurrency EnvironmentKey {
-    static let defaultValue: LanguageManager = LanguageManager(supportedLanguages: ["en"])
+public struct LanguageManagerKey: @preconcurrency EnvironmentKey {
+    public static let defaultValue: LanguageManager = LanguageManager(supportedLanguages: ["en"])
 }
 
 extension EnvironmentValues {

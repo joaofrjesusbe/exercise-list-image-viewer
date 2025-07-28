@@ -1,6 +1,6 @@
 import Foundation
 import AppCore
-import PixbayNetwork
+import DesignSystem
 
 public enum ImagesListIntent {
     case initialSearch
@@ -11,41 +11,25 @@ public enum ImagesListIntent {
 
 public struct ImagesListState {
     let query: String
-    let listing: ImageInfoListing
+    let listingItems: [DSListCell.Item]
     let listingState: ListingLoadState
 }
 
 extension ImagesListState {
     
     func withNewQuery(_ query: String) -> Self {
-        .init(query: query, listing: Listing(), listingState: .idle)
+        .init(query: query, listingItems: [], listingState: .idle)
     }
     
-    func withUpdatedListing(_ listing: ImageInfoListing) -> Self {
-        .init(query: query, listing: listing, listingState: .didLoadEmpty)
+    func withUpdatedListing(_ listingItems: [DSListCell.Item]) -> Self {
+        .init(query: query, listingItems: listingItems, listingState: .didLoadEmpty)
     }
     
     func withLoadingPage() -> Self {
-        .init(query: query, listing: listing, listingState: .loading)
+        .init(query: query, listingItems: listingItems, listingState: .loading)
     }
     
     func withErrorPage(_ errorState: ErrorState) -> Self {
-        .init(query: query, listing: listing, listingState: .failed(errorState))
+        .init(query: query, listingItems: listingItems, listingState: .failed(errorState))
     }
-}
-
-extension ImagesListState {
-    @MainActor
-    static let mock = {
-        let listing = ImageInfoListing()
-            .appendPage(arrayItems: [.mock, .mock, .mock])
-            .appendPage(arrayItems: [.mock, .mock, .mock])
-            .appendPage(arrayItems: [.mock, .mock, .mock])
-        
-        return ImagesListState(
-            query: "Flowers",
-            listing: listing,
-            listingState: .loading
-        )
-    }()
 }
