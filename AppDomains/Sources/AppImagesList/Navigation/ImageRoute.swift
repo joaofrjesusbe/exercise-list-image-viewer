@@ -2,16 +2,16 @@ import AppCore
 import PixbayNetwork
 
 public enum ImageRoute: Routable {
-    case home
+    case listing
     case detail(_ index: Int)
     
     public static func homeRoute() -> ImageRoute {
-        .home
+        .listing
     }
     
     public var debugDescription: String {
         switch self {
-        case .home:
+        case .listing:
             return "ImageRoute.home"
         case .detail(let value):
             return "ImageRoute.detail(\(value))"

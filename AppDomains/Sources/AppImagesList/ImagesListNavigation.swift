@@ -11,7 +11,7 @@ public struct ImagesListNavigation: View, NavigationRoutable {
             ImagesListRootView(viewModel: ImagesListDI.createImageListViewModel())
                 .navigationDestination(for: ImageRoute.self) { route in
                     switch route {
-                    case .home:
+                    case .listing:
                         EmptyView()
                     case .detail(let index):
                         ImagesListDetailRootView(imageInfo: ImagesListDI.getImageDetail(index: index))
