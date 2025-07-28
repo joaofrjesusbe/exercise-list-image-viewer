@@ -2,10 +2,12 @@ import SwiftUI
 import AppCore
 import DesignSystem
 import PixbayNetwork
+import FactoryKit
 
 struct ImagesListView: View {
     @Environment(\.appEnvironment) private var env
     @Environment(\.imageNavigate) private var navigate
+    @Injected(\.imageInfoUIAdapter) private var adapter
     
     let onIntent: IntentSendable<ImagesListIntent>
     let state: ImagesListState
@@ -28,7 +30,7 @@ struct ImagesListView: View {
                 id: \.element)
             { index, imageInfo in
                 DSListCell(
-                    item: ImagesInfoUIAdapter.toCellItem(imageInfo),
+                    item: adapter.toCellItem(imageInfo),
                     didSelect: {
                         navigate(.push(.detail(imageInfo)))
                     }
@@ -53,7 +55,7 @@ struct ImagesListView: View {
             }) {
                 VStack(alignment: .center) {
                     Text(error.description)
-                    Text("Tap to retry")
+                    Text(AppCore.L10n.retry)
                 }
             }
         }

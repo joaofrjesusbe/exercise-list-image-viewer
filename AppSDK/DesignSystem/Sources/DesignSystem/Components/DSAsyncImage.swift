@@ -27,7 +27,7 @@ public struct DSAsyncImage: View {
                     image.resizable()
                         .aspectRatio(contentMode: .fit)
                 case .failure:
-                    Image(systemName: "photo")
+                    Image(systemName: SystemImages.imagePlaceholder)
                         .foregroundColor(env.theme.textPrimary)
                 @unknown default:
                     EmptyView()

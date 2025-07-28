@@ -28,7 +28,7 @@ public struct DSAsyncImageSmall: View {
                         .aspectRatio(contentMode: .fit)
                         .frame(maxWidth: 150, maxHeight: 80)
                 case .failure:
-                    Image(systemName: "photo")
+                    Image(systemName: SystemImages.imagePlaceholder)
                         .foregroundColor(env.theme.textPrimary)
                 @unknown default:
                     EmptyView()

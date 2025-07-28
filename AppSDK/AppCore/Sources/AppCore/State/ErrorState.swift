@@ -3,12 +3,12 @@ import SwiftUI
 public struct ErrorState {
     public let title: LocalizedKey?
     public let description: LocalizedKey
-    public let icon: IconName?
+    public let icon: Image?
     
     public init(
         title: LocalizedKey? = nil,
         description: LocalizedKey,
-        icon: IconName? = nil
+        icon: Image? = nil
     ) {
         self.title = title
         self.description = description

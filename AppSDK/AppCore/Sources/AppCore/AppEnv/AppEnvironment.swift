@@ -11,10 +11,23 @@ public final class AppEnvironment: ObservableObject {
     
     @Published public var themeMode: ThemeMode = .system
     @Published public var theme: Theme
-    @Published public var language: LanguageManager = LanguageManager()
+    @Published public var language: LanguageManager
     
-    public init(theme: Theme = .light) {
+    public init(theme: Theme = .light, supportedLanguages: [String] = ["en"]) {
         self.theme = theme
+        self.language = LanguageManager(supportedLanguages: supportedLanguages)
+    }
+    
+    /// Call this on appearance changes or View injection
+    public func updateTheme(for systemColorScheme: ColorScheme) {
+        switch themeMode {
+        case .system:
+            self.theme = systemColorScheme == .dark ? .dark : .light
+        case .light:
+            self.theme = .light
+        case .dark:
+            self.theme = .dark
+        }
     }
 }
 

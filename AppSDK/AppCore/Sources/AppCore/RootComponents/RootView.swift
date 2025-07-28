@@ -1,5 +1,4 @@
 import SwiftUI
-import AppCore
 
 public struct RootView<ViewState, Intent, Content: View>: View {
     @Environment(\.appEnvironment) private var env
@@ -29,6 +28,7 @@ public struct RootView<ViewState, Intent, Content: View>: View {
                     .background(env.theme.background)
             }
         )
+        .bindThemeSync()
         .background(env.theme.background)
         .onAppear {
             if case .idle = viewModel.state {

@@ -22,4 +22,8 @@ extension Container {
     var imagePageService: Factory<ImagePageService> {
         Factory(self) { PixbayAPIService(logger: self.logger.resolve()) }
     }
+    
+    var imageInfoUIAdapter: Factory<ImageInfoUIAdaptable> {
+        Factory(self) { ImageInfoUIAdapter() }
+    }
 }
