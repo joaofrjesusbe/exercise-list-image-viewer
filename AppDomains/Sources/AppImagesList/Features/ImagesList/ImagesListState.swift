@@ -5,7 +5,7 @@ import DesignSystem
 public enum ImagesListIntent {
     case initialSearch
     case newItemAppeared(Int)
-    case loadNextPage
+    case reloadNextPage
     case selectItem(Int)
 }
 

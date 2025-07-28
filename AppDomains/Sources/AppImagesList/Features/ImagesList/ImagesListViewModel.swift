@@ -19,7 +19,7 @@ public class ImagesListViewModel: LoadViewModel<ImagesListState, ImagesListInten
             initialLoad()
         case .newItemAppeared(let index):
             tryToLoadNextPage(index: index)
-        case .loadNextPage:
+        case .reloadNextPage:
             loadNextPage()
         case .selectItem(let index):
             provider.selectIndex(index)
