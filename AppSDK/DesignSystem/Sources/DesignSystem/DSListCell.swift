@@ -1,6 +1,9 @@
 import SwiftUI
+import AppCore
 
 public struct DSListCell: View, Identifiable {
+    @Environment(\.appEnvironment) private var env
+    
     public struct Item: Identifiable {
         public let id: String
         public let title: String
@@ -45,7 +48,9 @@ public struct DSListCell: View, Identifiable {
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text(item.title)
+                        .foregroundColor(env.theme.textPrimary)
                     Text(item.description)
+                        .foregroundColor(env.theme.textSecondary)
                 }
                 Spacer(minLength: 8)
             }.padding(8)

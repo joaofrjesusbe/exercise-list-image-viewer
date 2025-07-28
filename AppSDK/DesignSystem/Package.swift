@@ -14,11 +14,12 @@ let package = Package(
         ),
     ],
     dependencies: [
+        .package(path: "../AppCore"),
     ],
     targets: [
         .target(
             name: "DesignSystem",
-            dependencies: []
+            dependencies: ["AppCore"]
         ),
         .testTarget(
             name: "DesignSystemTests",

@@ -9,7 +9,7 @@ public struct ConsoleLogger: Logger {
     
     private func logOutput(icon: String, level: String, message: String) {
         #if DEBUG
-        print("\(icon) \(level):\n\(message)\n")
+        print("\(icon) \(level) - \(message)\n")
         #endif
     }
     
