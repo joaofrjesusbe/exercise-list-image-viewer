@@ -2,14 +2,6 @@ import SwiftUI
 import Combine
 
 @MainActor
-open class IntentSendable<Intent> {
-    
-    open func send(_ intent: Intent) {
-        fatalError("Subclasses must override send(_:) method")
-    }
-}
-
-@MainActor
 open class LoadViewModel<ViewState, Intent>: IntentSendable<Intent>, ObservableObject {
     @Published public private(set) var state: LoadState<ViewState> = .idle
     public let errorMapper: ErrorMapper

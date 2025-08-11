@@ -4,6 +4,7 @@ public enum NavigationType<Route: Routable>: Hashable, CustomDebugStringConverti
     case push(Route)
     case rewind(Route)
     case back
+    case home
     case forwardAndReplace(Route)
     
     public var debugDescription: String {
@@ -14,6 +15,8 @@ public enum NavigationType<Route: Routable>: Hashable, CustomDebugStringConverti
             return "Navigate.rewind(\(route))"
         case .back:
             return "Navigate.back"
+        case .home:
+            return "Navigate.home"
         case .forwardAndReplace(let route):
             return "Navigate.forwardAndReplace(\(route))"
         }

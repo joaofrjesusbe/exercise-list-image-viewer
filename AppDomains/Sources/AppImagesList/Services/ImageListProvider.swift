@@ -38,8 +38,8 @@ public final class ImageListProvider {
         logger.info("New query: \(query)")
     }
     
-    func initialLoad() async throws {
-        reset(newQuery: nil)
+    func initialLoad(query: String? = nil) async throws {
+        reset(newQuery: query)
         try await loadNextPage()
     }
     

@@ -15,17 +15,22 @@ public extension NavigationRoutable {
         switch navType {
         case .push(let route):
             stack.append(route)
+            
         case .rewind(let route):
-            if route.isHomeRoute {
-                stack = []
-            } else {
-                guard let index = stack.firstIndex(where: { $0 == route })  else { return }
-                stack = Array(stack.prefix(upTo: index + 1))
+            guard let i = stack.firstIndex(of: route) else { return }
+            // mutate in place (don’t replace whole array)
+            if i + 1 < stack.count {
+                stack.removeSubrange((i + 1)..<stack.count)
             }
+            
         case .back:
-            stack.removeLast()
+            if !stack.isEmpty { stack.removeLast() }
+            
+        case .home:
+            stack.removeAll()
+            
         case .forwardAndReplace(let route):
-            stack.removeLast()
+            if !stack.isEmpty { stack.removeLast() }
             stack.append(route)
         }
     }

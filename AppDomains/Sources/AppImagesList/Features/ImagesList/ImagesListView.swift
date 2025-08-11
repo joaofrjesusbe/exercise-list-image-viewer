@@ -7,10 +7,12 @@ import FactoryKit
 struct ImagesListView: View {
     @Environment(\.appEnvironment) private var env
     @Environment(\.imageNavigate) private var navigate
-    @Injected(\.imageInfoUIAdapter) private var adapter
     
     let onIntent: IntentSendable<ImagesListIntent>
     let state: ImagesListState
+    
+    @State private var searchText: String = ""
+    @FocusState private var isSearchFocused: Bool
     
     var body: some View {
         ScrollView {
@@ -21,6 +23,18 @@ struct ImagesListView: View {
             .background(env.theme.background)
             .navigationTitle(state.query)
         }
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic))
+        .focused($isSearchFocused)
+        .onChange(of: searchText) { newValue in
+            onIntent.send(.updateSearchText(newValue))
+        }
+        .onSubmit(of: .search) {
+            onIntent.send(.submitSearch)
+            searchText = ""
+            isSearchFocused = false
+        }
+        .onAppear { searchText = state.query }
+        .onChange(of: state.query) { searchText = $0 }
     }
     
     var listItems: some View {
