@@ -1,7 +1,8 @@
-import Foundation
 import AppCore
 
-struct L10n {
+enum L10n {
     static let user = LocalizedKey("User")
     static let likes = LocalizedKey("Likes")
+    static let tabBarTitleListImages = LocalizedKey("Images")
+    static let titleImageDetail = LocalizedKey("Image Detail")
 }

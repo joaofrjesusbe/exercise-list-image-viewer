@@ -5,13 +5,13 @@ public struct SettingsNavigation: View {
     public init() {}
     
     public var body: some View {
-        Text("Settings")
+        Text(L10n.tabBarTitleSettings)
     }
 }
 
 extension SettingsNavigation: NavigationRepresentable {
     
     public var navigationItem: NavigationItem {
-        NavigationItem(icon: "gearshape", text: "Settings")
+        NavigationItem(icon: SystemImages.tabBarIconSettings, text: L10n.tabBarTitleSettings)
     }
 }
