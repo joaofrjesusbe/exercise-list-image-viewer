@@ -1,6 +1,7 @@
 import SwiftUI
 import AppImagesList
 import AppCore
+import AppMain
 
 @main
 struct ImageBrowserApp: App {
@@ -8,7 +9,10 @@ struct ImageBrowserApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ImagesListNavigation()
+            MainNavigation(tabs: [
+                ImagesListNavigation().eraseToAnyNavigation(),
+                SettingsNavigation().eraseToAnyNavigation()
+            ])
         }
     }
 }

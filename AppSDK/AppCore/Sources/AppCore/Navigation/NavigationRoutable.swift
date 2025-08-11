@@ -4,7 +4,7 @@ import SwiftUI
 public protocol NavigationRoutable {
     associatedtype Route: Routable
     
-    var routes: [Route] { get set }
+    var routes: [Route] { get }
     
     func handleNavigation(_ navType: NavigationType<Route>)
 }

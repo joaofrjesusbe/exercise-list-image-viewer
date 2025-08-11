@@ -2,7 +2,7 @@ import SwiftUI
 import AppCore
 
 public struct ImagesListNavigation: View, NavigationRoutable {
-    @State public var routes: [ImageRoute] = []
+    @State public private(set) var routes: [ImageRoute] = []
     
     public init() {}
     
@@ -21,5 +21,12 @@ public struct ImagesListNavigation: View, NavigationRoutable {
     
     public func handleNavigation(_ navType: NavigationType<Route>) {
         handleNavigationStack(stack: &routes, navType: navType)
+    }
+}
+
+extension ImagesListNavigation: NavigationRepresentable {
+    
+    public var navigationItem: NavigationItem {
+        NavigationItem(icon: "photo.on.rectangle", text: "Images")
     }
 }

@@ -11,6 +11,10 @@ let package = Package(
             name: "AppImagesList",
             targets: ["AppImagesList"]
         ),
+        .library(
+            name: "AppMain",
+            targets: ["AppMain"]
+        )
     ],
     dependencies: [
         .package(path: "../AppSDK/AppCore"),
@@ -19,6 +23,13 @@ let package = Package(
         .package(url: "https://github.com/hmlongco/Factory", from: "2.5.3"),
     ],
     targets: [
+        .target(
+            name: "AppMain",
+            dependencies: [
+                "DesignSystem",
+                "AppCore"
+            ]
+        ),
         .target(
             name: "AppImagesList",
             dependencies: [
