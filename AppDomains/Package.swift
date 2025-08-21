@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "AppDomains",
     platforms: [
-        .iOS("16.0"),
+        .iOS("17.0"),
     ],
     products: [
         .library(
@@ -27,7 +27,8 @@ let package = Package(
             name: "AppMain",
             dependencies: [
                 "DesignSystem",
-                "AppCore"
+                "AppCore",
+                "AppImagesList"
             ]
         ),
         .target(

@@ -24,7 +24,7 @@ extension ImagesListState {
     }
     
     func withUpdatedListing(_ listingItems: [DSListCell.Item]) -> Self {
-        .init(query: query, listingItems: listingItems, listingState: .didLoadEmpty)
+        .init(query: query, listingItems: listingItems, listingState: .currentVoid)
     }
     
     func withLoadingPage() -> Self {

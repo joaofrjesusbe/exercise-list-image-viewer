@@ -2,12 +2,13 @@ import SwiftUI
 import AppCore
 
 public struct MainNavigation: View {
+    @EnvironmentObject private var themer: ThemeManager
     private let tabs: [AnyNavigationRepresentable]
-    @State public private(set) var selection: Int = 0
+    @Binding private var selection: Int
     
-    public init(tabs: [AnyNavigationRepresentable], initialIndex: Int = 0) {
+    public init(tabs: [AnyNavigationRepresentable], selection: Binding<Int>) {
         self.tabs = tabs
-        self._selection = State(initialValue: min(max(0, initialIndex), max(0, tabs.count - 1)))
+        self._selection = selection
     }
     
     public var body: some View {
@@ -22,7 +23,9 @@ public struct MainNavigation: View {
                         }
                     }
                     .tag(index)
+                    .background(themer.theme.background)
             }
         }
+        .background(themer.theme.background)
     }
 }

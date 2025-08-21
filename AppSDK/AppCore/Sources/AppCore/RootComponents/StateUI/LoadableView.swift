@@ -15,7 +15,7 @@ public struct LoadableView<ViewState, Content: View>: View {
             case .failed(let errorState):
                 ErrorView(errorState: errorState, retryAction: retryAction)
 
-            case .didLoad(let viewState):
+            case .current(let viewState):
                 content(viewState)
             }
         }
@@ -24,7 +24,7 @@ public struct LoadableView<ViewState, Content: View>: View {
 }
 
 #Preview {
-    let loadState: LoadState<String> = .didLoad("Hello world!")
+    let loadState: LoadState<String> = .current("Hello world!")
     
     LoadableView(loadState: loadState, retryAction: nil) { viewState in
         Text(viewState)

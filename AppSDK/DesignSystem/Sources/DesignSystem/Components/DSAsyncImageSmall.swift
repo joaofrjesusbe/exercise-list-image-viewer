@@ -1,7 +1,8 @@
 import SwiftUI
+import AppCore
 
 public struct DSAsyncImageSmall: View {
-    @Environment(\.appEnvironment) private var env
+    @EnvironmentObject private var themer: ThemeManager
     
     public let url: URL?
     
@@ -29,7 +30,7 @@ public struct DSAsyncImageSmall: View {
                         .frame(maxWidth: 150, maxHeight: 80)
                 case .failure:
                     Image(systemName: SystemImages.imagePlaceholder)
-                        .foregroundColor(env.theme.textPrimary)
+                        .foregroundColor(themer.theme.textPrimary)
                 @unknown default:
                     EmptyView()
                 }

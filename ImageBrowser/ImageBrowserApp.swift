@@ -5,14 +5,21 @@ import AppMain
 
 @main
 struct ImageBrowserApp: App {
-    @Environment(\.appEnvironment) var appEnvironment
+    @StateObject private var env = AppEnvironment(
+        config: AppConfig(
+            supportedLanguages: ["en", "pt"],
+            themeModes: [.system, .light, .dark]
+        )
+    )
     
     var body: some Scene {
         WindowGroup {
-            MainNavigation(tabs: [
-                ImagesListNavigation().eraseToAnyNavigation(),
-                SettingsNavigation().eraseToAnyNavigation()
-            ])
+            AppRootView()
+                .applyPreferredColorScheme(for: env.themeManager.mode)
+                .environment(\.appEnvironment, env)
+                .environmentObject(env.themeManager)
+                .environmentObject(env.languageManager)
+                .environment(\.locale, env.languageManager.locale)
         }
     }
 }

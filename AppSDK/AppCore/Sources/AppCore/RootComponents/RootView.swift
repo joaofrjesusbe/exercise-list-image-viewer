@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct RootView<ViewState, Intent, Content: View>: View {
-    @Environment(\.appEnvironment) private var env
+    @EnvironmentObject private var themer: ThemeManager
     
     let viewModel: LoadViewModel<ViewState, Intent>
     let loadIntent: Intent
@@ -25,11 +25,10 @@ public struct RootView<ViewState, Intent, Content: View>: View {
             },
             content: { value in
                 content(value)
-                    .background(env.theme.background)
+                    .background(themer.theme.background)
             }
         )
-        .background(env.theme.background)
-        .bindThemeSync()
+        .background(themer.theme.background)
         .onAppear {
             if case .idle = viewModel.state {
                 viewModel.send(loadIntent)

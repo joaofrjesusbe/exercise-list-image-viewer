@@ -10,7 +10,7 @@ open class LoadViewModel<ViewState, Intent>: IntentSendable<Intent>, ObservableO
 
     public init(errorMapper: ErrorMapper = DefaultErrorMapper()) {
         self.errorMapper = errorMapper
-        self.languageManager = LanguageManagerKey.defaultValue
+        self.languageManager = AppEnvironmentKey.defaultValue.languageManager
     }
         
     public func updateLoading() {
@@ -18,7 +18,7 @@ open class LoadViewModel<ViewState, Intent>: IntentSendable<Intent>, ObservableO
     }
     
     public func updateViewState(_ value: ViewState) {
-        update(.didLoad(value))
+        update(.current(value))
     }
     
     public func updateError(_ error: Error) {

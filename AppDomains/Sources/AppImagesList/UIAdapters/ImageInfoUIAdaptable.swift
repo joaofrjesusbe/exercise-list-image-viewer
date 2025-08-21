@@ -24,7 +24,7 @@ struct ImageInfoUIAdapter: ImageInfoUIAdaptable {
     private let languageManager: LanguageManager
     
     init() {
-        self.languageManager = LanguageManagerKey.defaultValue
+        self.languageManager = AppEnvironmentKey.defaultValue.languageManager
     }
     
     func toCellItem(_ imageInfo: ImageInfo) -> DSListCell.Item {

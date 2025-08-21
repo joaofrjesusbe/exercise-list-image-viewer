@@ -1,8 +1,7 @@
 import SwiftUI
-import AppCore
 
 public struct LoadingView: View {
-    @Environment(\.appEnvironment) private var env
+    @EnvironmentObject private var themer: ThemeManager
     
     public var body: some View {
         ProgressView(

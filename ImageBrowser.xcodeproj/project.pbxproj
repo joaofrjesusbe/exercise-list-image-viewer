@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EB5AE92B2E4A472700912E98 /* AppMain in Frameworks */ = {isa = PBXBuildFile; productRef = EB5AE92A2E4A472700912E98 /* AppMain */; };
-		EBA9DE8B2E351592004A67F5 /* AppImagesList in Frameworks */ = {isa = PBXBuildFile; productRef = EBA9DE8A2E351592004A67F5 /* AppImagesList */; };
+		EBC63F252E50E0FA000F500F /* AppImagesList in Frameworks */ = {isa = PBXBuildFile; productRef = EBC63F242E50E0FA000F500F /* AppImagesList */; };
 		EBD48F872E3437E1001FC90A /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = EBD48F862E3437E1001FC90A /* AppCore */; };
 		EBD48F8A2E34380E001FC90A /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = EBD48F892E34380E001FC90A /* DesignSystem */; };
 		EBD48F8D2E343823001FC90A /* PixbayNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = EBD48F8C2E343823001FC90A /* PixbayNetwork */; };
@@ -74,8 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBC63F252E50E0FA000F500F /* AppImagesList in Frameworks */,
 				EB5AE92B2E4A472700912E98 /* AppMain in Frameworks */,
-				EBA9DE8B2E351592004A67F5 /* AppImagesList in Frameworks */,
 				EBD48F8D2E343823001FC90A /* PixbayNetwork in Frameworks */,
 				EBD48F8A2E34380E001FC90A /* DesignSystem in Frameworks */,
 				EBD48F872E3437E1001FC90A /* AppCore in Frameworks */,
@@ -151,8 +151,8 @@
 				EBD48F862E3437E1001FC90A /* AppCore */,
 				EBD48F892E34380E001FC90A /* DesignSystem */,
 				EBD48F8C2E343823001FC90A /* PixbayNetwork */,
-				EBA9DE8A2E351592004A67F5 /* AppImagesList */,
 				EB5AE92A2E4A472700912E98 /* AppMain */,
+				EBC63F242E50E0FA000F500F /* AppImagesList */,
 			);
 			productName = ImageBrowser;
 			productReference = EB1B423D2CE2666100AD94B9 /* ImageBrowser.app */;
@@ -452,7 +452,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
@@ -491,7 +491,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
@@ -659,7 +659,7 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = AppMain;
 		};
-		EBA9DE8A2E351592004A67F5 /* AppImagesList */ = {
+		EBC63F242E50E0FA000F500F /* AppImagesList */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppImagesList;
 		};

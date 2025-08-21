@@ -1,7 +1,8 @@
 import SwiftUI
+import AppCore
 
 public struct DSAsyncImage: View {
-    @Environment(\.appEnvironment) private var env
+    @EnvironmentObject private var themer: ThemeManager
     
     public let url: URL?
     
@@ -28,7 +29,7 @@ public struct DSAsyncImage: View {
                         .aspectRatio(contentMode: .fit)
                 case .failure:
                     Image(systemName: SystemImages.imagePlaceholder)
-                        .foregroundColor(env.theme.textPrimary)
+                        .foregroundColor(themer.theme.textPrimary)
                 @unknown default:
                     EmptyView()
                 }

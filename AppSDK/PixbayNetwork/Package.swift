@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "PixbayNetwork",
     platforms: [
-        .iOS("16.0"),        
+        .iOS("17.0"),        
     ],
     products: [
         .library(

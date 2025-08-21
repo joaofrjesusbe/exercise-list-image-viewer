@@ -5,6 +5,7 @@ import PixbayNetwork
 import FactoryKit
 
 struct ImagesListRootView: View {
+    @EnvironmentObject private var themer: ThemeManager
     @StateObject var viewModel: LoadViewModel<
         ImagesListState, ImagesListIntent>
     
@@ -15,6 +16,7 @@ struct ImagesListRootView: View {
         ) { viewState in
             ImagesListView(onIntent: viewModel, state: viewState)
         }
+        .background(themer.theme.background)
     }
 }
 

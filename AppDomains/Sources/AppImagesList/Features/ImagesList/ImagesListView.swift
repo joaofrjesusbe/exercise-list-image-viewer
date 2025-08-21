@@ -5,7 +5,7 @@ import PixbayNetwork
 import FactoryKit
 
 struct ImagesListView: View {
-    @Environment(\.appEnvironment) private var env
+    @EnvironmentObject private var themer: ThemeManager
     @Environment(\.imageNavigate) private var navigate
     
     let onIntent: IntentSendable<ImagesListIntent>
@@ -20,12 +20,12 @@ struct ImagesListView: View {
                 listItems
                 pageState
             }
-            .background(env.theme.background)
+            .background(themer.theme.background)
             .navigationTitle(state.query)
         }
         .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic))
         .focused($isSearchFocused)
-        .onChange(of: searchText) { newValue in
+        .onChange(of: searchText) { _, newValue in
             onIntent.send(.updateSearchText(newValue))
         }
         .onSubmit(of: .search) {
@@ -34,7 +34,8 @@ struct ImagesListView: View {
             isSearchFocused = false
         }
         .onAppear { searchText = state.query }
-        .onChange(of: state.query) { searchText = $0 }
+        .onChange(of: state.query) {_, newValue in searchText = newValue }
+        .background(themer.theme.background)
     }
     
     var listItems: some View {
@@ -57,7 +58,7 @@ struct ImagesListView: View {
     @ViewBuilder
     var pageState: some View {
         switch state.listingState {
-        case .idle, .didLoad:
+        case .idle, .current:
             EmptyView()
         case .loading:
             ProgressView()
@@ -66,7 +67,7 @@ struct ImagesListView: View {
                 onIntent.send(.reloadNextPage)
             }) {
                 VStack(alignment: .center) {
-                    Text(error.description)
+                    LocalizedText(error.description)
                     Text(AppCore.L10n.retry)
                 }
             }

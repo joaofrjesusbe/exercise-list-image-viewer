@@ -2,6 +2,7 @@ import SwiftUI
 import AppCore
 
 public struct ImagesListNavigation: View, NavigationRoutable {
+    @EnvironmentObject private var themer: ThemeManager
     @State public private(set) var routes: [ImageRoute] = []
     
     public init() {}
@@ -16,6 +17,7 @@ public struct ImagesListNavigation: View, NavigationRoutable {
                     }
                 }
         }
+        .background(themer.theme.background)
         .onImageNavigate(handleNavigation)
     }
     

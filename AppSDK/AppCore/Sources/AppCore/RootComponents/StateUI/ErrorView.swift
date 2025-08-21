@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct ErrorView: View {
-    @Environment(\.appEnvironment) private var env
+    @EnvironmentObject private var themer: ThemeManager
     
     let errorState: ErrorState
     let retryAction: Action?
@@ -9,12 +9,12 @@ public struct ErrorView: View {
     public var body: some View {
         VStack(spacing: 8) {
             if let title = errorState.title {
-                Text(title)
-                    .foregroundColor(env.theme.textPrimary)
+                LocalizedText(title)
+                    .foregroundColor(themer.theme.textPrimary)
             }
             
-            Text(errorState.description)
-                .foregroundColor(env.theme.textPrimary)
+            LocalizedText(errorState.description)
+                .foregroundColor(themer.theme.textPrimary)
             
             if let retry = retryAction {
                 Button(
@@ -22,7 +22,7 @@ public struct ErrorView: View {
                     action: retry
                 )
                 .buttonStyle(.borderedProminent)
-                .tint(env.theme.accent)
+                .tint(themer.theme.accent)
             }
         }
         .padding()
@@ -36,8 +36,8 @@ public struct ErrorView: View {
 #Preview {
     ErrorView(
         errorState: ErrorState(
-            title: "Ops",
-            description: "My error description",
+            title: .plain("Ops"),
+            description: .plain("My error description"),
             icon: nil),
         retryAction: nil
     )

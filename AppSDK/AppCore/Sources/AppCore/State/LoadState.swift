@@ -5,14 +5,14 @@ public typealias LoadState<ViewState> = AnyLoadState<ViewState, ErrorState>
 public enum AnyLoadState<ViewState, ErrorState> {
     case idle
     case loading
-    case didLoad(ViewState)
+    case current(ViewState)
     case failed(ErrorState)
 }
 
 extension AnyLoadState: Sendable where ViewState: Sendable, ErrorState: Sendable {}
 
 public extension AnyLoadState {
-    var isLoading: Bool {
+    var isWaiting: Bool {
         switch self {
         case .loading, .idle:
             return true
@@ -23,7 +23,7 @@ public extension AnyLoadState {
 
     var viewState: ViewState? {
         switch self {
-        case .didLoad(let viewState):
+        case .current(let viewState):
             return viewState
         default:
             return nil
@@ -42,7 +42,7 @@ public extension AnyLoadState {
 
 public extension AnyLoadState where ViewState == Void {
     
-    static var didLoadEmpty: Self {
-        return .didLoad(())
+    static var currentVoid: Self {
+        return .current(())
     }
 }
