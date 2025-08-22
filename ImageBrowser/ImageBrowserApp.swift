@@ -12,14 +12,16 @@ struct ImageBrowserApp: App {
         )
     )
     
+    @State var tabSelection: Int = 0
+    
     var body: some Scene {
         WindowGroup {
-            AppRootView()
-                .applyPreferredColorScheme(for: env.themeManager.mode)
+            AppRootView(tabSelection: $tabSelection)
                 .environment(\.appEnvironment, env)
                 .environmentObject(env.themeManager)
                 .environmentObject(env.languageManager)
                 .environment(\.locale, env.languageManager.locale)
+                .applyPreferredColorScheme(for: env.themeManager.mode)
         }
     }
 }

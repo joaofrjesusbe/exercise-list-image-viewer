@@ -5,9 +5,11 @@ import AppImagesList
 public struct AppRootView: View {
     @EnvironmentObject private var themer: ThemeManager
     
-    @State private var tabSelection = 0
+    @Binding private var tabSelection: Int
     
-    public init() {}
+    public init(tabSelection: Binding<Int>) {
+        _tabSelection = tabSelection
+    }
     
     public var body: some View {
         MainNavigation(
