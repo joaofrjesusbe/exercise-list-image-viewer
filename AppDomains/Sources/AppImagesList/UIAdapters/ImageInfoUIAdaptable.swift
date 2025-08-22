@@ -37,10 +37,10 @@ struct ImageInfoUIAdapter: ImageInfoUIAdaptable {
     }
     
     func toUserString(_ imageInfo: ImageInfo) -> String {
-        "\(L10n.user): \(imageInfo.user)"
+        "\(L10n.user.toLocalized()): \(imageInfo.user)"
     }
     
     func toLikesString(_ imageInfo: ImageInfo) -> String {
-        "\(L10n.likes): \(imageInfo.likes)"
+        "\(L10n.likes.toLocalized()): \(imageInfo.likes)"
     }
 }

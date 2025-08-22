@@ -31,9 +31,8 @@ public final class LanguageManager: ObservableObject {
         objectWillChange.send()
     }
 
-    public func displayName(for code: LanguageKey, in locale: Locale = .current) -> String {
-        let lang = Locale(identifier: code).language.languageCode?.identifier ?? code
-        return locale.localizedString(forLanguageCode: lang) ?? code.uppercased()
+    public func displayName(for code: LanguageKey) -> String {
+        LanguageDisplay.autonym(for: code)
     }
 
     // MARK: - helpers

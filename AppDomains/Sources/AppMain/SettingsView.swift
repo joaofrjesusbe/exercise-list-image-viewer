@@ -4,46 +4,75 @@ import SwiftUI
 public struct SettingsView: View {
     @EnvironmentObject private var themer: ThemeManager
     @EnvironmentObject private var langManager: LanguageManager
-    
+
     public init() {}
-    
+
     public var body: some View {
         Form {
-            Section(L10n.settingsAppearanceTitle) {
-                Picker(L10n.settingsAppearanceTitle, selection: Binding(
-                    get: { themer.mode },
-                    set: { themer.mode = $0 }
-                )) {
-                    ForEach(ThemeMode.allCases, id: \.rawValue) { mode in
-                        Text(mode == .system ? "System" : mode == .light ? "Light" : "Dark")
-                            .tag(mode)
-                    }
-                }
-                .pickerStyle(.segmented)
-            }
-            /*
-            Section(L10n.settingsLanguageTitle) {
-                Picker(L10n.settingsLanguageTitle, selection: Binding(
-                    get: { langManager.currentLanguage },
-                    set: { langManager.select(code: $0) }
-                )) {
-                    ForEach(langManager.supportedLanguages, id: \.self) { code in
-                        Text(langManager.displayName(for: code))
-                            .tag(code)
-                    }
-                }
-            }
-             */
+            SettingsAppearanceSection()
+            SettingsLanguageSection()
         }
         .background(themer.theme.background)
-        .navigationTitle(L10n.settignsTitle)
+        .navigationTitle(L10n.settignsTitle.asLocalizedKey) // if it's a typo, change key to settingsTitle
     }
 }
 
+// MARK: - Appearance
+
+private struct SettingsAppearanceSection: View {
+    @EnvironmentObject private var themer: ThemeManager
+
+    var body: some View {
+        Section(L10n.settingsAppearance.asLocalizedKey) {
+            Picker(L10n.settingsAppearance.asLocalizedKey,
+                   selection: Binding(
+                        get: { themer.mode },
+                        set: { themer.mode = $0 }
+                   )) {
+                ForEach(ThemeMode.allCases, id: \.rawValue) { mode in
+                    Text(label(for: mode))
+                        .tag(mode)
+                }
+            }
+            .pickerStyle(.segmented)
+        }
+    }
+
+    private func label(for mode: ThemeMode) -> LocalizedStringKey {
+        switch mode {
+        case .system: return L10n.themeSystem.asLocalizedKey
+        case .light:  return L10n.themeLight.asLocalizedKey
+        case .dark:   return L10n.themeDark.asLocalizedKey
+        }
+    }
+}
+
+// MARK: - Language
+
+private struct SettingsLanguageSection: View {
+    @EnvironmentObject private var langManager: LanguageManager
+
+    var body: some View {
+        Section(L10n.settingsLanguage.asLocalizedKey) {
+            Picker(L10n.settingsLanguage.asLocalizedKey,
+                   selection: Binding(
+                        get: { langManager.currentLanguage },
+                        set: { langManager.select(code: $0) }
+                   )) {
+                ForEach(langManager.supportedLanguages, id: \.self) { code in
+                    Text(langManager.displayName(for: code))
+                        .tag(code)
+                }
+            }
+        }
+    }
+}
+
+// MARK: - Navigation
 
 extension SettingsView: NavigationRepresentable {
-    
     public var navigationItem: NavigationItem {
+        // If NavigationItem.text expects a LocalizedStringKey, use `.asLocalizedKey`
         NavigationItem(icon: SystemImages.tabBarIconSettings, text: L10n.settignsTitle)
     }
 }

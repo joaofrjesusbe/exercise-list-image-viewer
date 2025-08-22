@@ -110,7 +110,7 @@ def main():
         comment = f"{ident} (from {os.path.relpath(path, args.root)})"
         entry = ensure_entry(
             catalog,
-            key=ident,                 # <-- key = Swift identifier
+            key=literal,                 # <-- key = Swift identifier
             dev_lang=args.source_language,
             dev_value=literal,         # <-- dev value = literal
             comment=comment

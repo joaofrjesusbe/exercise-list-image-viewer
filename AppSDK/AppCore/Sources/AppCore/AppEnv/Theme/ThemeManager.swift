@@ -57,15 +57,19 @@ public final class ThemeManager: ObservableObject {
     // MARK: - Private
 
     private func resolveTheme() {
+        let newTheme = mapThemeModeToTheme(mode: mode)
+        log.debug("Resolve theme from \(type(of: theme)) to \(type(of: newTheme))")
+        theme = newTheme
+    }
+    
+    private func mapThemeModeToTheme(mode: ThemeMode) -> any Themeable {
         switch mode {
         case .light:
-            theme = lightTheme
+            lightTheme
         case .dark:
-            theme = darkTheme
+            darkTheme
         case .system:
-            theme = (systemScheme == .dark) ? darkTheme : lightTheme
+            (systemScheme == .dark) ? darkTheme : lightTheme
         }
-        
-        log.warning("Resolve theme to \(String(describing: theme))")
     }
 }

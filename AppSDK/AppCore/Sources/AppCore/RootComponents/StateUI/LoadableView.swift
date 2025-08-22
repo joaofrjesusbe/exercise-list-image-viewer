@@ -1,5 +1,4 @@
 import SwiftUI
-import AppCore
 
 public struct LoadableView<ViewState, Content: View>: View {
     let loadState: LoadState<ViewState>

@@ -1,8 +1,9 @@
 import AppCore
 
+@MainActor
 enum L10n {
-    static let user = LocalizedKey("User")
-    static let likes = LocalizedKey("Likes")
-    static let tabBarTitleListImages = LocalizedKey("Images")
-    static let titleImageDetail = LocalizedKey("Image Detail")
+    static let user = LocalizedKey("images.user")
+    static let likes = LocalizedKey("images.likes")
+    static let listTitle = LocalizedKey("images.list.title")
+    static let detailTitle = LocalizedKey("images.detail.title")
 }

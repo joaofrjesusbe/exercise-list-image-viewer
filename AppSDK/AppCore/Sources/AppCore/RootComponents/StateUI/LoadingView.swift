@@ -5,7 +5,7 @@ public struct LoadingView: View {
     
     public var body: some View {
         ProgressView(
-            L10n.loading
+            L10n.loading.asLocalizedKey
         )
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }

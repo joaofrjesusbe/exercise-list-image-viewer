@@ -18,7 +18,7 @@ public struct ErrorView: View {
             
             if let retry = retryAction {
                 Button(
-                    L10n.retry,
+                    L10n.retry.asLocalizedKey,
                     action: retry
                 )
                 .buttonStyle(.borderedProminent)

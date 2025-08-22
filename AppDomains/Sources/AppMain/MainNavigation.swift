@@ -17,7 +17,7 @@ public struct MainNavigation: View {
                 tabs[index]
                     .tabItem {
                         Label {
-                            Text(tabs[index].navigationItem.text)
+                            tabs[index].navigationItem.text.asTextView
                         } icon: {
                             Image(systemName: tabs[index].navigationItem.icon)
                         }

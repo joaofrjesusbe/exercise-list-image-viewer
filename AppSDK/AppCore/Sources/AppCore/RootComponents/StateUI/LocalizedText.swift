@@ -14,11 +14,11 @@ public struct LocalizedText: View {
             Text(string)
         case .key(let key, let arguments):
             if arguments.isEmpty {
-                Text(key.toLocalizedStringKey)
+                key.asTextView
             } else {
                 // Fetch the localized *format* string for the selected locale, then format with args.
-                let format = String(localized: .init(key), bundle: .main, locale: languageManager.locale)
-                Text(String(format: format, locale: languageManager.locale, arguments))
+                //  let format = String(localized: .init(key), bundle: .main, locale: languageManager.locale)
+                //Text(String(format: format, locale: languageManager.locale, arguments))
             }
         }
     }

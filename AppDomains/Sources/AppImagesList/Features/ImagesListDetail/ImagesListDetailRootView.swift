@@ -13,7 +13,7 @@ struct ImagesListDetailRootView: View {
             Text(adapter.toUserString(imageInfo))
             Text(adapter.toLikesString(imageInfo))
         }
-        .navigationTitle(L10n.titleImageDetail)
+        .navigationTitle(L10n.detailTitle.asLocalizedKey)
     }
 }
 

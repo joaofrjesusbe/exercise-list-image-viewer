@@ -29,6 +29,6 @@ public struct ImagesListNavigation: View, NavigationRoutable {
 extension ImagesListNavigation: NavigationRepresentable {
     
     public var navigationItem: NavigationItem {
-        NavigationItem(icon: SystemImages.tabBarIconListImages, text: L10n.tabBarTitleListImages)
+        NavigationItem(icon: SystemImages.tabBarIconListImages, text: L10n.listTitle)
     }
 }

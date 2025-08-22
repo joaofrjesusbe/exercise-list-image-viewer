@@ -1,6 +1,6 @@
 import Foundation
 
 public enum LocalizedString {
-    case key(String, arguments: [CVarArg] = [])
+    case key(LocalizedKey, arguments: [CVarArg] = [])
     case plain(String)
 }

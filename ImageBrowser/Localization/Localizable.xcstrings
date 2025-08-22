@@ -1,14 +1,14 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "errorTitle" : {
-      "comment" : "errorTitle (from AppSDK/AppCore/Sources/AppCore/CodeResources/L10n.swift)",
+    "error.network.generic" : {
+      "comment" : "errorNetworkGeneric (from AppSDK/AppCore/Sources/AppCore/CodeResources/L10n.swift)",
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Something went wrong"
+            "value" : "Unknown error has happen"
           }
         },
         "es" : {
@@ -20,12 +20,132 @@
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Algo correu mal"
+            "value" : "Erro desconhecido"
           }
         }
       }
     },
-    "likes" : {
+    "error.network.offline" : {
+      "comment" : "errorNetworkOffline (from AppSDK/AppCore/Sources/AppCore/CodeResources/L10n.swift)",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your network is down"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs-translation",
+            "value" : ""
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sem ligação à internet"
+          }
+        }
+      }
+    },
+    "error.network.parsing" : {
+      "comment" : "errorNetworkParsing (from AppSDK/AppCore/Sources/AppCore/CodeResources/L10n.swift)",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Server response unexpected"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs-translation",
+            "value" : ""
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resposta do servidor desconhecida"
+          }
+        }
+      }
+    },
+    "error.network.timeout" : {
+      "comment" : "errorNetworkTimeout (from AppSDK/AppCore/Sources/AppCore/CodeResources/L10n.swift)",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Too much time waiting for server response"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs-translation",
+            "value" : ""
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cansei de esperar pelo servidor"
+          }
+        }
+      }
+    },
+    "error.title" : {
+      "comment" : "errorTitle (from AppSDK/AppCore/Sources/AppCore/CodeResources/L10n.swift)",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ups, something went wrong"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs-translation",
+            "value" : ""
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Epá, algo estoirou"
+          }
+        }
+      }
+    },
+    "images.detail.title" : {
+      "comment" : "detailTitle (from AppDomains/Sources/AppImagesList/CodeResources/L10n.swift)",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Image Detail"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs-translation",
+            "value" : ""
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imagem"
+          }
+        }
+      }
+    },
+    "images.likes" : {
       "comment" : "likes (from AppDomains/Sources/AppImagesList/CodeResources/L10n.swift)",
       "extractionState" : "stale",
       "localizations" : {
@@ -44,19 +164,19 @@
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Gostos"
+            "value" : "Gosto"
           }
         }
       }
     },
-    "loading" : {
-      "comment" : "loading (from AppSDK/AppCore/Sources/AppCore/CodeResources/L10n.swift)",
+    "images.list.title" : {
+      "comment" : "listTitle (from AppDomains/Sources/AppImagesList/CodeResources/L10n.swift)",
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Loading"
+            "value" : "Images"
           }
         },
         "es" : {
@@ -68,19 +188,19 @@
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Carregando"
+            "value" : "Imagens"
           }
         }
       }
     },
-    "retry" : {
-      "comment" : "retry (from AppSDK/AppCore/Sources/AppCore/CodeResources/L10n.swift)",
+    "images.user" : {
+      "comment" : "user (from AppDomains/Sources/AppImagesList/CodeResources/L10n.swift)",
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Retry"
+            "value" : "User"
           }
         },
         "es" : {
@@ -92,12 +212,132 @@
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tentar outra vez"
+            "value" : "Utilizador"
           }
         }
       }
     },
-    "settignsTitle" : {
+    "settings.appearance" : {
+      "comment" : "settingsAppearance (from AppDomains/Sources/AppMain/CodeResources/L10n.swift)",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs-translation",
+            "value" : ""
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tema"
+          }
+        }
+      }
+    },
+    "settings.language" : {
+      "comment" : "settingsLanguage (from AppDomains/Sources/AppMain/CodeResources/L10n.swift)",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs-translation",
+            "value" : ""
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingua"
+          }
+        }
+      }
+    },
+    "settings.theme.dark" : {
+      "comment" : "themeDark (from AppDomains/Sources/AppMain/CodeResources/L10n.swift)",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs-translation",
+            "value" : ""
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escuro"
+          }
+        }
+      }
+    },
+    "settings.theme.light" : {
+      "comment" : "themeLight (from AppDomains/Sources/AppMain/CodeResources/L10n.swift)",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs-translation",
+            "value" : ""
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claro"
+          }
+        }
+      }
+    },
+    "settings.theme.system" : {
+      "comment" : "themeSystem (from AppDomains/Sources/AppMain/CodeResources/L10n.swift)",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs-translation",
+            "value" : ""
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistema"
+          }
+        }
+      }
+    },
+    "settings.title" : {
       "comment" : "settignsTitle (from AppDomains/Sources/AppMain/CodeResources/L10n.swift)",
       "extractionState" : "stale",
       "localizations" : {
@@ -121,14 +361,14 @@
         }
       }
     },
-    "settingsAppearanceTitle" : {
-      "comment" : "settingsAppearanceTitle (from AppDomains/Sources/AppMain/CodeResources/L10n.swift)",
+    "state.loading" : {
+      "comment" : "loading (from AppSDK/AppCore/Sources/AppCore/CodeResources/L10n.swift)",
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Appearance"
+            "value" : "Loading"
           }
         },
         "es" : {
@@ -140,19 +380,19 @@
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aparência"
+            "value" : "A carregar"
           }
         }
       }
     },
-    "settingsLanguageTitle" : {
-      "comment" : "settingsLanguageTitle (from AppDomains/Sources/AppMain/CodeResources/L10n.swift)",
+    "state.retry" : {
+      "comment" : "retry (from AppSDK/AppCore/Sources/AppCore/CodeResources/L10n.swift)",
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Language"
+            "value" : "Retry"
           }
         },
         "es" : {
@@ -164,79 +404,7 @@
         "pt" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lingua"
-          }
-        }
-      }
-    },
-    "tabBarTitleListImages" : {
-      "comment" : "tabBarTitleListImages (from AppDomains/Sources/AppImagesList/CodeResources/L10n.swift)",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Images"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "needs-translation",
-            "value" : ""
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imagens"
-          }
-        }
-      }
-    },
-    "titleImageDetail" : {
-      "comment" : "titleImageDetail (from AppDomains/Sources/AppImagesList/CodeResources/L10n.swift)",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Image Detail"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "needs-translation",
-            "value" : ""
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imagem"
-          }
-        }
-      }
-    },
-    "user" : {
-      "comment" : "user (from AppDomains/Sources/AppImagesList/CodeResources/L10n.swift)",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "User"
-          }
-        },
-        "es" : {
-          "stringUnit" : {
-            "state" : "needs-translation",
-            "value" : ""
-          }
-        },
-        "pt" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Utilizador"
+            "value" : "Repetir"
           }
         }
       }
