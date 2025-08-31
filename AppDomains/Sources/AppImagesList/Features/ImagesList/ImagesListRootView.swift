@@ -27,4 +27,5 @@ struct ImagesListRootView: View {
     NavigationStack {
         ImagesListRootView(viewModel: viewModel)
     }
+    .previewWithTheme()
 }

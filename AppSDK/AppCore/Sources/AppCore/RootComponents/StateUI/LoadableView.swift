@@ -28,4 +28,5 @@ public struct LoadableView<ViewState, Content: View>: View {
     LoadableView(loadState: loadState, retryAction: nil) { viewState in
         Text(viewState)
     }
+    .previewWithTheme()
 }

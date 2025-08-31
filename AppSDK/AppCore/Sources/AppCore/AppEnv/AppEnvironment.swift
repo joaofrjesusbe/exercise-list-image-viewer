@@ -34,9 +34,14 @@ public final class AppEnvironment: ObservableObject {
         let persistedMode = defaults.string(forKey: Keys.themeMode)
             .flatMap(ThemeMode.init(rawValue:)) ?? .system
 
-        let initialMode = config.themeModes.contains(persistedMode) ? persistedMode : (config.themeModes.first ?? .system)
+        let initialMode = persistedMode
         self.themeManager = ThemeManager(log: log, mode: initialMode)
-
+        
+        bridgeChildPublishers()
+        setEnvPersistance()
+    }
+    
+    private func bridgeChildPublishers() {
         // Bridge child publishers so views update when either manager changes.
         themeManager.objectWillChange
             .sink { [weak self] _ in self?.objectWillChange.send() }
@@ -45,10 +50,9 @@ public final class AppEnvironment: ObservableObject {
         languageManager.objectWillChange
             .sink { [weak self] _ in self?.objectWillChange.send() }
             .store(in: &cancellables)
-
-        // ⬇️ Persist whenever managers change
-
-        // Assumes ThemeManager has `@Published var mode: ThemeMode`
+    }
+    
+    private func setEnvPersistance() {
         themeManager.$mode
             .removeDuplicates()
             .sink { [weak defaults] mode in

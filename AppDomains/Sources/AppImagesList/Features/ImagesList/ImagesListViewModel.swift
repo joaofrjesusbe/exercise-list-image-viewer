@@ -35,7 +35,7 @@ public class ImagesListViewModel: LoadViewModel<ImagesListState, ImagesListInten
         }
     }
     
-    public override func onChangeLanguageManager() {
+    public override func onChangeLanguage() {
         guard let viewState = state.viewState else { return }
         let items = adapter.toArrayCellItems(provider.currentListing.items)
         updateViewState(viewState.withUpdatedListing(items))

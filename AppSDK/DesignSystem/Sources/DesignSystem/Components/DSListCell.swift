@@ -65,4 +65,5 @@ public struct DSListCell: View, Identifiable {
         item: .init(id: "", title: "Title", description: "Description", icon: URL(string: "")),
         didSelect: {}
     )
+    .previewWithTheme()
 }

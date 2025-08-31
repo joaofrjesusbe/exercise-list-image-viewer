@@ -5,12 +5,11 @@ import Combine
 open class LoadViewModel<ViewState, Intent>: IntentSendable<Intent>, ObservableObject {
     @Published public private(set) var state: LoadState<ViewState> = .idle
     public let errorMapper: ErrorMapper
-    public let languageManager: LanguageManager
-    private var cancellables = Set<AnyCancellable>()
+    open private(set) var currentLocale: Locale
 
-    public init(errorMapper: ErrorMapper = DefaultErrorMapper()) {
+    public init(errorMapper: ErrorMapper = DefaultErrorMapper(), locale: Locale = .current) {
         self.errorMapper = errorMapper
-        self.languageManager = AppEnvironmentKey.defaultValue.languageManager
+        self.currentLocale = locale
     }
         
     public func updateLoading() {
@@ -29,22 +28,14 @@ open class LoadViewModel<ViewState, Intent>: IntentSendable<Intent>, ObservableO
         self.state = newState
     }
     
-    open func onChangeLanguageManager() {
+    open func onChangeLanguage() {
         // react to on change language
     }
     
-    private func observeLanguageChanges() {
-        languageManager.$currentLanguage
-            .sink { [weak self] _ in
-                self?.onChangeLanguageManager()
-            }
-            .store(in: &cancellables)
-        
-        languageManager.$locale
-            .sink { [weak self] _ in
-                self?.onChangeLanguageManager()
-            }
-            .store(in: &cancellables)
+    public func updateLocale(_ locale: Locale) {
+        guard locale != self.currentLocale else { return }
+        self.currentLocale = locale
+        onChangeLanguage()
     }
 }
     

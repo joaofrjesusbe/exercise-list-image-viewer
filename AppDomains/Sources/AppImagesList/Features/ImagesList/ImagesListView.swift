@@ -78,5 +78,6 @@ struct ImagesListView: View {
 #Preview {
     NavigationStack {
         ImagesListView(onIntent: MockIntentSendable(), state: .mock)
+            .previewWithTheme()
     }
 }

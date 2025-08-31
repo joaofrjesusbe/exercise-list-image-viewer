@@ -2,6 +2,7 @@ import SwiftUI
 import AppCore
 
 public struct ImagesListNavigation: View, NavigationRoutable {
+    @EnvironmentObject private var languageManager: LanguageManager
     @EnvironmentObject private var themer: ThemeManager
     @State public private(set) var routes: [ImageRoute] = []
     

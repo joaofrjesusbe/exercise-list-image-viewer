@@ -19,4 +19,5 @@ struct ImagesListDetailRootView: View {
 
 #Preview {
     ImagesListDetailRootView(imageInfo: .mock)
+        .previewWithTheme()
 }

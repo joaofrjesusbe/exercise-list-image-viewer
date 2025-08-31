@@ -1,6 +1,7 @@
 import SwiftUI
 
 public struct RootView<ViewState, Intent, Content: View>: View {
+    @Environment(\.locale) private var locale
     @EnvironmentObject private var themer: ThemeManager
     
     let viewModel: LoadViewModel<ViewState, Intent>
@@ -30,9 +31,13 @@ public struct RootView<ViewState, Intent, Content: View>: View {
         )
         .background(themer.theme.background)
         .onAppear {
+            viewModel.updateLocale(locale)
             if case .idle = viewModel.state {
                 viewModel.send(loadIntent)
             }
+        }
+        .onChange(of: locale) {  _, newValue in
+            viewModel.updateLocale(newValue)
         }
     }
 }
@@ -42,4 +47,5 @@ public struct RootView<ViewState, Intent, Content: View>: View {
     RootView(viewModel: mock, loadIntent: .loadData) { loaded in
         Text(loaded)
     }
+    .previewWithTheme()
 }

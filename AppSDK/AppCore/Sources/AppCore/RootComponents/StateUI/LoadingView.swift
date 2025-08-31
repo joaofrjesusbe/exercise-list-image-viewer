@@ -13,4 +13,5 @@ public struct LoadingView: View {
  
 #Preview {
     LoadingView()
+        .previewWithTheme()
 }

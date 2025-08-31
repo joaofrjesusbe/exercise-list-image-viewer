@@ -41,4 +41,5 @@ public struct ErrorView: View {
             icon: nil),
         retryAction: nil
     )
+    .previewWithTheme()
 }

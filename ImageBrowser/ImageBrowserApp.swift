@@ -7,8 +7,7 @@ import AppMain
 struct ImageBrowserApp: App {
     @StateObject private var env = AppEnvironment(
         config: AppConfig(
-            supportedLanguages: ["en", "pt"],
-            themeModes: [.system, .light, .dark]
+            supportedLanguages: ["en", "pt"]
         )
     )
     

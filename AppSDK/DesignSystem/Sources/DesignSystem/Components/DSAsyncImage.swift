@@ -42,4 +42,5 @@ public struct DSAsyncImage: View {
 
 #Preview {
     DSAsyncImage(stringUrl: "https://picsum.photos/200/300")
+        .previewWithTheme()
 }
