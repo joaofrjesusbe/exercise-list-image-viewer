@@ -68,7 +68,7 @@ struct ImagesListView: View {
             }) {
                 VStack(alignment: .center) {
                     LocalizedText(error.description)
-                    AppCore.L10n.retry.asTextView
+                    AppCore.AppCoreL10n.retry.asTextView
                 }
             }
         }

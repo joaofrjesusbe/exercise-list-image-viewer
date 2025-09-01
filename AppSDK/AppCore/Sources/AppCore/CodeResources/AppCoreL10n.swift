@@ -1,7 +1,7 @@
 import SwiftUI
 
 @MainActor
-public enum L10n {
+public enum AppCoreL10n {
     public static let retry = LocalizedKey("state.retry")
     public static let loading = LocalizedKey("state.loading")
     
