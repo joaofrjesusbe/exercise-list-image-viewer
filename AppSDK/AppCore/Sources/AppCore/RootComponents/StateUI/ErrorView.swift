@@ -9,18 +9,19 @@ public struct ErrorView: View {
     public var body: some View {
         VStack(spacing: 8) {
             if let title = errorState.title {
-                LocalizedText(title)
+                TextBundle(title)
                     .foregroundColor(themer.theme.textPrimary)
             }
             
-            LocalizedText(errorState.description)
+            TextBundle(errorState.description)
                 .foregroundColor(themer.theme.textPrimary)
             
+            Spacer().frame(height: 8)
+            
             if let retry = retryAction {
-                Button(
-                    AppCoreL10n.retry.asLocalizedKey,
-                    action: retry
-                )
+                Button(action: retry) {
+                    Text(L10n.retry)
+                }
                 .buttonStyle(.borderedProminent)
                 .tint(themer.theme.accent)
             }
@@ -33,13 +34,14 @@ public struct ErrorView: View {
     }
 }
 
-#Preview {
-    ErrorView(
-        errorState: ErrorState(
-            title: .plain("Ops"),
-            description: .plain("My error description"),
-            icon: nil),
-        retryAction: nil
-    )
-    .previewWithTheme()
+struct ErrorView_Previews: DefaultPreviewProvider, PreviewProvider {
+    static func content(for localeID: String) -> some View {
+        ErrorView(
+            errorState: ErrorState(
+                title: L10n.errorTitle,
+                description: L10n.errorNetworkGeneric,
+                icon: nil),
+            retryAction: { print("Retry!") }
+        )
+    }
 }

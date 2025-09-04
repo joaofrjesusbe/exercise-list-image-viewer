@@ -42,10 +42,11 @@ public struct RootView<ViewState, Intent, Content: View>: View {
     }
 }
 
-#Preview {    
-    let mock = MockViewModel<String, MockIntent>(viewState: "Hello world!")
-    RootView(viewModel: mock, loadIntent: .loadData) { loaded in
-        Text(loaded)
+struct RootView_Previews: DefaultPreviewProvider, PreviewProvider {
+    static func content(for localeID: String) -> some View {
+        let mock = MockViewModel<String, MockIntent>(error: MockError())
+        RootView(viewModel: mock, loadIntent: .loadData) { loaded in
+            Text(loaded)
+        }
     }
-    .previewWithTheme()
-}
+} 

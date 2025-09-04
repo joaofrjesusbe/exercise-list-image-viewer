@@ -16,11 +16,10 @@ public struct MainNavigation: View {
             ForEach(tabs.indices, id: \.self) { index in
                 tabs[index]
                     .tabItem {
-                        Label {
-                            tabs[index].navigationItem.text.asTextView
-                        } icon: {
-                            Image(systemName: tabs[index].navigationItem.icon)
-                        }
+                        Label(
+                            tabs[index].navigationItem.text,
+                            systemImage: tabs[index].navigationItem.icon
+                        )
                     }
                     .tag(index)
                     .background(themer.theme.background)

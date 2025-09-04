@@ -1,12 +1,46 @@
-import AppCore
+import Foundation
 
-@MainActor
 enum L10n {
-    static let settignsTitle = LocalizedKey("settings.title")
-    static let settingsAppearance = LocalizedKey("settings.appearance")
-    static let settingsLanguage = LocalizedKey("settings.language")
     
-    static let themeLight = LocalizedKey("settings.theme.light")
-    static let themeDark = LocalizedKey("settings.theme.dark")
-    static let themeSystem = LocalizedKey("settings.theme.system")
+    public static let settignsTitle = LocalizedStringResource(
+        "settings.title",
+        defaultValue: "Settings",
+        bundle: .atURL(Bundle.module.bundleURL),
+        comment: "Tabbar and NavigationBar settings title"
+    )
+    
+    public static let settingsAppearance = LocalizedStringResource(
+        "settings.appearance",
+        defaultValue: "User",
+        bundle: .atURL(Bundle.module.bundleURL),
+        comment: "Settings appearance title"
+    )
+    
+    public static let settingsLanguage = LocalizedStringResource(
+        "settings.language",
+        defaultValue: "User",
+        bundle: .atURL(Bundle.module.bundleURL),
+        comment: "Settings language title"
+    )
+    
+    public static let themeLight = LocalizedStringResource(
+        "settings.theme.light",
+        defaultValue: "Light",
+        bundle: .atURL(Bundle.module.bundleURL),
+        comment: "Setting label light theme"
+    )
+    
+    public static let themeDark = LocalizedStringResource(
+        "settings.theme.dark",
+        defaultValue: "Dark",
+        bundle: .atURL(Bundle.module.bundleURL),
+        comment: "Setting label dark theme"
+    )
+    
+    public static let themeSystem = LocalizedStringResource(
+        "settings.theme.system",
+        defaultValue: "System",
+        bundle: .atURL(Bundle.module.bundleURL),
+        comment: "Setting label system theme"
+    )
 }

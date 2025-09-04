@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "AppDomains",
+    defaultLocalization: "en",
     platforms: [
         .iOS("17.0"),
     ],
@@ -29,6 +30,9 @@ let package = Package(
                 "DesignSystem",
                 "AppCore",
                 "AppImagesList"
+            ],
+            resources: [
+                .process("Resources")
             ]
         ),
         .target(
@@ -38,6 +42,9 @@ let package = Package(
                 "PixbayNetwork",
                 "AppCore",
                 .product(name: "FactoryKit", package: "Factory")
+            ],
+            resources: [
+                .process("Resources")
             ]
         ),
         .testTarget(

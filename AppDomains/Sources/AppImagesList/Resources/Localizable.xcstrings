@@ -1,0 +1,54 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "images.detail.title" : {
+      "comment" : "Tabbar and Navigation title for image detail",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Image Detail"
+          }
+        }
+      }
+    },
+    "images.likes" : {
+      "comment" : "Label number of likes of the image",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Likes: %lld"
+          }
+        }
+      }
+    },
+    "images.list.title" : {
+      "comment" : "Tabbar title for images",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Images"
+          }
+        }
+      }
+    },
+    "images.user" : {
+      "comment" : "Label user of the image",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "User: %@"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

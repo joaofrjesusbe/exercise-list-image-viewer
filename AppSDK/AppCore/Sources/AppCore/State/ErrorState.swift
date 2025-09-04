@@ -1,13 +1,13 @@
 import SwiftUI
 
 public struct ErrorState {
-    public let title: LocalizedString?
-    public let description: LocalizedString
+    public let title: LocalizedStringResource?
+    public let description: LocalizedStringResource
     public let icon: Image?
     
     public init(
-        title: LocalizedString? = nil,
-        description: LocalizedString,
+        title: LocalizedStringResource? = nil,
+        description: LocalizedStringResource,
         icon: Image? = nil
     ) {
         self.title = title

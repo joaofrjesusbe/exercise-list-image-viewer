@@ -22,11 +22,11 @@ public struct LoadableView<ViewState, Content: View>: View {
     }
 }
 
-#Preview {
-    let loadState: LoadState<String> = .current("Hello world!")
-    
-    LoadableView(loadState: loadState, retryAction: nil) { viewState in
-        Text(viewState)
+struct LoadableView_Previews: DefaultPreviewProvider, PreviewProvider {
+    static func content(for localeID: String) -> some View {
+        let loadState: LoadState<String> = .current("Hello world!")
+        LoadableView(loadState: loadState, retryAction: nil) { viewState in
+            Text(viewState)
+        }
     }
-    .previewWithTheme()
 }

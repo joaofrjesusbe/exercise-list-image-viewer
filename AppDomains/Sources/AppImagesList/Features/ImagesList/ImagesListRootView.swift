@@ -19,13 +19,3 @@ struct ImagesListRootView: View {
         .background(themer.theme.background)
     }
 }
-
-#Preview {
-    Container.shared.imagePageService.preview { MockImagePageService() }
-    let viewModel = ImagesListDI.createImageListViewModel()
-
-    NavigationStack {
-        ImagesListRootView(viewModel: viewModel)
-    }
-    .previewWithTheme()
-}

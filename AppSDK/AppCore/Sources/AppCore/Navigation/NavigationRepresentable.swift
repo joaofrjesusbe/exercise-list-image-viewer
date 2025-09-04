@@ -2,9 +2,9 @@ import SwiftUI
 
 public struct NavigationItem {
     public let icon: SystemImageName
-    public let text: LocalizedKey
+    public let text: LocalizedStringResource
     
-    public init(icon: SystemImageName, text: LocalizedKey) {
+    public init(icon: SystemImageName, text: LocalizedStringResource) {
         self.icon = icon
         self.text = text
     }

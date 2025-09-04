@@ -4,16 +4,16 @@ import AppCore
 public struct DSListCell: View, Identifiable {
     @EnvironmentObject private var themer: ThemeManager
     
-    public struct Item: Identifiable, Hashable, Equatable {
+    public struct Item: Identifiable, Equatable {
         public let id: String
-        public let title: String
-        public let description: String
+        public let title: LocalizedStringResource
+        public let description: LocalizedStringResource
         public let icon: URL?
         
         public init(
             id: String,
-            title: String,
-            description: String,
+            title: LocalizedStringResource,
+            description: LocalizedStringResource,
             icon: URL?
         ) {
             self.id = id
@@ -47,9 +47,9 @@ public struct DSListCell: View, Identifiable {
                     .padding(8)
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text(item.title)
+                    TextBundle(item.title)
                         .foregroundColor(themer.theme.textPrimary)
-                    Text(item.description)
+                    TextBundle(item.description)
                         .foregroundColor(themer.theme.textSecondary)
                 }
                 Spacer(minLength: 8)

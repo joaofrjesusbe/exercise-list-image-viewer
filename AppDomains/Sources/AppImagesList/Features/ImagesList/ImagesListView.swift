@@ -67,17 +67,18 @@ struct ImagesListView: View {
                 onIntent.send(.reloadNextPage)
             }) {
                 VStack(alignment: .center) {
-                    LocalizedText(error.description)
-                    AppCore.AppCoreL10n.retry.asTextView
+                    TextBundle(error.description)
+                    TextBundle(AppCore.L10n.retry)
                 }
             }
         }
     }
 }
 
-#Preview {
-    NavigationStack {
-        ImagesListView(onIntent: MockIntentSendable(), state: .mock)
-            .previewWithTheme()
+struct ImagesListView_Previews: DefaultPreviewProvider, PreviewProvider {
+    static func content(for localeID: String) -> some View {
+        NavigationStack {
+            ImagesListView(onIntent: MockIntentSendable(), state: .mock)
+        }
     }
 }

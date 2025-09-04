@@ -13,7 +13,7 @@ public struct SettingsView: View {
             SettingsLanguageSection()
         }
         .background(themer.theme.background)
-        .navigationTitle(L10n.settignsTitle.asLocalizedKey) // if it's a typo, change key to settingsTitle
+        .navigationTitle(L10n.settignsTitle)
     }
 }
 
@@ -23,8 +23,8 @@ private struct SettingsAppearanceSection: View {
     @EnvironmentObject private var themer: ThemeManager
 
     var body: some View {
-        Section(L10n.settingsAppearance.asLocalizedKey) {
-            Picker(L10n.settingsAppearance.asLocalizedKey,
+        Section(L10n.settingsAppearance) {
+            Picker(L10n.settingsAppearance,
                    selection: Binding(
                         get: { themer.mode },
                         set: { themer.mode = $0 }
@@ -38,11 +38,11 @@ private struct SettingsAppearanceSection: View {
         }
     }
 
-    private func label(for mode: ThemeMode) -> LocalizedStringKey {
+    private func label(for mode: ThemeMode) -> LocalizedStringResource {
         switch mode {
-        case .system: return L10n.themeSystem.asLocalizedKey
-        case .light:  return L10n.themeLight.asLocalizedKey
-        case .dark:   return L10n.themeDark.asLocalizedKey
+        case .system: return L10n.themeSystem
+        case .light:  return L10n.themeLight
+        case .dark:   return L10n.themeDark
         }
     }
 }
@@ -53,8 +53,8 @@ private struct SettingsLanguageSection: View {
     @EnvironmentObject private var langManager: LanguageManager
 
     var body: some View {
-        Section(L10n.settingsLanguage.asLocalizedKey) {
-            Picker(L10n.settingsLanguage.asLocalizedKey,
+        Section(L10n.settingsLanguage) {
+            Picker(L10n.settingsLanguage,
                    selection: Binding(
                         get: { langManager.currentLanguage },
                         set: { langManager.select(code: $0) }

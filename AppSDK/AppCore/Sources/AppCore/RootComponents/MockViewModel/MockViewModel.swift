@@ -4,6 +4,14 @@ public enum MockIntent {
     case loadData
 }
 
+public struct MockError: Error { }
+
+public extension Error {
+    static var mock: MockError {
+        MockError()
+    }
+}
+
 public final class MockIntentSendable<Intent>: IntentSendable<Intent> {
     public typealias SelfType = MockIntentSendable<Intent>
     public typealias OnIntent = (Intent, SelfType) -> Void

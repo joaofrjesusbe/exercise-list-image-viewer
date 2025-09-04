@@ -3,6 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "AppCore",
+    defaultLocalization: "en",
     platforms: [
         .iOS("17.0"),        
     ],
@@ -15,7 +16,10 @@ let package = Package(
     targets: [
         .target(
             name: "AppCore",
-            dependencies: []
+            dependencies: [],
+            resources: [
+                .process("Resources")
+            ]
         ),
         .testTarget(
             name: "AppCoreTests",

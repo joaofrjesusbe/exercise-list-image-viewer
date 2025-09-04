@@ -8,9 +8,9 @@ protocol ImageInfoUIAdaptable {
     
     func toCellItem(_ imageInfo: ImageInfo) -> DSListCell.Item
     
-    func toUserString(_ imageInfo: ImageInfo) -> String
+    func toUserString(_ imageInfo: ImageInfo) -> LocalizedStringResource
     
-    func toLikesString(_ imageInfo: ImageInfo) -> String
+    func toLikesString(_ imageInfo: ImageInfo) -> LocalizedStringResource
 }
 
 extension ImageInfoUIAdaptable {
@@ -36,11 +36,11 @@ struct ImageInfoUIAdapter: ImageInfoUIAdaptable {
         )
     }
     
-    func toUserString(_ imageInfo: ImageInfo) -> String {
-        "\(L10n.user.toLocalized()): \(imageInfo.user)"
+    func toUserString(_ imageInfo: ImageInfo) -> LocalizedStringResource {
+        L10n.user(imageInfo.user)
     }
     
-    func toLikesString(_ imageInfo: ImageInfo) -> String {
-        "\(L10n.likes.toLocalized()): \(imageInfo.likes)"
+    func toLikesString(_ imageInfo: ImageInfo) -> LocalizedStringResource {
+        L10n.likes(imageInfo.likes)        
     }
 }

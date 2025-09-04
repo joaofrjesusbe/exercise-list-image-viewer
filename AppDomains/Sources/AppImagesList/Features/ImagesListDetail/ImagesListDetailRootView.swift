@@ -1,4 +1,5 @@
 import SwiftUI
+import AppCore
 import DesignSystem
 import PixbayNetwork
 import FactoryKit
@@ -10,14 +11,16 @@ struct ImagesListDetailRootView: View {
     var body: some View {
         VStack {
             DSAsyncImage(stringUrl: imageInfo.largeImageURL)
-            Text(adapter.toUserString(imageInfo))
-            Text(adapter.toLikesString(imageInfo))
+            TextBundle(adapter.toUserString(imageInfo))
+            TextBundle(adapter.toLikesString(imageInfo))
         }
-        .navigationTitle(L10n.detailTitle.asLocalizedKey)
+        .navigationTitle(L10n.detailTitle)
     }
 }
 
-#Preview {
-    ImagesListDetailRootView(imageInfo: .mock)
-        .previewWithTheme()
+
+struct ImagesListDetailRootView_Previews: DefaultPreviewProvider, PreviewProvider {
+    static func content(for localeID: String) -> some View {
+        ImagesListDetailRootView(imageInfo: .mock)
+    }
 }
