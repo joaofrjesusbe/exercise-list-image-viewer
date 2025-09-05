@@ -1,17 +1,13 @@
 import Foundation
 
-struct PixbayEndpoint {
-    let path: String
-    let queryItems: [URLQueryItem]
-}
-
-extension PixbayEndpoint {
+enum PixbayEndpoint {
     
     static func search(
         query: String,
         page: Int
-    ) -> PixbayEndpoint {
-        return PixbayEndpoint(
+    ) -> HTTPRequest {
+        return HTTPRequest(
+            method: .GET,
             path: "/api",
             queryItems: [
                 URLQueryItem(name: "key", value: apiKey),
@@ -28,12 +24,10 @@ extension PixbayEndpoint {
 extension PixbayEndpoint {
     // We still have to keep 'url' as an optional, since we're
     // dealing with dynamic components that could be invalid.
-    var url: URL? {
+    static var baseUrl: URL? {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "pixabay.com"
-        components.path = path
-        components.queryItems = queryItems
         return components.url
     }
 

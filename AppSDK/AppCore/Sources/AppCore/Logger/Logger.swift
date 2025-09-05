@@ -46,6 +46,13 @@ public extension Logger {
         #endif
     }
     
+    func network(json data: Data) {
+        #if DEBUG
+        let jsonString = prettyPrintedJSON(from: data)
+        network("json:\n\(jsonString)")
+        #endif
+    }
+    
     func prettyPrintedJSON(from data: Data) -> String {
         do {
             let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])

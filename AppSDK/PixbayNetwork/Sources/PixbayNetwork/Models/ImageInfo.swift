@@ -6,6 +6,14 @@ public struct ImageInfo: Codable, Identifiable, Hashable, Sendable, Equatable {
     public let largeImageURL: String
     public let user: String
     public let likes: Int
+    
+    public init(id: Int, previewURL: String, largeImageURL: String, user: String, likes: Int) {
+        self.id = id
+        self.previewURL = previewURL
+        self.largeImageURL = largeImageURL
+        self.user = user
+        self.likes = likes
+    }
 }
 
 public extension ImageInfo {

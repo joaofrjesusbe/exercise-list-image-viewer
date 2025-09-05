@@ -4,40 +4,26 @@ import AppCore
 public typealias ImageInfoListing = Listing<ImageInfo, Void>
 
 public final class PixbayAPIService {
-    private let session: URLSession
-    //private let logger: Logger
     @Injected(\.logger) var logger
+    @Injected(\.httpClient) var httpClient
     
-    public init(session: URLSession = .shared) {
-        self.session = session        
-    }
+    public init() {}
     
     public func requestPage(query: String, pageNumber: Int) async throws -> ImageInfoListing.Page {
-        guard let url = PixbayEndpoint.search(query: query, page: pageNumber).url else {
-            throw NetworkError.urlMalform
-        }
-        
         guard
             pageNumber > 0
         else {
             throw NetworkError.invalidPage(pageNumber)
         }
         
-        logger.network("url:\n\(url.absoluteString)")
+        let request = PixbayEndpoint.search(query: query, page: pageNumber)
         
-        do {
-            let (data, _) = try await session.data(from: url)
-            logger.debug(json: data)
-            let listImages = try JSONDecoder().decode(ImageListDTO.self, from: data)
-            let page = ImageInfoListing.Page(
-                items: listImages.hits,
-                pageNumber: pageNumber,
-                hasNextPage: listImages.hits.count == PixbayEndpoint.defaultPageSize
-            )
-            return page
-        } catch {
-            logger.error(error.localizedDescription)
-            throw error
-        }
+        let (dto, _) = try await httpClient.send(request, decode: ImageListDTO.self)
+        let page = ImageInfoListing.Page(
+            items: dto.hits,
+            pageNumber: pageNumber,
+            hasNextPage: dto.hits.count == PixbayEndpoint.defaultPageSize
+        )
+        return page
     }
 }
