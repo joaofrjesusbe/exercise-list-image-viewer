@@ -25,10 +25,15 @@ public final class AppEnvironment: ObservableObject {
         self.defaults = defaults
         self.log = log
 
-        // Restore persisted language (falls back to first supported)
-        let persistedLang = defaults.string(forKey: Keys.appLanguage)
         self.languageManager = LanguageManager(supportedLanguages: config.supportedLanguages)
-        if let persistedLang { self.languageManager.select(code: persistedLang) }
+        
+        // Restore persisted language (falls back to first supported)
+        if
+            let persistedLang = defaults.string(forKey: Keys.appLanguage),
+            let language = LanguageCode(rawValue: persistedLang)
+        {
+            self.languageManager.select(language: language)
+        }
 
         // Restore persisted theme mode and clamp to allowed modes
         let persistedMode = defaults.string(forKey: Keys.themeMode)
@@ -65,12 +70,12 @@ public final class AppEnvironment: ObservableObject {
         languageManager.$currentLanguage
             .removeDuplicates()
             .sink { [weak defaults] code in
-                defaults?.set(code, forKey: Keys.appLanguage)
+                defaults?.set(code.rawValue, forKey: Keys.appLanguage)
             }
             .store(in: &cancellables)
 
         // Write the initial/restored values once so defaults are immediately in sync.
         defaults.set(themeManager.mode.rawValue, forKey: Keys.themeMode)
-        defaults.set(languageManager.currentLanguage, forKey: Keys.appLanguage) // adjust if needed
+        defaults.set(languageManager.currentLanguage.rawValue, forKey: Keys.appLanguage) // adjust if needed
     }
 }

@@ -2,10 +2,10 @@ import SwiftUI
 
 public struct AppConfig: Sendable {
     /// BCP-47 language codes (e.g., "en", "es", "pt", "pt-BR").
-    public var supportedLanguages: [String]
+    public var supportedLanguages: [LanguageCode]
     
     public init(
-        supportedLanguages: [String] = ["en"]
+        supportedLanguages: [LanguageCode] = LanguageCode.allCases
     ) {
         self.supportedLanguages = supportedLanguages
     }

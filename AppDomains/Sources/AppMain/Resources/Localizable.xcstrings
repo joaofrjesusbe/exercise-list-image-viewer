@@ -8,7 +8,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "User"
+            "value" : "Dark Mode"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modo Escuro"
           }
         }
       }
@@ -20,7 +26,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "new",
-            "value" : "User"
+            "value" : "Language"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Linguagem"
           }
         }
       }
@@ -34,6 +46,12 @@
             "state" : "new",
             "value" : "Dark"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escuro"
+          }
         }
       }
     },
@@ -45,6 +63,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Light"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claro"
           }
         }
       }
@@ -58,6 +82,12 @@
             "state" : "new",
             "value" : "System"
           }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistema"
+          }
         }
       }
     },
@@ -69,6 +99,12 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Settings"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defenições"
           }
         }
       }

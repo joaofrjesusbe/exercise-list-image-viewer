@@ -11,7 +11,7 @@ public protocol DefaultPreviewProvider: PreviewProvider {
 public extension DefaultPreviewProvider {
     
     static var locales: [String] {
-        SupportedLanguages.allCases.map(\.rawValue)
+        LanguageCode.allCases.map(\.rawValue)
     }
     
     static var previews: some View {

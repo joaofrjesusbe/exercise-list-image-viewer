@@ -57,7 +57,7 @@ private struct SettingsLanguageSection: View {
             Picker(L10n.settingsLanguage,
                    selection: Binding(
                         get: { langManager.currentLanguage },
-                        set: { langManager.select(code: $0) }
+                        set: { langManager.select(language: $0) }
                    )) {
                 ForEach(langManager.supportedLanguages, id: \.self) { code in
                     Text(langManager.displayName(for: code))

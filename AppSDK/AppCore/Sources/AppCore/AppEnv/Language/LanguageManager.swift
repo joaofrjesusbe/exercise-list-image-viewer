@@ -2,57 +2,31 @@ import SwiftUI
 
 @MainActor
 public final class LanguageManager: ObservableObject {
-    @Published public private(set) var currentLanguage: LanguageKey {
-        didSet { locale = Locale(identifier: currentLanguage) }
+    @Published public private(set) var currentLanguage: LanguageCode {
+        didSet { locale = Locale(identifier: currentLanguage.rawValue) }
     }
 
     @Published public private(set) var locale: Locale
-    public let supportedLanguages: [LanguageKey]
-    public let defaultLanguage: LanguageKey
+    public let supportedLanguages: [LanguageCode]
+    public let defaultLanguage: LanguageCode
 
-    public init(supportedLanguages: [LanguageKey], initialLanguage: LanguageKey? = nil) {
-        let cleaned = Self.normalize(supportedLanguages)
-        self.supportedLanguages = cleaned
-        self.defaultLanguage = cleaned.first ?? "en"
+    public init(supportedLanguages: [LanguageCode], initialLanguage: LanguageCode? = nil) {
+        self.supportedLanguages = supportedLanguages
+        self.defaultLanguage = supportedLanguages.first ?? .defaultLanguage
 
-        let start = initialLanguage
-            .map(Self.normalize(_:))
-            .flatMap { Self.bestSupportedMatch(for: $0, in: cleaned) }
-            ?? self.defaultLanguage
+        let start = initialLanguage ?? self.defaultLanguage
 
         self.currentLanguage = start
-        self.locale = Locale(identifier: start)
+        self.locale = Locale(identifier: start.rawValue)
     }
 
-    public func select(code: LanguageKey) {
-        let best = Self.bestSupportedMatch(for: Self.normalize(code), in: supportedLanguages) ?? defaultLanguage
-        guard best != currentLanguage else { return }
-        currentLanguage = best
+    public func select(language: LanguageCode) {
+        guard language != currentLanguage else { return }
+        currentLanguage = language
         objectWillChange.send()
     }
 
-    public func displayName(for code: LanguageKey) -> String {
-        LanguageDisplay.autonym(for: code)
-    }
-
-    // MARK: - helpers
-    private static func normalize(_ code: String) -> String {
-        let loc = Locale(identifier: code)
-        let lang = (loc.language.languageCode?.identifier ?? code).lowercased()
-        if let region = loc.region?.identifier { return "\(lang)-\(region.uppercased())" }
-        return lang
-    }
-    private static func normalize(_ codes: [String]) -> [String] {
-        var seen = Set<String>(), out: [String] = []
-        for c in codes {
-            let n = normalize(c)
-            if seen.insert(n).inserted { out.append(n) }
-        }
-        return out
-    }
-    private static func bestSupportedMatch(for code: String, in supported: [String]) -> String? {
-        if supported.contains(code) { return code }
-        if let base = code.split(separator: "-").first.map(String.init), supported.contains(base) { return base }
-        return nil
+    public func displayName(for language: LanguageCode) -> String {
+        LanguageDisplay.autonym(for: language.rawValue)
     }
 }

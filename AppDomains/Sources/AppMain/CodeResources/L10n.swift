@@ -11,14 +11,14 @@ enum L10n {
     
     public static let settingsAppearance = LocalizedStringResource(
         "settings.appearance",
-        defaultValue: "User",
+        defaultValue: "Dark Mode",
         bundle: .atURL(Bundle.module.bundleURL),
         comment: "Settings appearance title"
     )
     
     public static let settingsLanguage = LocalizedStringResource(
         "settings.language",
-        defaultValue: "User",
+        defaultValue: "Language",
         bundle: .atURL(Bundle.module.bundleURL),
         comment: "Settings language title"
     )

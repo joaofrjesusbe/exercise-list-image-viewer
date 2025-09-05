@@ -35,6 +35,8 @@ open class LoadViewModel<ViewState, Intent>: IntentSendable<Intent>, ObservableO
     public func updateLocale(_ locale: Locale) {
         guard locale != self.currentLocale else { return }
         self.currentLocale = locale
+        
+        guard state.viewState != nil else { return }
         onChangeLanguage()
     }
 }
