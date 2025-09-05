@@ -1,7 +1,5 @@
 import Foundation
-import AppCore
-import FactoryKit
-import PixbayNetwork
+import AppGroup
 
 @MainActor
 public struct ImagesListDI {
@@ -23,12 +21,8 @@ public struct ImagesListDI {
 
 extension Container {
     
-    var logger: Factory<Logger> {
-        Factory(self) { ConsoleLogger() }
-    }
-    
     var imagePageService: Factory<ImagePageService> {
-        Factory(self) { PixbayAPIService(logger: self.logger.resolve()) }
+        Factory(self) { PixbayAPIService() }
     }
     
     @MainActor

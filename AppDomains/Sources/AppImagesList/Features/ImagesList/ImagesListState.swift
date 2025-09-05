@@ -1,6 +1,6 @@
 import Foundation
 import AppCore
-import DesignSystem
+import AppGroup
 
 public enum ImagesListIntent {
     case initialSearch

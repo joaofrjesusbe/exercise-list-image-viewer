@@ -1,5 +1,4 @@
-import PixbayNetwork
-import DesignSystem
+import AppGroup
 
 extension ImagesListState {
     @MainActor

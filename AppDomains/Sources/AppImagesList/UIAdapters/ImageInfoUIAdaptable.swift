@@ -1,7 +1,5 @@
 import SwiftUI
-import DesignSystem
-import PixbayNetwork
-import AppCore
+import AppGroup
 
 @MainActor
 protocol ImageInfoUIAdaptable {

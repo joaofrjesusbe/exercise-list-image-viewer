@@ -1,5 +1,5 @@
 import SwiftUI
-import AppCore
+import AppGroup
 
 public struct ImagesListNavigation: View, NavigationRoutable {
     @EnvironmentObject private var languageManager: LanguageManager

@@ -1,5 +1,5 @@
 import SwiftUI
-import AppCore
+import AppGroup
 import AppImagesList
 
 public struct AppRootView: View {

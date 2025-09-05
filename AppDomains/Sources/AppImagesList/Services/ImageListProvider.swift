@@ -1,7 +1,5 @@
 import SwiftUI
-import FactoryKit
-import AppCore
-import PixbayNetwork
+import AppGroup
 
 @MainActor
 public final class ImageListProvider {

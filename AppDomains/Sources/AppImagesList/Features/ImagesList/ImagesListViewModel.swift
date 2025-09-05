@@ -1,7 +1,5 @@
 import SwiftUI
-import AppCore
-import PixbayNetwork
-import FactoryKit
+import AppGroup
 
 @MainActor
 public class ImagesListViewModel: LoadViewModel<ImagesListState, ImagesListIntent> {

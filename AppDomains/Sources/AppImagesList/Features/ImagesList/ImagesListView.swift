@@ -1,8 +1,5 @@
 import SwiftUI
-import AppCore
-import DesignSystem
-import PixbayNetwork
-import FactoryKit
+import AppGroup
 
 struct ImagesListView: View {
     @EnvironmentObject private var themer: ThemeManager

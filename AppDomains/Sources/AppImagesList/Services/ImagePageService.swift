@@ -1,5 +1,4 @@
-import AppCore
-import PixbayNetwork
+import AppGroup
 
 public protocol ImagePageService {
     

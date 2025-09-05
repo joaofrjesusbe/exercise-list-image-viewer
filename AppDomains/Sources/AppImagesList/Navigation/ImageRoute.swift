@@ -1,5 +1,4 @@
-import AppCore
-import PixbayNetwork
+import AppGroup
 
 public enum ImageRoute: Routable {
     case detail(_ index: Int)

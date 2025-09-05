@@ -1,6 +1,5 @@
 import SwiftUI
-import AppImagesList
-import AppCore
+import AppGroup
 import AppMain
 
 @main

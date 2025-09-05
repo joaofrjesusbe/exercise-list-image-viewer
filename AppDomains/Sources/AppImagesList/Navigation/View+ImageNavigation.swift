@@ -1,5 +1,5 @@
 import SwiftUI
-import AppCore
+import AppGroup
 
 extension View {
     func onImageNavigate(_ action: @escaping NavigateAction<ImageRoute>.Action) -> some View {

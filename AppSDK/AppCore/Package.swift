@@ -13,10 +13,15 @@ let package = Package(
             targets: ["AppCore"]
         ),
     ],
+    dependencies: [
+        .package(url: "https://github.com/hmlongco/Factory", from: "2.5.3"),
+    ],
     targets: [
         .target(
             name: "AppCore",
-            dependencies: [],
+            dependencies: [
+                .product(name: "FactoryKit", package: "Factory")
+            ],
             resources: [
                 .process("Resources")
             ]

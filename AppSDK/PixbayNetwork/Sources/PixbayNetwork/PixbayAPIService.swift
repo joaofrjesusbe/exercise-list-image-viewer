@@ -5,11 +5,11 @@ public typealias ImageInfoListing = Listing<ImageInfo, Void>
 
 public final class PixbayAPIService {
     private let session: URLSession
-    private let logger: Logger
+    //private let logger: Logger
+    @Injected(\.logger) var logger
     
-    public init(session: URLSession = .shared, logger: Logger) {
-        self.session = session
-        self.logger = logger
+    public init(session: URLSession = .shared) {
+        self.session = session        
     }
     
     public func requestPage(query: String, pageNumber: Int) async throws -> ImageInfoListing.Page {

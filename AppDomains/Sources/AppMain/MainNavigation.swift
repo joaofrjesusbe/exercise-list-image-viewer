@@ -1,5 +1,5 @@
 import SwiftUI
-import AppCore
+import AppGroup
 
 public struct MainNavigation: View {
     @EnvironmentObject private var themer: ThemeManager

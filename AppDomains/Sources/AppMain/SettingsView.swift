@@ -1,5 +1,5 @@
-import AppCore
 import SwiftUI
+import AppGroup
 
 public struct SettingsView: View {
     @EnvironmentObject private var themer: ThemeManager

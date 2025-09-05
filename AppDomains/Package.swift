@@ -18,17 +18,13 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../AppSDK/AppCore"),
-        .package(path: "../AppSDK/DesignSystem"),
-        .package(path: "../AppSDK/PixbayNetwork"),
-        .package(url: "https://github.com/hmlongco/Factory", from: "2.5.3"),
+        .package(path: "../AppGroup"),
     ],
     targets: [
         .target(
             name: "AppMain",
             dependencies: [
-                "DesignSystem",
-                "AppCore",
+                "AppGroup",
                 "AppImagesList"
             ],
             resources: [
@@ -38,10 +34,7 @@ let package = Package(
         .target(
             name: "AppImagesList",
             dependencies: [
-                "DesignSystem",
-                "PixbayNetwork",
-                "AppCore",
-                .product(name: "FactoryKit", package: "Factory")
+                "AppGroup",
             ],
             resources: [
                 .process("Resources")
