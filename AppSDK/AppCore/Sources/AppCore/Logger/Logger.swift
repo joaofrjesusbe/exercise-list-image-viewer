@@ -1,6 +1,6 @@
 import Foundation
 
-public enum LogOptions: Int, CaseIterable {
+public enum LogOptions: Int, CaseIterable, Sendable {
     case debug = 0
     case network
     case info
@@ -20,7 +20,7 @@ public enum LogOptions: Int, CaseIterable {
     }
 }
 
-public protocol Logger {
+public protocol Logger: Sendable {
     
     func debug(_ message: String)
     

@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "PixbayNetwork",
     platforms: [
-        .iOS("17.0"),        
+        .iOS("17.0")
     ],
     products: [
         .library(
@@ -18,11 +18,16 @@ let package = Package(
     targets: [
         .target(
             name: "PixbayNetwork",
-            dependencies: ["AppCore"]
+            dependencies: ["AppCore"],
+            resources: [
+                .copy("Resources/PixabayRecords")
+            ],
+            plugins: ["SecretsPlugin"]
         ),
         .testTarget(
             name: "PixbayNetworkTests",
             dependencies: ["PixbayNetwork"]
         ),
+        .plugin(name: "SecretsPlugin", capability: .buildTool())
     ]
 )

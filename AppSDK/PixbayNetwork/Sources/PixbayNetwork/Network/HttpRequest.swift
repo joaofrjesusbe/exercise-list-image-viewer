@@ -1,18 +1,18 @@
 import Foundation
 
-public enum HTTPMethod: String {
+public enum HttpMethod: String {
     case GET, POST, PUT, DELETE
 }
 
-public struct HTTPRequest {
-    public var method: HTTPMethod
+public struct HttpRequest {
+    public var method: HttpMethod
     public var path: String
     public var queryItems: [URLQueryItem] = []
     public var headers: [String: String] = [:]
     public var body: HTTPBody? = nil
 
     public init(
-        method: HTTPMethod,
+        method: HttpMethod,
         path: String,
         queryItems: [URLQueryItem] = [],
         headers: [String: String] = [:],

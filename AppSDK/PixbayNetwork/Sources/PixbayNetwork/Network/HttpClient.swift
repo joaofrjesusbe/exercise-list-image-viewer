@@ -1,24 +1,21 @@
 import Foundation
 import AppCore
 
-public final class HTTPClient: HTTPClientType {
+public final class HttpClient: HttpClientType {
     @Injected(\.logger) private var logger
     private let baseURL: URL
-    private let session: URLSession
-    private let recorder: NetworkRecorder?
-
+    private let networkRequest: NetworkRequest
+    
     public init(
         baseURL: URL,
-        session: URLSession = .shared,
-        recorder: NetworkRecorder? = nil
+        networkRequest: NetworkRequest = NetworkSessionRequest.init(),
     ) {
         self.baseURL = baseURL
-        self.session = session
-        self.recorder = recorder
+        self.networkRequest = networkRequest
     }
 
     public func send<T: Decodable>(
-        _ request: HTTPRequest,
+        _ request: HttpRequest,
         decode type: T.Type
     ) async throws -> (value: T, response: HTTPURLResponse) {
         let (data, response) = try await sendRaw(request)
@@ -31,27 +28,20 @@ public final class HTTPClient: HTTPClientType {
         }
     }
 
-    public func sendRaw(_ request: HTTPRequest) async throws -> (data: Data, response: HTTPURLResponse) {
-        let urlRequest = try buildURLRequest(from: request)
-        logger.network("\(request.method.rawValue) url:\n\(urlRequest.url?.absoluteString ?? "unknown")")
+    public func sendRaw(_ request: HttpRequest) async throws -> (data: Data, response: HTTPURLResponse) {
+        let urlRequest = try buildURLRequest(from: request)        
+        let response = try await networkRequest.request(for: urlRequest)
+        guard let httpResponse = response.urlResponse as? HTTPURLResponse else {
+            throw NetworkError.badStatus(-1, response.data)
+        }
         
-        let (data, urlResponse) = try await session.data(for: urlRequest)
-
-        guard let http = urlResponse as? HTTPURLResponse else {
-            throw NetworkError.badStatus(-1, data)
+        guard (200..<300).contains(httpResponse.statusCode) else {
+            throw NetworkError.badStatus(httpResponse.statusCode, response.data)
         }
-
-        if (200..<300).contains(http.statusCode) == false {
-            // still record the error payload for debugging
-            await recorder?.record(request: urlRequest, response: http, data: data)
-            throw NetworkError.badStatus(http.statusCode, data)
-        }
-
-        await recorder?.record(request: urlRequest, response: http, data: data)
-        return (data, http)
+        return (response.data, httpResponse)
     }
 
-    private func buildURLRequest(from request: HTTPRequest) throws -> URLRequest {
+    private func buildURLRequest(from request: HttpRequest) throws -> URLRequest {
         var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: false)
         components?.path = request.path
         if request.queryItems.isEmpty == false {
