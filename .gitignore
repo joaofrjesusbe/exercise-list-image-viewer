@@ -50,3 +50,4 @@ vendor/
 *.orig
 
 **/.DS_Store
+**/.secrets.env
