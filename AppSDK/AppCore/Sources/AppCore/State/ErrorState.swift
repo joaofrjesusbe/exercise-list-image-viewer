@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct ErrorState {
+public struct ErrorState: Equatable {
     public let title: LocalizedStringResource?
     public let description: LocalizedStringResource
     public let icon: Image?

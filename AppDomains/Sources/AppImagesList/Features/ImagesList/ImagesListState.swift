@@ -2,7 +2,7 @@ import Foundation
 import AppCore
 import AppGroup
 
-public enum ImagesListIntent {
+public enum ImagesListIntent: Equatable {
     case initialSearch
     case updateSearchText(String)
     case submitSearch
@@ -11,7 +11,7 @@ public enum ImagesListIntent {
     case selectItem(Int)
 }
 
-public struct ImagesListState {
+public struct ImagesListState: Equatable {
     let query: String
     let listingItems: [DSListCell.Item]
     let listingState: ListingLoadState
@@ -24,7 +24,7 @@ extension ImagesListState {
     }
     
     func withUpdatedListing(_ listingItems: [DSListCell.Item]) -> Self {
-        .init(query: query, listingItems: listingItems, listingState: .currentVoid)
+        .init(query: query, listingItems: listingItems, listingState: .current)
     }
     
     func withLoadingPage() -> Self {

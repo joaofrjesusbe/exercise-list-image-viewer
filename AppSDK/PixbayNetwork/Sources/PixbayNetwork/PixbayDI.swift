@@ -5,7 +5,7 @@ public enum NetworkMode { case live, record, auto, replay }
 
 public extension Container {
     var networkMode: Factory<NetworkMode> {
-        Factory(self) { .auto }.singleton
+        Factory(self) { .replay }.singleton
     }
 
     var cassette: Factory<HttpDiskCassette> {

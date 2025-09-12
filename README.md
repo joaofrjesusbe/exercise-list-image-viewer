@@ -28,18 +28,24 @@ TODO
 
 ## Usage
 
-TODO
+The current project is in **replay mode** only.  
+To work with **live mode**, you need an API key from Pixbay.
+
+1. Add your key to `.secrets.env` with this command:
+
+   ```bash
+   echo 'PIXBAY_API_KEY="your_api_key_here"' > ./AppSDK/PixbayNetwork/.secrets.env
+
+2. Switch the mode from .replay to .live in PixbayDI.swift (line 8).
 
 
 ## More to follow
 
-The following code will be fixed in a different repository (TBD)
+The following code will be fixed
 - Fast and furious, so lacking unit tests and integration tests
-- No DTO for main model, for simplicity approach
-- Error handling, prevents the user to search again
 - Very raw detail view
 
-More functionality to come:
+More functionality to come in a different repository (TBD):
 - Resources white-label
 - Improved detail UI
 - Improved search functionality

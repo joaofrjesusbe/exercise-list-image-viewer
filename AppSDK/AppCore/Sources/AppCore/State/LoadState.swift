@@ -10,6 +10,7 @@ public enum AnyLoadState<ViewState, ErrorState> {
 }
 
 extension AnyLoadState: Sendable where ViewState: Sendable, ErrorState: Sendable {}
+extension AnyLoadState: Equatable where ViewState: Equatable, ErrorState: Equatable { }
 
 public extension AnyLoadState {
     var isWaiting: Bool {
@@ -37,12 +38,5 @@ public extension AnyLoadState {
         default:
             return nil
         }
-    }
-}
-
-public extension AnyLoadState where ViewState == Void {
-    
-    static var currentVoid: Self {
-        return .current(())
     }
 }
