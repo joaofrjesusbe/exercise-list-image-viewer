@@ -2,11 +2,20 @@ import SwiftUI
 import AppGroup
 
 @MainActor
-public final class ImageListProvider {
-    private(set) var query: String
-    private(set) var currentListing = ImageInfoListing()
-    private(set) var currentItem: ImageInfo?
+public protocol ImageListProvidable {
+    var query: String { get }
+    var currentListing: ImageInfoListing { get }
+    
+    func reset(newQuery: String?)
+    func initialLoad() async throws
+    func loadNextPage() async throws
+    func shouldLoadNextPage(index: Int) -> Bool
+}
 
+public final class ImageListProvider: ImageListProvidable {
+    public private(set) var query: String
+    public private(set) var currentListing = ImageInfoListing()
+    
     @Injected(\.imagePageService) private var service
     @Injected(\.logger) private var logger
     
@@ -21,11 +30,7 @@ public final class ImageListProvider {
         self.minimumOffsetToLoadNextPage = minimumOffsetToLoadNextPage
     }
     
-    func selectIndex(_ index: Int) {
-        currentItem = currentListing.items[index]
-    }
-    
-    func reset(newQuery: String?) {
+    public func reset(newQuery: String?) {
         pendingRequest?.cancel()
         pendingRequest = nil
         if let newQuery = newQuery {
@@ -36,12 +41,12 @@ public final class ImageListProvider {
         logger.info("New query: \(query)")
     }
     
-    func initialLoad(query: String? = nil) async throws {
+    public func initialLoad() async throws {
         reset(newQuery: query)
         try await loadNextPage()
     }
     
-    func loadNextPage() async throws {
+    public func loadNextPage() async throws {
         defer {
             pendingRequest = nil
         }
@@ -60,7 +65,7 @@ public final class ImageListProvider {
         currentListing = currentListing.appendPage(pageInfo)
     }
 
-    func shouldLoadNextPage(index: Int) -> Bool {
+    public func shouldLoadNextPage(index: Int) -> Bool {
         guard index >= currentListing.items.count - minimumOffsetToLoadNextPage else {
             return false
         }

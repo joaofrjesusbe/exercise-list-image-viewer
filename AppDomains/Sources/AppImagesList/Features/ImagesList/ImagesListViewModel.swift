@@ -5,12 +5,12 @@ import AppGroup
 public class ImagesListViewModel: LoadViewModel<ImagesListState, ImagesListIntent> {
     @Injected(\.imageInfoUIAdapter) private var adapter
 
-    private let provider: ImageListProvider
+    private let provider: ImageListProvidable
     private var userSearchText: String?
     
     @Published public private(set) var query: String
     
-    public init(provider: ImageListProvider) {
+    public init(provider: ImageListProvidable) {
         self.provider = provider
         self.query = provider.query
         super.init()
@@ -24,8 +24,6 @@ public class ImagesListViewModel: LoadViewModel<ImagesListState, ImagesListInten
             tryToLoadNextPage(index: index)
         case .reloadNextPage:
             loadNextPage()
-        case .selectItem(let index):
-            provider.selectIndex(index)
         case .updateSearchText(let value):
             userSearchText = value
         case .submitSearch:
@@ -35,11 +33,12 @@ public class ImagesListViewModel: LoadViewModel<ImagesListState, ImagesListInten
     
     private func initialLoad(query: String?) {
         self.query = query ?? provider.query
+        provider.reset(newQuery: self.query)
         updateLoading()
         
         Task { @MainActor in
             do {
-                try await provider.initialLoad(query: query)
+                try await provider.initialLoad()
                 let items = adapter.toArrayCellItems(provider.currentListing.items)
                 updateViewState(
                     ImagesListState(

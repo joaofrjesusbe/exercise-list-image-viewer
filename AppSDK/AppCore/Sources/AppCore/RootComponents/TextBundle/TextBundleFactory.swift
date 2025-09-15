@@ -16,11 +16,11 @@ public struct TextBundleFactory {
         createTextView()
      }
     
-    private func createTextView() -> Text {
+    public func createTextView() -> Text {
         Text(findOverwriteResource())
     }
     
-    private func findOverwriteResource() -> LocalizedStringResource {
+    public func findOverwriteResource() -> LocalizedStringResource {
         for bundle in overrideBundles {
             // Try to resolve using this override bundle
             let candidate = bundle.localizedString(

@@ -4,7 +4,6 @@ import AppCore
 public typealias ImageInfoListing = Listing<ImageInfo, Void>
 
 public final class PixbayAPIService {
-    @Injected(\.logger) var logger
     @Injected(\.httpClient) var httpClient
     
     public init() {}

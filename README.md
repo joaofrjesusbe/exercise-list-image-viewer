@@ -15,14 +15,14 @@ In this branch will use custom MVI pattern
 6. Adjustable theme, language
 7. White-label text (Main target can override any text)
 8. Network adjustable pipelines
-8. Network recorded and replay
-9. No key in code for security
+9. Network recorded and replay
+10. No key in code for security (Although the API is for backend only, still exposed to reverse enginner API extraction)
 
 ## Package architecture
 
 TODO
 
-## MVI architecure
+## MVI architecture
 
 TODO
 

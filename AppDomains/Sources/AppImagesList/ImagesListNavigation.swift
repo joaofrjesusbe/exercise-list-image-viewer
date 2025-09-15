@@ -8,7 +8,7 @@ public struct ImagesListNavigation: View, NavigationRoutable {
     
     public var body: some View {
         NavigationStack(path: $routes) {
-            ImagesListRootView(viewModel: ImagesListDI.createImageListViewModel())
+            ImagesListRootView(viewModel: ImagesListDI.getImagesListViewModel())
                 .navigationDestination(for: ImageRoute.self) { route in
                     switch route {
                     case .detail(let index):

@@ -8,7 +8,6 @@ public enum ImagesListIntent: Equatable {
     case submitSearch
     case newItemAppeared(Int)
     case reloadNextPage
-    case selectItem(Int)
 }
 
 public struct ImagesListState: Equatable {
