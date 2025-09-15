@@ -3,7 +3,7 @@ import AppCore
 
 public typealias ImageInfoListing = Listing<ImageInfo, Void>
 
-public final class PixbayAPIService {
+public final class PixabayAPIService {
     @Injected(\.httpClient) var httpClient
     
     public init() {}
@@ -15,13 +15,13 @@ public final class PixbayAPIService {
             throw NetworkError.invalidPage(pageNumber)
         }
         
-        let request = PixbayEndpoint.search(query: query, page: pageNumber)
+        let request = PixabayEndpoint.search(query: query, page: pageNumber)
         
         let (dto, _) = try await httpClient.send(request, decode: ImageListDTO.self)
         let page = ImageInfoListing.Page(
             items: dto.hits,
             pageNumber: pageNumber,
-            hasNextPage: dto.hits.count == PixbayEndpoint.defaultPageSize
+            hasNextPage: dto.hits.count == PixabayEndpoint.defaultPageSize
         )
         return page
     }

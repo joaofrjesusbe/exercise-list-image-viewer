@@ -1,6 +1,6 @@
 import Foundation
 
-enum PixbayEndpoint {
+enum PixabayEndpoint {
     
     static func search(
         query: String,

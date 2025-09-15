@@ -2,14 +2,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "PixbayNetwork",
+    name: "PixabayNetwork",
     platforms: [
         .iOS("17.0")
     ],
     products: [
         .library(
-            name: "PixbayNetwork",
-            targets: ["PixbayNetwork"]
+            name: "PixabayNetwork",
+            targets: ["PixabayNetwork"]
         ),
     ],
     dependencies: [
@@ -17,7 +17,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "PixbayNetwork",
+            name: "PixabayNetwork",
             dependencies: ["AppCore"],
             resources: [
                 .copy("Resources/PixabayRecords")
@@ -25,8 +25,8 @@ let package = Package(
             plugins: ["SecretsPlugin"]
         ),
         .testTarget(
-            name: "PixbayNetworkTests",
-            dependencies: ["PixbayNetwork"]
+            name: "PixabayNetworkTests",
+            dependencies: ["PixabayNetwork"]
         ),
         .plugin(name: "SecretsPlugin", capability: .buildTool())
     ]

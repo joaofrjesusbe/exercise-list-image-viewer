@@ -33,35 +33,35 @@ struct SecretsPlugin: BuildToolPlugin {
         fi
 
         # Default to empty if still unset
-        : "${PIXBAY_API_KEY:=}"
+        : "${PIXABAY_API_KEY:=}"
 
         # Escape as a valid Swift string literal (includes quotes)
         ESCAPED_API_KEY="$(
           /usr/bin/python3 - <<'PY'
         import os, json
-        print(json.dumps(os.environ.get("PIXBAY_API_KEY","")))
+        print(json.dumps(os.environ.get("PIXABAY_API_KEY","")))
         PY
         )"
 
         cat > "\(outFilePath)" <<SWIFT
         // @generated
         public enum Secrets {
-          public static let PIXBAY_API_KEY = ${ESCAPED_API_KEY}
+          public static let PIXABAY_API_KEY = ${ESCAPED_API_KEY}
         }
-        public let PIXBAY_API_KEY: String = Secrets.PIXBAY_API_KEY
+        public let PIXABAY_API_KEY: String = Secrets.PIXABAY_API_KEY
         SWIFT
 
         # Minimal breadcrumb (masked) so you can see it worked
-        case "${PIXBAY_API_KEY}" in
-          "") echo "[SecretsPlugin] Loaded PIXBAY_API_KEY: (empty)";;
-          *)  echo "[SecretsPlugin] Loaded PIXBAY_API_KEY: ****${PIXBAY_API_KEY: -4}";;
+        case "${PIXABAY_API_KEY}" in
+          "") echo "[SecretsPlugin] Loaded PIXABAY_API_KEY: (empty)";;
+          *)  echo "[SecretsPlugin] Loaded PIXABAY_API_KEY: ****${PIXABAY_API_KEY: -4}";;
         esac
         echo "[SecretsPlugin] Wrote \(outFilePath)"
         """
 
         return [
             .prebuildCommand(
-                displayName: "Generate Secrets.swift from $PIXBAY_API_KEY",
+                displayName: "Generate Secrets.swift from $PIXABAY_API_KEY",
                 executable: bashURL,
                 arguments: ["bash", "-lc", script],
                 environment: [:],

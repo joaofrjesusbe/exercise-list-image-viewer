@@ -5,7 +5,7 @@ public protocol ImagePageService {
     func requestPage(query: String, pageNumber: Int) async throws -> ImageInfoListing.Page
 }
 
-extension PixbayAPIService: ImagePageService { }
+extension PixabayAPIService: ImagePageService { }
 
 struct MockImagePageService: ImagePageService {
     private let totalItems: Int

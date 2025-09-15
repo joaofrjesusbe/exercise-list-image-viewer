@@ -23,7 +23,7 @@ extension Container {
     }
     
     var imagePageService: Factory<ImagePageService> {
-        self { PixbayAPIService() }
+        self { PixabayAPIService() }
     }
     
     @MainActor

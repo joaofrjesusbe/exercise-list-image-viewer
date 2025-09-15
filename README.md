@@ -29,14 +29,14 @@ TODO
 ## Usage
 
 The current project is in **replay mode** only.  
-To work with **live mode**, you need an API key from Pixbay.
+To work with **live mode**, you need an API key from Pixabay.
 
 1. Add your key to `.secrets.env` with this command:
 
    ```bash
-   echo 'PIXBAY_API_KEY="your_api_key_here"' > ./AppSDK/PixbayNetwork/.secrets.env
+   echo 'PIXABAY_API_KEY="your_api_key_here"' > ./AppSDK/PixabayNetwork/.secrets.env
 
-2. Switch the mode from .replay to .live in PixbayDI.swift (line 8).
+2. Switch the mode from .replay to .live in PixabayDI.swift (line 8).
 
 
 ## More to follow

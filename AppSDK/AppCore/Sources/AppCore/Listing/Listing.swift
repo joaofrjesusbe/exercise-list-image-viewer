@@ -15,7 +15,7 @@ extension Listing: Sendable where Item: Sendable, Metadata: Sendable {}
 public extension Listing {
     
     var isEmpty: Bool {
-        !pages.isEmpty
+        pages.isEmpty
     }
 
     var hasNextPage: Bool {

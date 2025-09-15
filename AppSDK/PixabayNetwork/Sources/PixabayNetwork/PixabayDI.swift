@@ -27,7 +27,7 @@ public extension Container {
     }
 
     var requestInterceptors: Factory<[NetworkRequestInterceptor]> {
-        Factory(self) { [APIKeyInterceptor(key: PIXBAY_API_KEY)] }
+        Factory(self) { [APIKeyInterceptor(key: PIXABAY_API_KEY)] }
     }
 
     var responseInterceptors: Factory<[NetworkResponseInterceptor]> {

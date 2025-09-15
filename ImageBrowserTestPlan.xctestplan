@@ -41,9 +41,9 @@
     },
     {
       "target" : {
-        "containerPath" : "container:AppSDK\/PixbayNetwork",
-        "identifier" : "PixbayNetworkTests",
-        "name" : "PixbayNetworkTests"
+        "containerPath" : "container:AppSDK\/PixabayNetwork",
+        "identifier" : "PixabayNetworkTests",
+        "name" : "PixabayNetworkTests"
       }
     },
     {
