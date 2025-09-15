@@ -5,7 +5,8 @@ let package = Package(
     name: "AppCore",
     defaultLocalization: "en",
     platforms: [
-        .iOS("17.0")        
+        .iOS("17.0"),
+        .macOS("14.0")
     ],
     products: [
         .library(
@@ -28,7 +29,10 @@ let package = Package(
         ),
         .testTarget(
             name: "AppCoreTests",
-            dependencies: ["AppCore"]
+            dependencies: ["AppCore"],
+            resources: [
+                .process("Resources")
+            ]
         ),
     ]
 )

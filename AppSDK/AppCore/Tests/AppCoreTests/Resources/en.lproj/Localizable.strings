@@ -1,0 +1,3 @@
+/* Test override strings for default table */
+"greeting" = "Hello from override";
+
