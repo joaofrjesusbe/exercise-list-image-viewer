@@ -4,7 +4,8 @@ import PackageDescription
 let package = Package(
     name: "PixabayNetwork",
     platforms: [
-        .iOS("17.0")
+        .iOS("17.0"),
+        .macOS("14.0")
     ],
     products: [
         .library(
@@ -14,11 +15,15 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../AppCore"),
+        .package(url: "https://github.com/kean/Nuke.git", from: "12.8.0")
     ],
     targets: [
         .target(
             name: "PixabayNetwork",
-            dependencies: ["AppCore"],
+            dependencies: [
+                "AppCore",
+                "Nuke"
+            ],
             resources: [
                 .copy("Resources/PixabayRecords")
             ],
