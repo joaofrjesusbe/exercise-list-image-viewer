@@ -38,7 +38,7 @@ public class ImagesListViewModel: LoadViewModel<ImagesListState, ImagesListInten
         
         Task { @MainActor in
             do {
-                try await provider.initialLoad()
+                try await provider.loadNextPage()
                 let items = adapter.toArrayCellItems(provider.currentListing.items)
                 updateViewState(
                     ImagesListState(

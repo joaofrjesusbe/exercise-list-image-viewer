@@ -7,7 +7,6 @@ public protocol ImageListProvidable {
     var currentListing: ImageInfoListing { get }
     
     func reset(newQuery: String?)
-    func initialLoad() async throws
     func loadNextPage() async throws
     func shouldLoadNextPage(index: Int) -> Bool
 }
@@ -35,15 +34,10 @@ public final class ImageListProvider: ImageListProvidable {
         pendingRequest = nil
         if let newQuery = newQuery {
             self.query = newQuery
+            logger.info("New query: \(query)")
         }
         
         currentListing = ImageInfoListing()
-        logger.info("New query: \(query)")
-    }
-    
-    public func initialLoad() async throws {
-        reset(newQuery: query)
-        try await loadNextPage()
     }
     
     public func loadNextPage() async throws {
