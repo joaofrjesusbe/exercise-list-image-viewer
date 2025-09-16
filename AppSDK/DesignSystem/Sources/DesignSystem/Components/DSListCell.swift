@@ -43,7 +43,11 @@ public struct DSListCell: View, Identifiable {
             HStack(alignment: .center) {
                 DSAsyncImageSmall(url: item.icon)
                     .frame(width: 150, height: 80)
+                    #if os(iOS)
                     .background(Color(.systemGray6))
+                    #else
+                    .background(Color.gray.opacity(0.1))
+                    #endif
                     .padding(8)
 
                 VStack(alignment: .leading, spacing: 8) {

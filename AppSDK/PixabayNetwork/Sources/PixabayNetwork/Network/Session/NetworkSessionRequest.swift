@@ -10,8 +10,6 @@ public struct NetworkSessionRequest: NetworkRequest {
     }
     
     public func request(for request: URLRequest) async throws -> NetworkResponse {
-        logger.network("\(request.httpMethod ?? "GET") url:\n\(request.url?.absoluteString ?? "unknown")")
-        
         let (data, response) = try await session.data(for: request)
         return NetworkResponse(data: data, urlResponse: response)
     }

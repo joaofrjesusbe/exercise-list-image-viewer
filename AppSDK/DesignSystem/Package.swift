@@ -6,6 +6,7 @@ let package = Package(
     name: "DesignSystem",
     platforms: [
         .iOS("17.0"),
+        .macOS("14.0")
     ],
     products: [
         .library(
@@ -15,11 +16,15 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../AppCore"),
+        .package(path: "../PixabayNetwork"),
     ],
     targets: [
         .target(
             name: "DesignSystem",
-            dependencies: ["AppCore"]
+            dependencies: [
+                "AppCore",
+                "PixabayNetwork"
+            ]
         ),
         .testTarget(
             name: "DesignSystemTests",
