@@ -1,16 +1,16 @@
 import Foundation
 
 public struct NetworkPipeline: NetworkRequest {
-    private let network: NetworkRequest
+    private let mainRequest: NetworkRequest
     private let requestInterceptors: [NetworkRequestInterceptor]
     private let responseInterceptors: [NetworkResponseInterceptor]
 
     public init(
-        network: NetworkRequest = NetworkSessionRequest.init(),
+        mainRequest: NetworkRequest = NetworkSessionRequest.init(),
         requestInterceptors: [NetworkRequestInterceptor] = [],
         responseInterceptors: [NetworkResponseInterceptor] = []
     ) {
-        self.network = network
+        self.mainRequest = mainRequest
         self.requestInterceptors = requestInterceptors
         self.responseInterceptors = responseInterceptors
     }
@@ -31,7 +31,7 @@ public struct NetworkPipeline: NetworkRequest {
         // Network call if nobody short-circuited
         if interceptResponse == nil {
             do {
-                interceptResponse = try await network.request(for: request)
+                interceptResponse = try await mainRequest.request(for: request)
             } catch {
                 caught = error
             }

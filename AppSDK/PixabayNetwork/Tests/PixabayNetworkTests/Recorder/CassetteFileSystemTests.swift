@@ -29,7 +29,7 @@ final class CassetteFSTests: @unchecked Sendable {
         let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: ["Content-Type": "application/json"])!
 
         // When recording
-        let saved = CassetteFS.record(rootPath: rootPath, request: request, response: response, data: body, stripNames: ["key"])!
+        let saved = CassetteFileSystem.record(rootPath: rootPath, request: request, response: response, data: body, stripNames: ["key"])!
         #expect(FileManager.default.fileExists(atPath: saved))
 
         // Then loading with a different key value still finds the cassette
@@ -41,7 +41,7 @@ final class CassetteFSTests: @unchecked Sendable {
         let url2 = comps2.url!
         let req2 = URLRequest(url: url2)
 
-        let (loadedData, loadedResp) = try CassetteFS.load(searchRootPaths: [rootPath], request: req2, stripNames: ["key"])
+        let (loadedData, loadedResp) = try CassetteFileSystem.load(searchRootPaths: [rootPath], request: req2, stripNames: ["key"])
         #expect(loadedData == body)
         #expect((loadedResp as? HTTPURLResponse)?.statusCode == 200)
     }
@@ -49,9 +49,9 @@ final class CassetteFSTests: @unchecked Sendable {
     @Test
     func body_file_helpers_pick_json() throws {
         // Content type JSON path
-        #expect(CassetteFS.bodyFileName(contentType: "application/json", isJSON: true) == "response.json")
+        #expect(CassetteFileSystem.bodyFileName(contentType: "application/json", isJSON: true) == "response.json")
         // Heuristic JSON path
-        #expect(CassetteFS.bodyLooksJSON(contentType: nil, data: Data(" { } ".utf8)))
+        #expect(CassetteFileSystem.bodyLooksJSON(contentType: nil, data: Data(" { } ".utf8)))
     }
 }
 

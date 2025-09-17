@@ -2,7 +2,7 @@ import Foundation
 import CryptoKit
 
 // WARNING: Most of the code from this class was generated from AI
-public enum CassetteFS {
+public enum CassetteFileSystem {
     // File names
     private static let requestFile      = "request.json"
     private static let responseMetaFile = "response.meta.json"

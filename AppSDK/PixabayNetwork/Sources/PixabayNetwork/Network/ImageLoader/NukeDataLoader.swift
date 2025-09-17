@@ -4,7 +4,7 @@ import Nuke
 // MARK: - NetworkRequest-backed DataLoader for Nuke
 
 /// Bridges our custom `NetworkRequest` pipeline into Nuke via `DataLoading`.
-final class NetworkRequestDataLoader: DataLoading, @unchecked Sendable {
+final class NukeDataLoader: DataLoading, Sendable {
     private let network: NetworkRequest
 
     init(network: NetworkRequest) {
@@ -31,7 +31,7 @@ final class NetworkRequestDataLoader: DataLoading, @unchecked Sendable {
     }
 }
 
-private final class TaskCancellable: Cancellable, @unchecked Sendable {
+private final class TaskCancellable: Cancellable, Sendable {
     private let task: Task<Void, Never>
     init(_ task: Task<Void, Never>) { self.task = task }
     func cancel() { task.cancel() }
@@ -59,16 +59,3 @@ private final class CallbackBox: @unchecked Sendable {
     }
 }
 
-// MARK: - ImageLoader
-
-public struct ImageLoader {
-    private let pipeline: ImagePipeline
-
-    public init(pipeline: ImagePipeline) {
-        self.pipeline = pipeline
-    }
-
-    public func image(for url: URL) async throws -> PlatformImage {
-        try await pipeline.image(for: url)
-    }
-}

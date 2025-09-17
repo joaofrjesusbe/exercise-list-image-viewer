@@ -2,7 +2,7 @@
 import Foundation
 import Testing
 
-final class NetworkPipelineTests: @unchecked Sendable {
+final class NetworkPipelineTests: Sendable {
 
     @Test
     func short_circuits_when_request_interceptor_returns_response_and_still_calls_response_interceptors() async throws {
@@ -15,13 +15,13 @@ final class NetworkPipelineTests: @unchecked Sendable {
         let resInterceptor = MockResInterceptor()
         let reqInterceptor = MockReqInterceptor { _ in canned }
 
-        let pipeline = NetworkPipeline(network: backend, requestInterceptors: [reqInterceptor], responseInterceptors: [resInterceptor])
+        let pipeline = NetworkPipeline(mainRequest: backend, requestInterceptors: [reqInterceptor], responseInterceptors: [resInterceptor])
 
-        var request = URLRequest(url: URL(string: "https://example.com")!)
+        let request = URLRequest(url: URL(string: "https://example.com")!)
         let out = try await pipeline.request(for: request)
         #expect(out.data == data)
-        #expect(resInterceptor.didAdapt)
-        #expect(backend.lastRequest == nil) // backend not called
+        #expect(await resInterceptor.didAdapt)
+        #expect(await backend.lastRequest == nil) // backend not called
     }
 
     @Test
@@ -29,12 +29,11 @@ final class NetworkPipelineTests: @unchecked Sendable {
         enum E: Error { case boom }
         let backend = MockNetwork(result: .failure(E.boom))
         let resInterceptor = MockResInterceptor()
-        let pipeline = NetworkPipeline(network: backend, requestInterceptors: [], responseInterceptors: [resInterceptor])
+        let pipeline = NetworkPipeline(mainRequest: backend, requestInterceptors: [], responseInterceptors: [resInterceptor])
 
         await #expect(throws: E.boom) {
             _ = try await pipeline.request(for: URLRequest(url: URL(string: "https://example.com")!))
         }
-        #expect(resInterceptor.didAdapt)
+        #expect(await resInterceptor.didAdapt)
     }
 }
-

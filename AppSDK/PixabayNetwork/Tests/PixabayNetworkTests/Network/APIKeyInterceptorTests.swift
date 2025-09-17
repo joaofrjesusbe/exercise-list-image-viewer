@@ -2,7 +2,7 @@
 import Foundation
 import Testing
 
-final class APIKeyInterceptorTests: @unchecked Sendable {
+final class APIKeyInterceptorTests: Sendable {
     @Test
     func appends_key_query_item_preserving_existing_items() async throws {
         var req = URLRequest(url: URL(string: "https://example.com/search?q=funny")!)

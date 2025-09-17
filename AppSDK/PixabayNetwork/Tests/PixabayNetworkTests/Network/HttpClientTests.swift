@@ -6,7 +6,7 @@ import Testing
 
 private struct DummyDecodable: Codable, Equatable { let name: String }
 
-final class HttpClientTests: @unchecked Sendable {
+final class HttpClientTests: Sendable {
 
     @Test
     func build_url_and_query_items_and_headers() async throws {
@@ -31,7 +31,7 @@ final class HttpClientTests: @unchecked Sendable {
         _ = try await client.sendRaw(request)
 
         // Assert
-        let captured = try #require(backend.lastRequest)
+        let captured = try #require(await backend.lastRequest)
         #expect(captured.url == expectedURL)
         #expect(captured.value(forHTTPHeaderField: "X-Test") == "1")
         #expect(captured.httpMethod == "GET")
@@ -55,7 +55,7 @@ final class HttpClientTests: @unchecked Sendable {
         _ = try await client.sendRaw(request)
 
         // Assert
-        let captured = try #require(backend.lastRequest)
+        let captured = try #require(await backend.lastRequest)
         #expect(captured.httpMethod == "POST")
         #expect(captured.value(forHTTPHeaderField: "Content-Type") == "application/json")
         let body = try #require(captured.httpBody)

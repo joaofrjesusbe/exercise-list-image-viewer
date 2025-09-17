@@ -45,7 +45,7 @@ public actor HttpDiskCassette: NetworkRequestInterceptor, NetworkResponseInterce
             (cont: CheckedContinuation<NetworkResponse, Error>) in
             io.async {
                 do {
-                    let value = try CassetteFS.load(
+                    let value = try CassetteFileSystem.load(
                         searchRootPaths: searchPaths,
                         request: request,
                         stripNames: strip
@@ -57,7 +57,7 @@ public actor HttpDiskCassette: NetworkRequestInterceptor, NetworkResponseInterce
             }
         }
         
-        logger.network("Replaying: \(request.url?.absoluteString ?? "")")
+        logger.network("Replaying")
         return result
     }
     
@@ -77,16 +77,16 @@ public actor HttpDiskCassette: NetworkRequestInterceptor, NetworkResponseInterce
         
         // Non-throwing continuation returning an optional path (no String-as-Error)
         let savedPath: String? = await withCheckedContinuation { (cont: CheckedContinuation<String?, Never>) in
-            io.async { cont.resume(returning: CassetteFS.record(rootPath: rootPath, request: request, response: response, data: data, stripNames: strip)) }
+            io.async { cont.resume(returning: CassetteFileSystem.record(rootPath: rootPath, request: request, response: response, data: data, stripNames: strip)) }
         }
         
-        guard  let path = savedPath else {
+        guard  savedPath != nil else {
             logger.error("DiskCassette: failed to record cassette")
             return
         }
         
         if !warningAlreadyPresented {
-            logger.warning("Network records at:\nopen file://\(path)")
+            logger.warning("Network records at:\nopen file://\(rootPath)")
             warningAlreadyPresented = true
         }
     }
@@ -96,7 +96,7 @@ public actor HttpDiskCassette: NetworkRequestInterceptor, NetworkResponseInterce
         let destPath = root.path, srcPath = bundleRoot.path
         try await withCheckedThrowingContinuation { (cont: CheckedContinuation<Void, Error>) in
             io.async {
-                do { try CassetteFS.seedIfEmpty(destRootPath: destPath, bundleRootPath: srcPath); cont.resume() }
+                do { try CassetteFileSystem.seedIfEmpty(destRootPath: destPath, bundleRootPath: srcPath); cont.resume() }
                 catch { cont.resume(throwing: error) }
             }
         }
