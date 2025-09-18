@@ -7,29 +7,34 @@ public struct DSAsyncImage: View {
     @EnvironmentObject private var themer: ThemeManager
     
     public let url: URL?
+    private let maxImageSize: CGSize?
     
-    public init(url: URL?) {
+    public init(url: URL?, maxImageSize: CGSize? = nil) {
         self.url = url
+        self.maxImageSize = maxImageSize
     }
     
-    public init(stringUrl: String?) {
+    public init(stringUrl: String?, maxImageSize: CGSize? = nil) {
         if let stringUrl {
             url = URL(string: stringUrl)
         } else {
             url = nil
         }
+        self.maxImageSize = maxImageSize
     }
     
     @State private var platformImage: PlatformImage?
     @State private var isLoading: Bool = false
     @State private var failed: Bool = false
 
+    @ViewBuilder
     public var body: some View {
         Group {
             if let image = platformImage {
                 swiftUIImage(from: image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .optionalMaxFrame(maxImageSize)
             } else if isLoading {
                 ProgressView()
             } else if failed || url == nil {
@@ -65,7 +70,21 @@ public struct DSAsyncImage: View {
     }
 }
 
+private extension View {
+    @ViewBuilder
+    func optionalMaxFrame(_ size: CGSize?) -> some View {
+        if let size {
+            self.frame(maxWidth: size.width, maxHeight: size.height)
+        } else {
+            self
+        }
+    }
+}
+
 #Preview {
-    DSAsyncImage(stringUrl: "https://cdn.pixabay.com/photo/2015/11/17/13/13/puppy-1047521_150.jpg")
-        .previewWithTheme()
+    DSAsyncImage(
+        stringUrl: "https://cdn.pixabay.com/photo/2015/11/17/13/13/puppy-1047521_150.jpg",
+        maxImageSize: .init(width: 300, height: 200)
+    )
+    .previewWithTheme()
 }

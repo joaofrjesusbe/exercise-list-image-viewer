@@ -41,8 +41,7 @@ public struct DSListCell: View, Identifiable {
             didSelect()
         }, label: {
             HStack(alignment: .center) {
-                DSAsyncImageSmall(url: item.icon)
-                    .frame(width: 150, height: 80)
+                DSAsyncImage(url: item.icon, maxImageSize: CGSize(width: 150, height: 80))
                     #if os(iOS)
                     .background(Color(.systemGray6))
                     #else
