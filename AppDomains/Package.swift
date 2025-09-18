@@ -6,6 +6,7 @@ let package = Package(
     defaultLocalization: "en",
     platforms: [
         .iOS("17.0"),
+        .macOS("14.0")
     ],
     products: [
         .library(
@@ -18,7 +19,8 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(path: "../AppGroup"),
+        // Reference AppGroup within AppSDK via correct relative path
+        .package(path: "../AppSDK/AppGroup"),
     ],
     targets: [
         .target(

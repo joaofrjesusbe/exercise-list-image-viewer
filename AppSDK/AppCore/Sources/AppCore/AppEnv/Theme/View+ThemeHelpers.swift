@@ -18,3 +18,10 @@ public extension View {
             .preferredColorScheme(themeManager.preferredColorScheme ?? systemScheme)
     }
 }
+
+@MainActor
+public func themed<V: View>(_ view: V, locale: Locale = Locale(identifier: "en_US")) -> some View {
+    view
+        .environmentObject(ThemeManager(log: ConsoleLogger()))
+        .environment(\.locale, locale)
+}

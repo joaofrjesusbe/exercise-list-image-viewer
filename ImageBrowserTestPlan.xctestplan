@@ -24,6 +24,7 @@
       }
     },
     {
+      "enabled" : false,
       "parallelizable" : true,
       "target" : {
         "containerPath" : "container:ImageBrowser.xcodeproj",

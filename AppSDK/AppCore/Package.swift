@@ -16,6 +16,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/hmlongco/Factory", from: "2.5.3"),
+        .package(url: "https://github.com/nalexn/ViewInspector", from: "0.10.2")
     ],
     targets: [
         .target(
@@ -29,7 +30,10 @@ let package = Package(
         ),
         .testTarget(
             name: "AppCoreTests",
-            dependencies: ["AppCore"],
+            dependencies: [
+                "AppCore",
+                "ViewInspector"
+            ],
             resources: [
                 .process("Resources")
             ]
