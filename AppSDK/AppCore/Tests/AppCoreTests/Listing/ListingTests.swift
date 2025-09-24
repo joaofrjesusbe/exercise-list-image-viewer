@@ -35,7 +35,7 @@ final class ListingTests: @unchecked Sendable {
         #expect(listing.items.isEmpty)
         #expect(listing.nextPage == 1)
         #expect(listing.hasNextPage) // empty listing reports true by design
-        #expect(listing.lastID == nil)
+        #expect(listing.lastPageId == nil)
         #expect(listing.totalNumberOfItems == nil)
         #expect(listing.totalNumberOfPages == nil)
         #expect(listing.metadata == nil)
@@ -55,7 +55,7 @@ final class ListingTests: @unchecked Sendable {
         #expect(listing.totalNumberOfItems == 4)
         #expect(listing.totalNumberOfPages == 2)
         #expect(listing.metadata == "M1")
-        #expect(listing.lastID == "p1")
+        #expect(listing.lastPageId == "p1")
         #expect(listing.nextPage == 2)
         #expect(listing.hasNextPage == true)
     }
@@ -75,7 +75,7 @@ final class ListingTests: @unchecked Sendable {
         // Last page summary uses the page flag (false here)
         #expect(listing.pages[1].hasNextPage == false)
         #expect(listing.hasNextPage == false)
-        #expect(listing.lastID == "p2")
+        #expect(listing.lastPageId == "p2")
         #expect(listing.nextPage == 3)
         // Totals and metadata adopt the last page's non-nil values
         #expect(listing.totalNumberOfItems == 4)
@@ -156,7 +156,7 @@ final class ListingTests: @unchecked Sendable {
 
     @Test
     func pageItems_outOfBounds_or_emptyListing_returns_empty() {
-        var empty = Listing<Int, String>()
+        let empty = Listing<Int, String>()
         #expect(empty.pageItems(page: 1).isEmpty)
         #expect(empty.pageItems(page: 0).isEmpty)
         #expect(empty.pageItems(page: -1).isEmpty)
@@ -166,5 +166,112 @@ final class ListingTests: @unchecked Sendable {
         #expect(listing.pageItems(page: 0).isEmpty)
         #expect(listing.pageItems(page: -2).isEmpty)
         #expect(listing.pageItems(page: 2).isEmpty)
+    }
+
+    // MARK: - Totals semantics (non-nil only)
+    @Test
+    func totals_update_only_when_non_nil() {
+        var listing = Listing<Int, String>()
+        let p1 = makePage([1, 2], page: 1, hasNext: true, totalItems: 10, totalPages: 5, metadata: nil, id: "p1")
+        let p2 = makePage([3], page: 2, hasNext: false, totalItems: nil, totalPages: nil, metadata: nil, id: "p2")
+
+        listing = listing.appendPage(p1)
+        #expect(listing.totalNumberOfItems == 10)
+        #expect(listing.totalNumberOfPages == 5)
+
+        listing = listing.appendPage(p2)
+        // Totals should remain from p1 because p2 provided nil values
+        #expect(listing.totalNumberOfItems == 10)
+        #expect(listing.totalNumberOfPages == 5)
+        #expect(listing.items == [1, 2, 3])
+    }
+
+    // MARK: - pageSlice behavior
+    @Test
+    func pageSlice_returns_correct_slice_and_empty_when_out_of_bounds() {
+        var listing = Listing<Int, String>()
+        listing = listing.appendPage(makePage([1, 2, 3], page: 1, hasNext: true, id: "p1"))
+        listing = listing.appendPage(makePage([4, 5], page: 2, hasNext: true, id: "p2"))
+        listing = listing.appendPage(makePage([], page: 3, hasNext: false, id: "p3"))
+
+        let s1 = listing.pageSlice(page: 1)
+        let s2 = listing.pageSlice(page: 2)
+        let s3 = listing.pageSlice(page: 3)
+        let sOutLow  = listing.pageSlice(page: 0)
+        let sOutHigh = listing.pageSlice(page: 4)
+
+        #expect(Array(s1) == [1, 2, 3])
+        #expect(Array(s2) == [4, 5])
+        #expect(s3.isEmpty)
+        #expect(sOutLow.isEmpty)
+        #expect(sOutHigh.isEmpty)
+    }
+
+    // MARK: - removeAll behavior
+    @Test
+    func removeAll_keepingMetadata_true_preserves_metadata_and_resets_state() {
+        var listing = Listing<Int, String>()
+        listing = listing.appendMetadata(metadata: "M")
+        listing = listing.appendPage(makePage([1, 2], page: 1, hasNext: false, totalItems: 2, totalPages: 1, id: "p1"))
+
+        #expect(!listing.items.isEmpty)
+        #expect(!listing.pages.isEmpty)
+        #expect(listing.totalNumberOfItems == 2)
+        #expect(listing.totalNumberOfPages == 1)
+        #expect(listing.metadata == "M")
+
+        listing.removeAll(keepingMetadata: true)
+
+        #expect(listing.items.isEmpty)
+        #expect(listing.pages.isEmpty)
+        #expect(listing.totalNumberOfItems == nil)
+        #expect(listing.totalNumberOfPages == nil)
+        #expect(listing.metadata == "M")
+    }
+
+    @Test
+    func removeAll_keepingMetadata_false_clears_metadata_and_resets_state() {
+        var listing = Listing<Int, String>()
+        listing = listing.appendMetadata(metadata: "M")
+        listing = listing.appendPage(makePage([10], page: 1, hasNext: false, totalItems: 1, totalPages: 1, id: "p1"))
+
+        listing.removeAll(keepingMetadata: false)
+
+        #expect(listing.items.isEmpty)
+        #expect(listing.pages.isEmpty)
+        #expect(listing.totalNumberOfItems == nil)
+        #expect(listing.totalNumberOfPages == nil)
+        #expect(listing.metadata == nil)
+    }
+
+    // MARK: - Ordering invariants
+    @Test
+    func canAppend_returns_true_only_for_expected_next_page() {
+        var listing = Listing<Int, String>()
+        // Before any pages, nextPage is 1
+        let p1 = makePage([1], page: 1, hasNext: true)
+        let p2 = makePage([2], page: 2, hasNext: false)
+        let p3 = makePage([3], page: 3, hasNext: false)
+
+        #expect(listing.canAppend(p1))
+        #expect(!listing.canAppend(p2))
+
+        listing = listing.appendPage(p1)
+        #expect(listing.nextPage == 2)
+        #expect(listing.canAppend(p2))
+        #expect(!listing.canAppend(p3))
+
+        listing = listing.appendPage(p2)
+        #expect(listing.nextPage == 3)
+        #expect(listing.canAppend(p3))
+    }
+
+    @Test
+    func appending_out_of_order_page_triggers_precondition_in_debug() {
+        // This test documents the invariant; it does not actually trigger a crash here.
+        // We assert the guard method instead of causing a precondition failure in tests.
+        var listing = Listing<Int, String>()
+        let p2 = makePage([2], page: 2, hasNext: false)
+        #expect(!listing.canAppend(p2))
     }
 }
