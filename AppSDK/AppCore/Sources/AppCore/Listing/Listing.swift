@@ -32,6 +32,19 @@ public extension Listing {
     var lastID: String? {
         pages.last?.pageId
     }
+    
+    var lastPageItems: [Item] {
+        pageItems(page: pages.count)
+    }
+    
+    func pageItems(page: Int) -> [Item] {
+        guard page > 0, page <= pages.count else { return [] }
+        let range = pages[page - 1].range // absolute 0-based range into items
+        let start = max(0, range.lowerBound)
+        let end = min(items.count, range.upperBound)
+        guard start < end else { return [] }
+        return Array(items[start..<end])
+    }
 
     func appendPage(_ page: Listing.Page) -> Listing {
         var listing = self
@@ -47,17 +60,25 @@ public extension Listing {
         
         listing.totalNumberOfItems = page.totalNumberOfItems
         listing.totalNumberOfPages = page.totalNumberOfPages
-        listing.pages.append(page.summarized())
+
+        let startIndex = listing.items.count
+        let summary = Listing.PageSummary(
+            hasNextPage: page.hasNextPage,
+            firstItemIndex: startIndex,
+            size: page.items.count,
+            pageId: page.id
+        )
+        listing.pages.append(summary)
         listing.items.append(contentsOf: page.items)
         return listing
     }
     
-    func appendPage(arrayItems: [Item]) -> Listing {
+    func appendPage(arrayItems: [Item], hasNextPage: Bool = false) -> Listing {
         let pageNumber = nextPage
         let page = Listing.Page(
             items: arrayItems,
             pageNumber: pageNumber,
-            hasNextPage: false
+            hasNextPage: hasNextPage
         )
         return appendPage(page)
     }

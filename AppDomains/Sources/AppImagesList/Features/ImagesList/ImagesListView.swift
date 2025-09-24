@@ -46,7 +46,7 @@ struct ImagesListView: View {
             ProgressView()
         case .failed(let error):
             Button(action: {
-                onIntent.send(.reloadNextPage)
+                onIntent.send(.loadNextPage)
             }) {
                 VStack(alignment: .center) {
                     TextBundle(error.description)

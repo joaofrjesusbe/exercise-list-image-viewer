@@ -115,22 +115,56 @@ final class ListingTests: @unchecked Sendable {
     // MARK: - PageSummary helpers
     @Test
     func page_summary_properties_and_withNextPage() {
-        // Given a page of size 3
+        // Build listing and append first page (absolute indexing)
+        var listing = Listing<Int, String>()
         let page = makePage([1, 2, 3], page: 1, hasNext: false, id: "pg")
-        let summary = page.summarized()
+        listing = listing.appendPage(page)
+        let summary = listing.pages[0]
 
-        // The current implementation derives indices from page size
+        // Absolute indices: first page starts at 0
         #expect(summary.size == 3)
-        #expect(summary.firstItemIndex == 3)
-        #expect(summary.lastItemIndex == 5)
-        #expect(summary.range == 3..<6)
-        #expect(summary.contains(index: 3))
-        #expect(summary.contains(index: 5))
-        #expect(!summary.contains(index: 6))
+        #expect(summary.firstItemIndex == 0)
+        #expect(summary.lastItemIndex == 2)
+        #expect(summary.range == 0..<3)
+        #expect(summary.contains(index: 0))
+        #expect(summary.contains(index: 2))
+        #expect(!summary.contains(index: 3))
 
         // withNextPage flips the flag to true
         let next = summary.withNextPage()
         #expect(next.hasNextPage == true)
     }
-}
 
+    // MARK: - pageItems
+    @Test
+    func pageItems_returns_correct_slice_per_page() {
+        var listing = Listing<Int, String>()
+
+        // Append three pages with sizes 3, 2, 0 respectively
+        listing = listing.appendPage(makePage([1, 2, 3], page: 1, hasNext: true, id: "p1"))
+        listing = listing.appendPage(makePage([4, 5], page: 2, hasNext: true, id: "p2"))
+        listing = listing.appendPage(makePage([], page: 3, hasNext: false, id: "p3"))
+
+        // Absolute items array is [1,2,3,4,5]
+        #expect(listing.items == [1, 2, 3, 4, 5])
+
+        // Validate slices by page number (1-based)
+        #expect(listing.pageItems(page: 1) == [1, 2, 3])
+        #expect(listing.pageItems(page: 2) == [4, 5])
+        #expect(listing.pageItems(page: 3).isEmpty)
+    }
+
+    @Test
+    func pageItems_outOfBounds_or_emptyListing_returns_empty() {
+        var empty = Listing<Int, String>()
+        #expect(empty.pageItems(page: 1).isEmpty)
+        #expect(empty.pageItems(page: 0).isEmpty)
+        #expect(empty.pageItems(page: -1).isEmpty)
+
+        var listing = Listing<Int, String>()
+        listing = listing.appendPage(makePage([10], page: 1, hasNext: false))
+        #expect(listing.pageItems(page: 0).isEmpty)
+        #expect(listing.pageItems(page: -2).isEmpty)
+        #expect(listing.pageItems(page: 2).isEmpty)
+    }
+}

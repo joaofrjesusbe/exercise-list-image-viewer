@@ -32,15 +32,4 @@ public extension Listing {
 
 extension Listing.Page: Sendable where Metadata: Sendable, Item: Sendable {}
 
-extension Listing.Page: Identifiable {
-    
-    func summarized() -> Listing.PageSummary {
-        Listing.PageSummary(
-            hasNextPage: hasNextPage,
-            firstItemIndex: items.count,
-            size: items.count,
-            pageId: id
-        )
-    }
-}
-
+extension Listing.Page: Identifiable {}

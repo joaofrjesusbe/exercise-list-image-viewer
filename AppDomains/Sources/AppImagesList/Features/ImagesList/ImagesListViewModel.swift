@@ -22,7 +22,7 @@ public class ImagesListViewModel: LoadViewModel<ImagesListState, ImagesListInten
             initialLoad(query: nil)
         case .newItemAppeared(let index):
             tryToLoadNextPage(index: index)
-        case .reloadNextPage:
+        case .loadNextPage:
             loadNextPage()
         case .updateSearchText(let value):
             userSearchText = value
