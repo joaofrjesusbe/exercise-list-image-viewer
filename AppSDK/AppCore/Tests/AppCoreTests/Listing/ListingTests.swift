@@ -270,7 +270,7 @@ final class ListingTests: @unchecked Sendable {
     func appending_out_of_order_page_triggers_precondition_in_debug() {
         // This test documents the invariant; it does not actually trigger a crash here.
         // We assert the guard method instead of causing a precondition failure in tests.
-        var listing = Listing<Int, String>()
+        let listing = Listing<Int, String>()
         let p2 = makePage([2], page: 2, hasNext: false)
         #expect(!listing.canAppend(p2))
     }
