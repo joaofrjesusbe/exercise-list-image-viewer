@@ -4,31 +4,12 @@ import AppCore
 public struct DSListCell: View, Identifiable {
     @EnvironmentObject private var themer: ThemeManager
     
-    public struct Item: Identifiable, Equatable {
-        public let id: String
-        public let title: LocalizedStringResource
-        public let description: LocalizedStringResource
-        public let icon: URL?
-        
-        public init(
-            id: String,
-            title: LocalizedStringResource,
-            description: LocalizedStringResource,
-            icon: URL?
-        ) {
-            self.id = id
-            self.title = title
-            self.description = description
-            self.icon = icon
-        }
-    }
-    
     public let id: String
-    public let item: Item
+    public let item: DSListCellItem
     public let didSelect: () -> Void
     
     public init(
-        item: Item,
+        item: DSListCellItem,
         didSelect: @escaping () -> Void
     ) {
         self.id = item.id

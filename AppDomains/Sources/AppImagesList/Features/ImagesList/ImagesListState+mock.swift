@@ -3,7 +3,7 @@ import AppGroup
 extension ImagesListState {
     @MainActor
     static var mock: Self {
-        var itemMocks: [DSListCell.Item] = []
+        var itemMocks: [DSListCellItem] = []
         let adapter = ImageInfoUIAdapter()
         for _ in 0..<20 {
             itemMocks.append(adapter.toCellItem(.mock))

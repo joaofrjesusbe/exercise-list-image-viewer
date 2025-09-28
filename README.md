@@ -39,10 +39,9 @@ To work with **live mode**, you need an API key from Pixabay.
 2. Switch the mode from .replay to .live in PixabayDI.swift (line 8).
 
 
-## More to follow
+## Warning
 
 The following code will be fixed
-- Fast and furious, so lacking unit tests and integration tests
 - Very raw detail view
 
 More functionality to come in a different repository (TBD):

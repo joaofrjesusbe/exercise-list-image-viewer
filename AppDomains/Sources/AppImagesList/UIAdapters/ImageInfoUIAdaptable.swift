@@ -4,7 +4,7 @@ import AppGroup
 @MainActor
 protocol ImageInfoUIAdaptable {
     
-    func toCellItem(_ imageInfo: ImageInfo) -> DSListCell.Item
+    func toCellItem(_ imageInfo: ImageInfo) -> DSListCellItem
     
     func toUserString(_ imageInfo: ImageInfo) -> LocalizedStringResource
     
@@ -13,15 +13,15 @@ protocol ImageInfoUIAdaptable {
 
 extension ImageInfoUIAdaptable {
     
-    func toArrayCellItems(_ array: [ImageInfo]) -> [DSListCell.Item] {
+    func toArrayCellItems(_ array: [ImageInfo]) -> [DSListCellItem] {
         array.map(toCellItem(_:))
     }
 }
 
 struct ImageInfoUIAdapter: ImageInfoUIAdaptable {
     
-    func toCellItem(_ imageInfo: ImageInfo) -> DSListCell.Item {
-        DSListCell.Item(
+    func toCellItem(_ imageInfo: ImageInfo) -> DSListCellItem {
+        DSListCellItem(
             id: String(imageInfo.id),
             title: toUserString(imageInfo),
             description: toLikesString(imageInfo),

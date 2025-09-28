@@ -12,7 +12,7 @@ public enum ImagesListIntent: Equatable {
 
 public struct ImagesListState: Equatable {
     let query: String
-    let listingItems: [DSListCell.Item]
+    let listingItems: [DSListCellItem]
     let listingState: ListingLoadState
 }
 
@@ -22,7 +22,7 @@ extension ImagesListState {
         .init(query: query, listingItems: [], listingState: .idle)
     }
     
-    func withUpdatedListing(_ listingItems: [DSListCell.Item]) -> Self {
+    func withUpdatedListing(_ listingItems: [DSListCellItem]) -> Self {
         .init(query: query, listingItems: listingItems, listingState: .current)
     }
     

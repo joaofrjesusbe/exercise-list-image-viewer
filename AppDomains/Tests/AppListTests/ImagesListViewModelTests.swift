@@ -46,8 +46,8 @@ struct ImagesListViewModelTests {
     private func registerSimpleAdapter() {
         _ = Container.shared.imageInfoUIAdapter.register { @MainActor in
             struct SimpleAdapter: ImageInfoUIAdaptable {
-                func toCellItem(_ imageInfo: ImageInfo) -> DSListCell.Item {
-                    DSListCell.Item(
+                func toCellItem(_ imageInfo: ImageInfo) -> DSListCellItem {
+                    DSListCellItem(
                         id: String(imageInfo.id),
                         title: "T",
                         description: "D",
@@ -63,7 +63,7 @@ struct ImagesListViewModelTests {
 
     private func makeItems(_ count: Int) -> [ImageInfo] {
         (0..<count).map { idx in
-            ImageInfo(id: idx, previewURL: "p", largeImageURL: "l", user: "u", likes: 1)
+            ImageInfo(id: UInt64(idx), previewURL: "p", largeImageURL: "l", user: "u", likes: 1)
         }
     }
 
