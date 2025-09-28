@@ -41,10 +41,11 @@ To work with **live mode**, you need an API key from Pixabay.
 
 ## Warning
 
-The following code will be fixed
+The following is not well structure: 
 - Very raw detail view
+- PixabayNetwork package should be splited between generic and concrete
 
-More functionality to come in a different repository (TBD):
+More functionality to come in a different repository:
 - Resources white-label
 - Improved detail UI
 - Improved search functionality

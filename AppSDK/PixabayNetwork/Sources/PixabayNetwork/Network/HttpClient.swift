@@ -23,7 +23,7 @@ public final class HttpClient: HttpClientType {
             let decoded = try JSONDecoder().decode(T.self, from: data)
             return (decoded, response)
         } catch {
-            logger.error(error.localizedDescription)
+            logger.error(DecoderMessage.fromError(error))
             throw error
         }
     }

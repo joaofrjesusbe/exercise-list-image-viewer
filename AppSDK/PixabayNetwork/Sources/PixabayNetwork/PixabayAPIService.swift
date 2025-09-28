@@ -17,9 +17,9 @@ public final class PixabayAPIService {
         
         let request = PixabayEndpoint.search(query: query, page: pageNumber)
         
-        let (dto, _) = try await httpClient.send(request, decode: ImageListDTO.self)
+        let (dto, _) = try await httpClient.send(request, decode: PixabayPageImageDTO.self)
         let page = ImageInfoListing.Page(
-            items: dto.hits,
+            items: dto.hits.map { $0.toModel() },
             pageNumber: pageNumber,
             hasNextPage: dto.hits.count == PixabayEndpoint.defaultPageSize
         )
